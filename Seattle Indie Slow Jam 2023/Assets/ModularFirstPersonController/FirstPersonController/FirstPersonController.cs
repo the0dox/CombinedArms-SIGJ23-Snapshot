@@ -67,6 +67,7 @@ public class FirstPersonController : MonoBehaviour
     public bool enableSprint = true;
     public bool unlimitedSprint = false;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public bool subsituteDashWithSprint = true;
     public float sprintSpeed = 7f;
     public float sprintDuration = 5f;
     public float sprintCooldown = .5f;
@@ -89,6 +90,8 @@ public class FirstPersonController : MonoBehaviour
     private float sprintBarHeight;
     private bool isSprintCooldown = false;
     private float sprintCooldownReset;
+    private bool isDashing = false;
+    private Vector3 dashDir = Vector3.zero;
 
     #endregion
 
@@ -167,6 +170,8 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #region Sprint Bar
+
+        if (subsituteDashWithSprint) enableSprint = true;
 
         sprintBarCG = GetComponentInChildren<CanvasGroup>();
 
@@ -276,18 +281,23 @@ public class FirstPersonController : MonoBehaviour
 
         if(enableSprint)
         {
-            if(isSprinting)
+            if(isSprinting || isDashing)
             {
-                isZoomed = false;
-                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
-
+                if (isSprinting)
+                {
+                    isZoomed = false;
+                    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
+                }          
+                if (isDashing) unlimitedSprint = false;
                 // Drain sprint remaining while sprinting
                 if(!unlimitedSprint)
                 {
                     sprintRemaining -= 1 * Time.deltaTime;
                     if (sprintRemaining <= 0)
                     {
+                        if (isDashing) rb.AddForce(-dashDir, ForceMode.VelocityChange);
                         isSprinting = false;
+                        isDashing = false;
                         isSprintCooldown = true;
                     }
                 }
@@ -385,8 +395,9 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // All movement calculations shile sprint is active
-            if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
+            if (enableSprint && !subsituteDashWithSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
             {
+
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
                 // Apply a force that attempts to reach our target velocity
@@ -414,12 +425,32 @@ public class FirstPersonController : MonoBehaviour
                 }
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
+
+                
+            }
+            else if (subsituteDashWithSprint && isDashing && sprintRemaining > 0f)
+            {
+                Vector3 velocity = dashDir * sprintSpeed;
+                Vector3 velocityChange = (targetVelocity - velocity);
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                velocityChange.y = 0;
+                rb.AddForce(velocityChange, ForceMode.VelocityChange);
+                Debug.Log("Dashing! "+sprintRemaining);
             }
             // All movement calculations while walking
             else
             {
                 isSprinting = false;
-
+                isDashing = false;
+                if (Input.GetKeyDown(sprintKey) && !isSprintCooldown && !isDashing)
+                {
+                    if(targetVelocity.magnitude < .01f) dashDir = transform.TransformDirection(-Vector3.forward).normalized;
+                    else dashDir = -transform.TransformDirection(targetVelocity).normalized;
+                    isDashing = true;
+                    Debug.Log("Sprint started");
+                    return;
+                }
                 if (hideBarWhenFull && sprintRemaining == sprintDuration)
                 {
                     sprintBarCG.alpha -= 3 * Time.deltaTime;
@@ -629,13 +660,15 @@ public class FirstPersonController : MonoBehaviour
         fpc.enableSprint = EditorGUILayout.ToggleLeft(new GUIContent("Enable Sprint", "Determines if the player is allowed to sprint."), fpc.enableSprint);
 
         GUI.enabled = fpc.enableSprint;
+        fpc.subsituteDashWithSprint = EditorGUILayout.ToggleLeft(new GUIContent("Subsitute Sprint with Dash", "Overrides sprint to work like a dash instead"), fpc.subsituteDashWithSprint);
+        GUI.enabled = fpc.subsituteDashWithSprint;
         fpc.unlimitedSprint = EditorGUILayout.ToggleLeft(new GUIContent("Unlimited Sprint", "Determines if 'Sprint Duration' is enabled. Turning this on will allow for unlimited sprint."), fpc.unlimitedSprint);
         fpc.sprintKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Sprint Key", "Determines what key is used to sprint."), fpc.sprintKey);
         fpc.sprintSpeed = EditorGUILayout.Slider(new GUIContent("Sprint Speed", "Determines how fast the player will move while sprinting."), fpc.sprintSpeed, fpc.walkSpeed, 20f);
 
         //GUI.enabled = !fpc.unlimitedSprint;
-        fpc.sprintDuration = EditorGUILayout.Slider(new GUIContent("Sprint Duration", "Determines how long the player can sprint while unlimited sprint is disabled."), fpc.sprintDuration, 1f, 20f);
-        fpc.sprintCooldown = EditorGUILayout.Slider(new GUIContent("Sprint Cooldown", "Determines how long the recovery time is when the player runs out of sprint."), fpc.sprintCooldown, .1f, fpc.sprintDuration);
+        fpc.sprintDuration = EditorGUILayout.Slider(new GUIContent("Sprint Duration", "Determines how long the player can sprint while unlimited sprint is disabled."), fpc.sprintDuration, .01f, 20f);
+        fpc.sprintCooldown = EditorGUILayout.Slider(new GUIContent("Sprint Cooldown", "Determines how long the recovery time is when the player runs out of sprint."), fpc.sprintCooldown, .01f, fpc.sprintDuration);
         //GUI.enabled = true;
 
         fpc.sprintFOV = EditorGUILayout.Slider(new GUIContent("Sprint FOV", "Determines the field of view the camera changes to while sprinting."), fpc.sprintFOV, fpc.fov, 179f);
