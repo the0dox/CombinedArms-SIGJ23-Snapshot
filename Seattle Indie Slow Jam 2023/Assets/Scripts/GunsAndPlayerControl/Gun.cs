@@ -14,13 +14,14 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     float ammoCount;
     Animator animator;
+    MeshRenderer renderer;
     bool isReloading = false;
-    float firetimer = 0f;
-    float reloadtimer = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = this.GetComponent<Animator>();
+        renderer = this.GetComponent<MeshRenderer>();
         //animator.SetFloat("fireSpeed", firerate);
         //animator.SetFloat("reloadSpeed", reloadSpeed);
         ammoCount = ammoTotal;
@@ -50,18 +51,30 @@ public class Gun : MonoBehaviour
         g.GetComponent<Bullet>().dir = this.transform.GetChild(0).position - this.transform.position;
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
+        float rVal = ammoCount / ammoTotal;
+        rVal = 2f * rVal - 1f;
+        rVal = -rVal;
+        rVal = Mathf.Clamp(rVal, -1f, 1f);
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(block);
+        block.SetFloat("_AmmoLevel", rVal);
+        renderer.SetPropertyBlock(block);
+
     }
     void ReloadWeapon()
     {
-        reloadtimer = 0f;
         ammoCount = ammoTotal;
         animator.SetBool("IsReloading", false);
         isReloading = false;
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(block);
+        block.SetFloat("_AmmoLevel", -1f);
+        renderer.SetPropertyBlock(block);
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
+        //Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
         if (Input.GetMouseButton(0) && !isReloading)
         {
             animator.SetBool("IsFiring", true);

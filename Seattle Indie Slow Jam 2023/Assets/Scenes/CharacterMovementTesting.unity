@@ -922,7 +922,7 @@ MonoBehaviour:
   dmg: 1
   reloadSpeed: 1
   ammoTotal: 100
-  ammoPerBullet: 1
+  ammoPerBullet: 50
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   bullet: {fileID: 625955645343997884, guid: 6cbba23c7ddd74645b279e01c839dec0, type: 3}
