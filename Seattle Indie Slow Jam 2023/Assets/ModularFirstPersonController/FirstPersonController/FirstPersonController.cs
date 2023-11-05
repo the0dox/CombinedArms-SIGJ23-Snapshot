@@ -93,6 +93,7 @@ public class FirstPersonController : MonoBehaviour
     private bool isDashing = false;
     private bool sprintKeyPressed = false;
     private Vector3 dashDir = Vector3.zero;
+    private Vector3 moveVectorInput = Vector3.zero;
 
     #endregion
 
@@ -208,10 +209,12 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+        //INPUT BUFFER ATTEMPT
+        moveVectorInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         #region Camera
 
         // Control camera movement
-        if(cameraCanMove)
+        if (cameraCanMove)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
@@ -386,7 +389,7 @@ public class FirstPersonController : MonoBehaviour
         {
             // Calculate how fast we should be moving
             Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
+            targetVelocity = moveVectorInput; //INPUT BUFFER ATTEMPT
             // Checks if player is walking and isGrounded
             // Will allow head bob
             if (targetVelocity.x != 0 || targetVelocity.z != 0 && isGrounded)
