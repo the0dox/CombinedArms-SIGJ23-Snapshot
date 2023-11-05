@@ -479,9 +479,8 @@ public class FirstPersonController : MonoBehaviour
                 RaycastHit info;
                 if (rb.SweepTest(rb.velocity.normalized, out info,0.001f))
                 {
-                    float adj = Mathf.Clamp(info.distance - 0.1f, 0, distance);
                     rb.AddForce(-rb.velocity - rb.velocity, ForceMode.VelocityChange);
-                    Debug.Log("Hit! "+adj);
+                    //Debug.Log("Hit! "+adj);
                 }
             }
         }
