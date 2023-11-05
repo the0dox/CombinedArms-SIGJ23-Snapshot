@@ -91,6 +91,7 @@ public class FirstPersonController : MonoBehaviour
     private bool isSprintCooldown = false;
     private float sprintCooldownReset;
     private bool isDashing = false;
+    private bool sprintKeyPressed = false;
     private Vector3 dashDir = Vector3.zero;
 
     #endregion
@@ -281,7 +282,9 @@ public class FirstPersonController : MonoBehaviour
 
         if(enableSprint)
         {
-            if(isSprinting || isDashing)
+            if (Input.GetKeyDown(sprintKey)) sprintKeyPressed = true;
+            if (sprintKeyPressed) Debug.Log("Sprint key pressed!");
+            if (isSprinting || isDashing)
             {
                 if (isSprinting)
                 {
@@ -315,6 +318,7 @@ public class FirstPersonController : MonoBehaviour
                 sprintCooldown -= 1 * Time.deltaTime;
                 if (sprintCooldown <= 0)
                 {
+                    Debug.Log("Off Cooldown!");
                     isSprintCooldown = false;
                 }
             }
@@ -443,11 +447,12 @@ public class FirstPersonController : MonoBehaviour
             {
                 isSprinting = false;
                 isDashing = false;
-                if (Input.GetKeyDown(sprintKey) && !isSprintCooldown && !isDashing)
+                if (sprintKeyPressed && !isSprintCooldown && !isDashing)
                 {
                     if(targetVelocity.magnitude < .01f) dashDir = transform.TransformDirection(-Vector3.forward).normalized;
                     else dashDir = -transform.TransformDirection(targetVelocity).normalized;
                     isDashing = true;
+                    sprintKeyPressed = false;
                     Debug.Log("Sprint started");
                     return;
                 }
