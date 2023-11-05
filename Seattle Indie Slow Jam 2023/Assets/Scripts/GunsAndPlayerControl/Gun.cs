@@ -22,8 +22,8 @@ public class Gun : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
         renderer = this.GetComponent<MeshRenderer>();
-        //animator.SetFloat("fireSpeed", firerate);
-        //animator.SetFloat("reloadSpeed", reloadSpeed);
+        animator.SetFloat("fireSpeed", firerate);
+        animator.SetFloat("reloadSpeed", reloadSpeed);
         ammoCount = ammoTotal;
         foreach(AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
@@ -77,7 +77,9 @@ public class Gun : MonoBehaviour
         //Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
         if (Input.GetMouseButton(0) && !isReloading)
         {
-            animator.SetBool("IsFiring", true);
+            //Keep it nested so that reactions to running out of ammo can be handled
+            if(ammoCount > 0) animator.SetBool("IsFiring", true);
+            else animator.SetBool("IsFiring", false);
             //FireWeapon();
         }
         else
