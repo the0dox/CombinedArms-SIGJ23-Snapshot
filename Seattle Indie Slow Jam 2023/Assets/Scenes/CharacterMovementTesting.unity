@@ -920,7 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firerate: 5
   dmg: 1
-  reloadSpeed: 4.15
+  reloadSpeed: 0.5
   ammoTotal: 100
   ammoPerBullet: 10
   fireAni: {fileID: 0}
