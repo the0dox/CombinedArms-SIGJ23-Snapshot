@@ -474,10 +474,20 @@ public class FirstPersonController : MonoBehaviour
                 velocityChange.y = 0;
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
+                //Sweep check to avoid getting stuck on a wall
+                float distance = rb.velocity.magnitude * Time.fixedDeltaTime;
+                RaycastHit info;
+                if (rb.SweepTest(rb.velocity.normalized, out info,0.001f))
+                {
+                    float adj = Mathf.Clamp(info.distance - 0.1f, 0, distance);
+                    rb.AddForce(-rb.velocity - rb.velocity, ForceMode.VelocityChange);
+                    Debug.Log("Hit! "+adj);
+                }
             }
         }
 
         #endregion
+
     }
 
     // Sets isGrounded based on a raycast sent straigth down from the player object
