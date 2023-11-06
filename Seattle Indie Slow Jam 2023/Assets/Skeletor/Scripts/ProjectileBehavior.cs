@@ -10,7 +10,15 @@ public class ProjectileBehavior : MonoBehaviour
     [SerializeField] private float _speed;
     // the damage the projectile deals
     [SerializeField] private float _damage;
+    // reference to the sprite visual of the projectile
     [SerializeField] private Transform _sprite;
+    // time in seconds the projectile will travel before unloading
+    [SerializeField] private float _maxRuntime;
+
+    void Awake()
+    {
+        Invoke("Die", _maxRuntime);
+    }
 
     // on the physics update, move this projectile forward
     void FixedUpdate()
@@ -23,9 +31,16 @@ public class ProjectileBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // remove this projectile on collision
-        gameObject.SetActive(false);
+        Die();
         // see if the hit target can be attacked, if so deal damage to it
         other.TryGetComponent(out IAttackable target);
-        target?.TakeDamage(_damage);
+        target?.TakeDamage(gameObject, _damage);
+    }
+
+    // called when the projectile is destroyed
+    public virtual void Die()
+    {
+        CancelInvoke();
+        gameObject.SetActive(false);
     }
 }

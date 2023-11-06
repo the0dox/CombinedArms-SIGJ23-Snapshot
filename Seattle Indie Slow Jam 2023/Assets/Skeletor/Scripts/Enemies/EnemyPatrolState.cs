@@ -43,7 +43,7 @@ public class EnemyPatrolState : State<EnemyBehavior>
     {
         if(_myContext.MyAgent.remainingDistance < 0.02f)
         {
-            _myContext.SetState(_myContext.idle);
+            _myContext.SetState(_myContext.Idle);
         }
     }
 }

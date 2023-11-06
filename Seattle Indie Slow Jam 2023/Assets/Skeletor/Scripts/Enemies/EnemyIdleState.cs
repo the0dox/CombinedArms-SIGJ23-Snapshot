@@ -44,6 +44,6 @@ public class EnemyIdleState :  State<EnemyBehavior>
     {
         idleTimer -= Time.deltaTime;
         if(idleTimer < 0)
-            _myContext.SetState(_myContext.patrol);
+            _myContext.SetState(_myContext.Patrol);
     }
 }

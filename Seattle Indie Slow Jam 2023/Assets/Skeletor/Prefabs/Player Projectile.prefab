@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6401474697009204256}
   - component: {fileID: 6401474697009204257}
   - component: {fileID: 6401474697009204258}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6401474697009204262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6401474698263423158}
@@ -248,8 +248,8 @@ GameObject:
   - component: {fileID: 6401474698263423152}
   - component: {fileID: 6401474698263423153}
   - component: {fileID: 8915242523069723451}
-  m_Layer: 6
-  m_Name: Projectile
+  m_Layer: 8
+  m_Name: Player Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd4fa4d87cb17a44819eabda4f8ce8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 50
   _damage: 5
   _sprite: {fileID: 6401474697009204263}
   _maxRuntime: 20

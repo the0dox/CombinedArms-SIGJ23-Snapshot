@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.VisualScripting;
+
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 # endif 
 
 // created by Skeletor
 // primary state machine that drives enemy behavior
-public class EnemyBehavior : StateController<EnemyBehavior>
+public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
 {
     // public accessors
     public Animator AnimationComponent => _animationComponent;
@@ -20,6 +22,11 @@ public class EnemyBehavior : StateController<EnemyBehavior>
     public float AttackCoolDownDuration => _attackCooldownDuration;
     public Transform VisionTransform => _visionTransform;
     public bool AttackCoolDown {get => _attackCooldown; set => _attackCooldown = value;}
+    public State<EnemyBehavior> Idle => _idle;
+    public State<EnemyBehavior> Patrol => _patrol;
+    public State<EnemyBehavior> Approach => _approach;
+    public State<EnemyBehavior> Attack => _attack;
+    
     
     // used to control movement
     [SerializeField] private NavMeshAgent _myAgent;
@@ -37,6 +44,16 @@ public class EnemyBehavior : StateController<EnemyBehavior>
     [SerializeField] private Transform _visionTransform;
     // the time in seconds the enemy must wait before attacking again
     [SerializeField] private float _attackCooldownDuration;
+    // speed that the enemy can rotate its transform
+    [SerializeField] private float _turnSpeed;
+    // the amount of health this enemy starts with
+    [SerializeField] private float _startingHealth;
+    // reference to the ragdoll attached to my model
+    [SerializeField] private RagdollBehavior _myRagdoll; 
+    [SerializeField] private Collider _myCollider;
+    // the current amount of health this enemy has
+    private float _health;
+    // returns true if this enemy can attack this frame
     private bool _attackCooldown;
  
     // current velocity in local space this frame
@@ -44,16 +61,35 @@ public class EnemyBehavior : StateController<EnemyBehavior>
     // the current transform the enemy is trying to look at
     private Transform _lookTarget;
     
-    // enemy states
-    public readonly EnemyPatrolState patrol = new EnemyPatrolState();
-    public readonly EnemyIdleState idle = new EnemyIdleState();
-    public readonly EnemyRepositionState reposition = new EnemyRepositionState();
-    public readonly EnemyAttackState attack = new EnemyAttackState();
+    // enemy states should be overriden for different enemy variants
+    // starts in idle state by default
+    protected State<EnemyBehavior> _idle;
+    // alternates to patrol until player approaches
+    protected State<EnemyBehavior> _patrol;
+    // approaches player within range
+    protected State<EnemyBehavior> _approach;
+    // attacks if within attack range
+    protected State<EnemyBehavior> _attack;
+
+    // assign states before first frame
+    protected virtual void Awake()
+    {
+        OnSpawn();
+        _animationComponent.enabled = true;
+        MyBody.detectCollisions = true;
+        MyBody.useGravity = false;
+        _myCollider.enabled = true;
+        _health = _startingHealth;
+        SetState(_idle);
+    }
 
     // on first frame assume patrol behavior
-    void Awake()
+    protected virtual void OnSpawn()
     {
-        SetState(idle);
+        _patrol = new EnemyPatrolState();
+        _idle = new EnemyIdleState();
+        _approach = new EnemyRepositionState();
+        _attack = new EnemyAttackState();
     }
 
     // each frame, update animations and states
@@ -61,6 +97,43 @@ public class EnemyBehavior : StateController<EnemyBehavior>
     {
         AnimateMotion();
         base.Update();
+    }
+
+    // called when a projectile comes into contact with an enemy
+    public void TakeDamage(GameObject source, float damage)
+    {
+        _health -= damage;
+        OnHurt();
+        if(_health < 0)
+            Die(source);
+    }   
+    
+    protected virtual void OnHurt()
+    {
+        _animationComponent.SetTrigger("Hurt");
+    }
+
+    // called when the enemy has been reduced to zero hit points
+    protected virtual void Die(GameObject source = null)
+    {
+        _myAgent.enabled = false;
+        _animationComponent.enabled = false;
+        MyBody.detectCollisions = false;
+        MyBody.useGravity = true;
+        _myCollider.enabled = false;
+        this.enabled = false;
+        _myRagdoll.EnableRagdoll(true);
+        Invoke("Unload", 10f);
+        if(source != null)
+            _myRagdoll.ApplyRagdollForce(source.transform.position, 35);
+        //gameObject.SetActive(false);
+        //transform.position = Vector3.zero;
+    }
+
+    void Unload()
+    {
+        gameObject.SetActive(false);
+        this.enabled = true;
     }
 
     // sets a new transform as the look target of this enemy
@@ -75,8 +148,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>
         if(Vector3.Distance(_visionTransform.position, DebugTestCamera.PlayerObject.transform.position) < _visionRadius)
         {
             SetLookTarget(DebugTestCamera.PlayerObject.transform);
-            SetState(reposition);
+            SetState(_approach);
         }
+    }
+
+    public void RotateTowardsTarget()
+    {
+        if(_lookTarget == null)
+        {
+            return;
+        } 
+        Vector3 targetDirection = (_lookTarget.position - transform.position).normalized;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection) , Time.deltaTime * _turnSpeed);
     }
 
     // sets animation values every frame
@@ -105,8 +188,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>
         if(Mathf.Abs(relativeVerticalAngle) > _upperBodyRotation)
             relativeVerticalAngle = 0;
         // adjusts upper body rotation
-        _animationComponent.SetFloat("Upper_Horizontal_f", relativeHorizontalAngle, 0.5f, Time.deltaTime);
-        _animationComponent.SetFloat("Upper_Vertical_f", relativeVerticalAngle, 0.5f, Time.deltaTime);
+        _animationComponent.SetFloat("Upper_Horizontal_f", relativeHorizontalAngle, 0.3f, Time.deltaTime);
+        _animationComponent.SetFloat("Upper_Vertical_f", relativeVerticalAngle, 0.3f, Time.deltaTime);
     }
 
     #if UNITY_EDITOR
@@ -126,6 +209,6 @@ public class EnemyBehavior : StateController<EnemyBehavior>
     public override string ToString()
     {
         string targetString = _lookTarget != null ? _lookTarget.name : "";
-        return string.Format($"{gameObject.name}\nState: {_currentState}\nLook Target: {targetString}");
+        return string.Format($"{gameObject.name}\nHealth:{_health}/{_startingHealth}\nState: {_currentState}\nLook Target: {targetString}");
     }
 }
