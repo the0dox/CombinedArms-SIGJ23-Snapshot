@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// created by Skeletor
+// the state in which the enemy make an a attack and a target
+public class EnemyAttackState : State<EnemyBehavior>
+{
+    // temporary variables
+    private const float ATTACKWINDUP = 2f;
+    private const float ATTACKWINDDOWN = 0.25f;
+
+    private float _attackTimer;
+
+    // allows class that derive State to 
+    protected override void OnStateEnter()
+    {
+        if(_myContext.LookTarget == null)
+        {
+            _myContext.SetState(_myContext.idle);
+            return;
+        }
+        _myContext.MyAgent.enabled = false;
+        _myContext.AttackCoolDown = true;
+        _myContext.AnimationComponent.SetTrigger("Attack");
+        _attackTimer = ATTACKWINDUP;
+    }
+
+    // called every frame
+    protected override void OnStateUpdate()
+    {
+        _attackTimer -= Time.deltaTime;
+        if(_attackTimer < 0)
+        {
+            Attack();
+        }
+    }
+
+    // called every physics update frame
+    protected override void OnStateFixedUpdate()
+    {
+
+    }
+
+    // called when this state is ended
+    protected override void OnStateExit()
+    {
+        _myContext.StartCoroutine(CoolDownDelay());
+    }
+
+    IEnumerator CoolDownDelay()
+    {
+        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
+        _myContext.AttackCoolDown = false;
+    }
+
+    void Attack()
+    {
+        Vector3 attackVector = (_myContext.LookTarget.transform.position - _myContext.VisionTransform.position).normalized;
+        GameObject projectile = ObjectLoader.LoadObject("Projectile");
+        projectile.transform.position = _myContext.VisionTransform.position + attackVector;
+        projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
+        _myContext.SetState(_myContext.reposition);
+    }
+}
+

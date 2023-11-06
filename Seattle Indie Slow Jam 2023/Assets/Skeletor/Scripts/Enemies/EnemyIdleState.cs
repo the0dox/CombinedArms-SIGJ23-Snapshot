@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Created by Skeletor
+// created by Skeletor
 // a state in which the enemy will stand still for a period of time until deciding to patrol again
 public class EnemyIdleState :  State<EnemyBehavior>
 {
@@ -16,7 +16,7 @@ public class EnemyIdleState :  State<EnemyBehavior>
     // called when state is first entered 
     protected override void OnStateEnter()
     {
-        _myContext.MyAgent.speed = 0;
+        _myContext.MyAgent.enabled = false;
         idleTimer = Random.Range(MINIDLETIME, MAXIDLETIME);
     }
 
@@ -24,6 +24,7 @@ public class EnemyIdleState :  State<EnemyBehavior>
     protected override void OnStateUpdate()
     {
         CheckTimer();
+        _myContext.LookForPlayer();
     }
 
     // called every physics update frame
