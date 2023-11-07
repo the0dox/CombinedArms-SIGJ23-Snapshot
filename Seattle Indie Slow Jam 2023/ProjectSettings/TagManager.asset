@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,6 +17,7 @@ TagManager:
   - Enemy
   - Friendly Projectile
   - Player
+  - QueryAttack
   - 
   - 
   - 
@@ -36,8 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Terrain
   m_SortingLayers:
   - name: Default
     uniqueID: 0

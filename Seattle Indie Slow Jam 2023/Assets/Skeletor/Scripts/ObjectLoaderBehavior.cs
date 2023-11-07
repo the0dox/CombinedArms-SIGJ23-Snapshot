@@ -5,7 +5,8 @@ using UnityEditor;
 using UnityEngine;
 
 // created by Skeletor
-// attach this to a loader to load projectiles into the scene
+// loaders must be present in a scene to create instances of prefabs for cost effective object spawning
+// an example loader is provided in the prefab folder
 public class ObjectLoaderBehavior: MonoBehaviour
 {
     // reference to the prefab this loader creates

@@ -5,8 +5,10 @@ using UnityEngine;
 
 // created by skeletor
 // attached to an object that can ragdoll
-public class RagdollBehavior : MonoBehaviour, IAttackable
+public class RagdollBehavior : MonoBehaviour
 {   
+    // public accessor for the root of this ragdoll
+    public Rigidbody Root => _root;
     // reference to each rigid body on the ragdoll
     private Rigidbody[] _bodies;
     // reference to each join on the ragdoll
@@ -18,10 +20,12 @@ public class RagdollBehavior : MonoBehaviour, IAttackable
     [SerializeField] private Rigidbody _root; 
     // reference to center of the ragdoll for physics calculations
     private bool ragdollEnabled;
+    // time it takes for the ragdoll to stop simulating phyiscs and eventually despawn
     private const float FREEZETIME = 20f;
+    // velocity offset applied to the ragdoll to add
     private readonly Vector3 _offset = new Vector3(0, 0.5f, 0);
 
-    // Start is called before the first frame update
+    // The first time this ragdoll is configured, assign all components
     void Awake()
     {
         _bodies = GetComponentsInChildren<Rigidbody>();
@@ -30,12 +34,14 @@ public class RagdollBehavior : MonoBehaviour, IAttackable
         _rigTransforms = GetComponentsInChildren<Transform>();
     }
 
+    // called every time this ragdoll is spawned
     void OnEnable()
     {
         EnableRagdoll(true);
         InvokeRepeating("Freeze", FREEZETIME, FREEZETIME);
     }
 
+    // once this ragdoll is despawned it shouldn't check to despawn itself anymore
     void OnDisable()
     {
         CancelInvoke();
@@ -82,32 +88,10 @@ public class RagdollBehavior : MonoBehaviour, IAttackable
             }
         }
     }
-    // WIP: Need to determine if it is worth it to make a new collider for the ragdoll just to detect player attacks
-    public void TakeDamage(GameObject source, float damage)
-    {
-        ApplyRagdollForce(source.transform, 3000);
-    }
 
-
-    // applies ragdoll force from a source at a given magnitude to the ragdoll
-    // source should be what ever is applying force, and magnitude should be the strength of that force
-    public void ApplyRagdollForce(Transform source, float magnitude)
-    {
-        Vector3 hitLocation = source.position;
-        Debug.DrawRay(hitLocation, Vector3.up, Color.green);
-        Vector3 relativeAngle = _root.transform.position - hitLocation;
-        relativeAngle = new Vector3(relativeAngle.x, 0.5f, relativeAngle.z);
-        Debug.DrawRay(_root.transform.position, relativeAngle.normalized, Color.red);
-        _root.velocity = relativeAngle.normalized * magnitude;
-        foreach(Rigidbody body in _bodies)
-        {
-            body.AddExplosionForce(magnitude, source.position, 0.5f);
-        }
-        //Debug.DrawRay(_root.transform.position, _root.velocity, Color.red);
-        //Debug.Break();
-    }
-
-    public void MatchTransforms(Transform root, Transform[] newTransforms)
+    // used when a ragdoll is swapped in for an animated model. 
+    // copies the position, rotation, and velocity of the existing model.
+    public void MatchTransforms(Transform root, Transform[] newTransforms, Rigidbody inhertitedBody)
     {
         transform.position = root.transform.position + _offset;
         transform.rotation = root.transform.rotation;
@@ -121,6 +105,11 @@ public class RagdollBehavior : MonoBehaviour, IAttackable
             {
                 _rigTransforms[i].transform.position = newTransforms[i].transform.position;
                 _rigTransforms[i].transform.rotation = newTransforms[i].transform.rotation;
+            }
+            foreach(Rigidbody body in _bodies)
+            {
+                body.velocity = inhertitedBody.velocity;
+                //body.angularVelocity = inhertitedBody.angularVelocity;
             }
         }
     }

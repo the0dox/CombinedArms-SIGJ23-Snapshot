@@ -34,10 +34,6 @@ public class DebugTestCamera : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            TestShoot();
-        }
         if(Input.GetKeyDown(KeyCode.E))
         {
             ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
@@ -60,16 +56,6 @@ public class DebugTestCamera : MonoBehaviour
         {
             ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
         }
-        else if(GUILayout.Button("Left Click: Spawn Projectile"))
-        {
-            TestShoot();
-        }
     }
 
-    void TestShoot()
-    {
-        GameObject testProjectile = ObjectLoader.LoadObject("Player Projectile");
-        testProjectile.transform.position = transform.position + transform.forward;
-        testProjectile.transform.eulerAngles = transform.eulerAngles;
-    }
 }

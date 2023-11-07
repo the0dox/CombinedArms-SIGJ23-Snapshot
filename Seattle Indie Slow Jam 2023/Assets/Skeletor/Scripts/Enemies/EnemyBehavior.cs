@@ -69,12 +69,16 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     protected State<EnemyBehavior> _approach;
     // attacks if within attack range
     protected State<EnemyBehavior> _attack;
+    // stunned for a brief moment after damage
+    protected State<EnemyBehavior> _hurt;
 
     // assign states before first frame
     void OnEnable()
     {
         OnSpawn();
         _health = _startingHealth;
+        _attackCooldown = false;
+        _myBody.velocity = Vector3.zero;
         SetState(_idle);
     }
 
@@ -85,6 +89,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _idle = new EnemyIdleState();
         _approach = new EnemyRepositionState();
         _attack = new EnemyAttackState();
+        _hurt = new EnemyInjuredState();
     }
 
     // each frame, update animations and states
@@ -95,43 +100,33 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     }
 
     // called when a projectile comes into contact with an enemy
-    public void TakeDamage(GameObject source, float damage)
+    public void TakeDamage(Vector3 source, float damage)
     {
-        _health -= damage;
-        OnHurt();
-        if(_health < 0)
+        if(gameObject.activeInHierarchy)
         {
-            try
+            _health -= damage;
+            SetState(_hurt);
+            if(_health <= 0)
             {
-                OnDeath(source);
-            }
-            finally
-            {
-                Unload();
+                try
+                {
+                    OnDeath(source);
+                }
+                finally
+                {
+                    gameObject.SetActive(false);
+                    transform.position = Vector3.zero;
+                }
             }
         }
     }   
 
-    protected virtual void OnHurt()
-    {
-        _animationComponent.SetTrigger("Hurt");
-    }
 
     // called when the enemy has been reduced to zero hit points
-    protected virtual void OnDeath(GameObject source = null)
+    protected virtual void OnDeath(Vector3 source)
     {
         _myAgent.enabled = false; 
         RagdollBehavior ragdoll = myRagdoll.SpawnRagdoll();
-        if(source != null)
-        {
-            ragdoll.ApplyRagdollForce(source.transform, 200);
-        }
-    }
-
-    void Unload()
-    {
-        gameObject.SetActive(false);
-        transform.position = Vector3.zero;
     }
 
     // sets a new transform as the look target of this enemy
@@ -150,6 +145,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         }
     }
 
+    // rotates the transform (not the upper body) of the enemy towards its look target
     public void RotateTowardsTarget()
     {
         if(_lookTarget == null)
@@ -157,6 +153,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             return;
         } 
         Vector3 targetDirection = (_lookTarget.position - transform.position).normalized;
+        targetDirection = new Vector3(targetDirection.x, transform.position.y, targetDirection.z);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection) , Time.deltaTime * _turnSpeed);
     }
 

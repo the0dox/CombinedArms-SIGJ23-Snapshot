@@ -14,7 +14,6 @@ public class ProjectileBehavior : MonoBehaviour
     [SerializeField] private Transform _sprite;
     // time in seconds the projectile will travel before unloading
     [SerializeField] private float _maxRuntime;
-    [SerializeField] private Collider _colldier;
 
     void OnEnable()
     {
@@ -34,8 +33,8 @@ public class ProjectileBehavior : MonoBehaviour
         // remove this projectile on collision
         Die();
         // see if the hit target can be attacked, if so deal damage to it
-        other.TryGetComponent(out IAttackable target);
-        target?.TakeDamage(gameObject, _damage);
+        if (other.TryGetComponent(out IAttackable target))
+            target.TakeDamage(transform.position, _damage);
     }
 
     // called when the projectile is destroyed
