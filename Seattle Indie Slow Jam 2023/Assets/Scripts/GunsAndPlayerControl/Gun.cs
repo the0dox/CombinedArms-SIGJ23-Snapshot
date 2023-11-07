@@ -36,6 +36,34 @@ public class Gun : MonoBehaviour
         foreach(AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
 
+            if (a.name.Contains("Reload") && a.events.Length < 1)
+            {
+                AnimationEvent e = new AnimationEvent();
+                e.time = a.length;
+                e.functionName = "ReloadWeapon";
+                a.AddEvent(e);
+            }
+            else if (a.name.Contains("Fire") && a.events.Length < 1)
+            {
+                AnimationEvent e = new AnimationEvent();
+                e.time = 0;
+                e.functionName = "FireWeapon";
+                a.AddEvent(e);
+            }
+        }
+    }
+    public void Initalize()
+    {
+        animator = this.GetComponent<Animator>();
+        renderer = this.GetComponent<MeshRenderer>();
+        barrel = this.transform.GetChild(0).GetComponent<AudioSource>();
+        animator.SetFloat("fireSpeed", firerate);
+        animator.SetFloat("reloadSpeed", reloadSpeed);
+        ammoCount = ammoTotal;
+        /*
+        foreach (AnimationClip a in animator.runtimeAnimatorController.animationClips)
+        {
+
             if (a.name.Contains("Reload"))
             {
                 AnimationEvent e = new AnimationEvent();
@@ -51,6 +79,7 @@ public class Gun : MonoBehaviour
                 a.AddEvent(e);
             }
         }
+        */
     }
     void FireWeapon()
     {
@@ -112,20 +141,40 @@ public class Gun : MonoBehaviour
     }
     void ReloadWeapon()
     {
-        ammoCount = ammoTotal;
-        animator.SetBool("IsReloading", false);
-        isReloading = false;
+        if(isReloading){
+            isReloading = false;
+            ammoCount = ammoTotal;
+            animator.SetBool("IsReloading", false);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", -1f);
+            renderer.SetPropertyBlock(block);
+            barrel.PlayOneShot(reloadSound);
+            PlayerManager.instance.gunsReloading--;
+            Debug.Log(this.transform.gameObject.name);
+        }
+        Debug.Log("TESTING!");
+    }
+    public void  ApplyGunData(GunData data)
+    {
+        firerate = data.firerate;
+        dmg = data.dmg;
+        reloadSpeed = data.reloadSpeed;
+        ammoTotal = data.ammoTotal;
+        range = data.range;
+        ammoPerBullet = data.ammoPerBullet;
         MaterialPropertyBlock block = new MaterialPropertyBlock();
         renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", -1f);
+        block.SetColor("_LevelColor", data.gunColor);
         renderer.SetPropertyBlock(block);
-        barrel.PlayOneShot(reloadSound);
+
     }
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
-        if (Input.GetMouseButton(0) && !isReloading)
+        Debug.Log(PlayerManager.instance.gunsReloading);
+        Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
+        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1)
         {
             //Keep it nested so that reactions to running out of ammo can be handled
             if (ammoCount > 0) animator.SetBool("IsFiring", true);
@@ -140,9 +189,10 @@ public class Gun : MonoBehaviour
         {
             animator.SetBool("IsFiring", false);
         }
-        if(Input.GetKeyDown(KeyCode.R) && !isReloading)
+        if(Input.GetKeyDown(KeyCode.R) && !isReloading && ammoCount != ammoTotal)
         {
             isReloading = true;
+            PlayerManager.instance.gunsReloading++;
             animator.SetBool("IsReloading", true);
         }
     }
