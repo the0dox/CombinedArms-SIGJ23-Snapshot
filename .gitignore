@@ -10,11 +10,11 @@
 /[Ll]ogs/
 [Uu]ser[Ss]ettings/
 
-Seattle Indie Slow Jam 2023/[Tt]emp/
-Seattle Indie Slow Jam 2023/[Oo]bj/
-Seattle Indie Slow Jam 2023/[Bb]uild/
-Seattle Indie Slow Jam 2023/[Bb]uilds/
-Seattle Indie Slow Jam 2023/[Ll]ogs/
+"Seattle Indie Slow Jam 2023/[Tt]emp/"
+"Seattle Indie Slow Jam 2023/[Oo]bj/"
+"Seattle Indie Slow Jam 2023/[Bb]uild/"
+"Seattle Indie Slow Jam 2023/[Bb]uilds/"
+"Seattle Indie Slow Jam 2023/[Ll]ogs/"
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -76,7 +76,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-#stuff we shouldn't track
-*.log
-*.vsconfig

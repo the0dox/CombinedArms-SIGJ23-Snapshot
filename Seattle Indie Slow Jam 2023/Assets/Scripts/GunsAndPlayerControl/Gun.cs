@@ -36,14 +36,14 @@ public class Gun : MonoBehaviour
         foreach(AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
 
-            if (a.name.Contains("Reload"))
+            if (a.name.Contains("Reload") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
                 e.time = a.length;
                 e.functionName = "ReloadWeapon";
                 a.AddEvent(e);
             }
-            else if (a.name.Contains("Fire"))
+            else if (a.name.Contains("Fire") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
                 e.time = 0;
@@ -153,6 +153,7 @@ public class Gun : MonoBehaviour
             PlayerManager.instance.gunsReloading--;
             Debug.Log(this.transform.gameObject.name);
         }
+        Debug.Log("TESTING!");
     }
     public void  ApplyGunData(GunData data)
     {
