@@ -14,8 +14,9 @@ public class ProjectileBehavior : MonoBehaviour
     [SerializeField] private Transform _sprite;
     // time in seconds the projectile will travel before unloading
     [SerializeField] private float _maxRuntime;
+    [SerializeField] private Collider _colldier;
 
-    void Awake()
+    void OnEnable()
     {
         Invoke("Die", _maxRuntime);
     }

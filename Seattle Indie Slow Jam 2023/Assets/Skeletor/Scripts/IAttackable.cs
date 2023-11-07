@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IAttackable
 {
-    // called when a projectile hits this object
-    public abstract void TakeDamage(GameObject source, float value);
+    // called when a raycast hits this object
+    public abstract void TakeDamage(GameObject hit, float value);
 }

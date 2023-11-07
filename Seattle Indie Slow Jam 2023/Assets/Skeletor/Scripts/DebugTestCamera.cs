@@ -20,11 +20,16 @@ public class DebugTestCamera : MonoBehaviour
     void Awake()
     {
         s_playerObject = GameObject.FindGameObjectWithTag("Player");
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         // shouldn't be allowed in built versions of the game
         #if !UNITY_EDITOR
             Destroy(this);
         #endif
+    }
+    
+    void Start()
+    {
+        transform.rotation = Quaternion.identity;
     }
 
     void Update()
@@ -32,6 +37,10 @@ public class DebugTestCamera : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             TestShoot();
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
         }
     }
 
@@ -47,11 +56,11 @@ public class DebugTestCamera : MonoBehaviour
 
     void OnGUI()
     {
-        if(GUILayout.Button("SpawnEnemy"))
+        if(GUILayout.Button("E: SpawnEnemy"))
         {
-            ObjectLoader.LoadObject("Enemy");
+            ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
         }
-        else if(GUILayout.Button("Spawn Projectile"))
+        else if(GUILayout.Button("Left Click: Spawn Projectile"))
         {
             TestShoot();
         }

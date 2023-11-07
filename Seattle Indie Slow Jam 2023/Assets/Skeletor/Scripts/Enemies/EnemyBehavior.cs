@@ -48,9 +48,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField] private float _turnSpeed;
     // the amount of health this enemy starts with
     [SerializeField] private float _startingHealth;
-    // reference to the ragdoll attached to my model
-    [SerializeField] private RagdollBehavior _myRagdoll; 
-    [SerializeField] private Collider _myCollider;
+    // used to spawn a rag doll on death
+    [SerializeField] private RagdollSpawner myRagdoll;
     // the current amount of health this enemy has
     private float _health;
     // returns true if this enemy can attack this frame
@@ -72,13 +71,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     protected State<EnemyBehavior> _attack;
 
     // assign states before first frame
-    protected virtual void Awake()
+    void OnEnable()
     {
         OnSpawn();
-        _animationComponent.enabled = true;
-        MyBody.detectCollisions = true;
-        MyBody.useGravity = false;
-        _myCollider.enabled = true;
         _health = _startingHealth;
         SetState(_idle);
     }
@@ -105,35 +100,38 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _health -= damage;
         OnHurt();
         if(_health < 0)
-            Die(source);
+        {
+            try
+            {
+                OnDeath(source);
+            }
+            finally
+            {
+                Unload();
+            }
+        }
     }   
-    
+
     protected virtual void OnHurt()
     {
         _animationComponent.SetTrigger("Hurt");
     }
 
     // called when the enemy has been reduced to zero hit points
-    protected virtual void Die(GameObject source = null)
+    protected virtual void OnDeath(GameObject source = null)
     {
-        _myAgent.enabled = false;
-        _animationComponent.enabled = false;
-        MyBody.detectCollisions = false;
-        MyBody.useGravity = true;
-        _myCollider.enabled = false;
-        this.enabled = false;
-        _myRagdoll.EnableRagdoll(true);
-        Invoke("Unload", 10f);
+        _myAgent.enabled = false; 
+        RagdollBehavior ragdoll = myRagdoll.SpawnRagdoll();
         if(source != null)
-            _myRagdoll.ApplyRagdollForce(source.transform.position, 35);
-        //gameObject.SetActive(false);
-        //transform.position = Vector3.zero;
+        {
+            ragdoll.ApplyRagdollForce(source.transform, 200);
+        }
     }
 
     void Unload()
     {
         gameObject.SetActive(false);
-        this.enabled = true;
+        transform.position = Vector3.zero;
     }
 
     // sets a new transform as the look target of this enemy

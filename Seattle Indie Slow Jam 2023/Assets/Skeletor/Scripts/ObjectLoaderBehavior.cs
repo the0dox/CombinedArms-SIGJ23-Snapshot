@@ -57,12 +57,17 @@ public class ObjectLoader
     }
 
     // reads through all object loaders in the scene and returns an instance from an object loader that matches prefabName
-    public static GameObject LoadObject(string prefabName)
+    // if force set to true, object loader will resort to despawning an instance that is already in the scene
+    public static GameObject LoadObject(string prefabName, bool force = false)
     {
         // throw an error if prefab name doesn't have a corresponding object loader
         if(!s_loaders.ContainsKey(prefabName))
         {
             throw new ArgumentException($"Unable to find a {prefabName} object loader, consider adding a new object loader of that type to the current scene");
+        }
+        if(force)
+        {
+            return s_loaders[prefabName].ForceLoadObject();
         }
         else
         {
@@ -75,6 +80,17 @@ public class ObjectLoader
     {
         GameObject output = LoadObjectRecursive(3);
         output.gameObject.SetActive(true);
+        output.transform.SetParent(null);
+        return output;
+    }
+
+    // loads an inactive instance from this loader, if the next instance is already active in the scene, unloads it anyways
+    private GameObject ForceLoadObject()
+    {
+        Index++;
+        GameObject output = _objects[Index].gameObject;
+        output.SetActive(false);
+        output.SetActive(true);
         output.transform.SetParent(null);
         return output;
     }
