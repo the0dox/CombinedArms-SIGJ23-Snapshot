@@ -13,8 +13,12 @@ public class Gun : MonoBehaviour
     public float range = 10f;
     public AnimationClip fireAni;
     public AnimationClip reloadAni;
+    public AudioClip fireSound;
+    public AudioClip reloadSound;
+    public AudioClip clickSound;
     public GameObject bullet;
     public TrailRenderer hitscanBullet;
+    AudioSource barrel;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
@@ -25,6 +29,7 @@ public class Gun : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
         renderer = this.GetComponent<MeshRenderer>();
+        barrel = this.transform.GetChild(0).GetComponent<AudioSource>();
         animator.SetFloat("fireSpeed", firerate);
         animator.SetFloat("reloadSpeed", reloadSpeed);
         ammoCount = ammoTotal;
@@ -59,6 +64,7 @@ public class Gun : MonoBehaviour
         }
         TrailRenderer t = Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
         StartCoroutine(HitscanTrail(t,info));
+        barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
         //info.collider.GetComponent<Enemy>().takeDamage();
         
@@ -113,6 +119,7 @@ public class Gun : MonoBehaviour
         renderer.GetPropertyBlock(block);
         block.SetFloat("_AmmoLevel", -1f);
         renderer.SetPropertyBlock(block);
+        barrel.PlayOneShot(reloadSound);
     }
     // Update is called once per frame
     void Update()
@@ -121,8 +128,12 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && !isReloading)
         {
             //Keep it nested so that reactions to running out of ammo can be handled
-            if(ammoCount > 0) animator.SetBool("IsFiring", true);
-            else animator.SetBool("IsFiring", false);
+            if (ammoCount > 0) animator.SetBool("IsFiring", true);
+            else
+            {
+                if(!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                animator.SetBool("IsFiring", false);
+            }
             //FireWeapon();
         }
         else
