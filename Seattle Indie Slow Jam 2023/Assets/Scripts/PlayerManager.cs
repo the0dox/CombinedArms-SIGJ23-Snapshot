@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IAttackable
 {
     public static PlayerManager instance;
     [SerializeField]
@@ -74,5 +74,11 @@ public class PlayerManager : MonoBehaviour
         {
             PickupGun();
         }
+    }
+
+    public void TakeDamage(Vector3 hit, float value)
+    {
+        health -= value;
+        if (health < 0) Debug.Log("I AM DEAD! NOOOOOOO!");
     }
 }
