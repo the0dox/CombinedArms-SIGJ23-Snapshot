@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         gun.GetComponent<Gun>().Initalize();
         gun.GetComponent<Gun>().ApplyGunData(data);
         gun.GetComponent<Animator>().enabled = false;
-        Vector3 startPos = new Vector3(gunPlacementRange.y, gunPlacementRange.z, 1.3f);
+        Vector3 startPos = new Vector3(gunPlacementRange.y, gunPlacementRange.z, .7f);
         if (gunCount < 1)
         {
             gun.transform.localPosition = startPos;
@@ -46,20 +46,20 @@ public class PlayerManager : MonoBehaviour, IAttackable
             switch (dir)
             {
                 case 0:
-                    gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.z,1.3f);
+                    gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.z, .7f);
                     placeOffsetAmount /= 2f;
-                    gun.transform.localPosition += on * new Vector3(placeOffsetAmount.x, 0, 0); 
+                    gun.transform.localPosition -= on * new Vector3(placeOffsetAmount.x, 0, 0); 
                     break;
                 case 1:
-                    gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.z, 1.3f);
+                    gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.z, .7f);
                     gun.transform.localPosition += on * new Vector3(0, placeOffsetAmount.y, 0);
                     break;
                 case 2:
-                    gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.w, 1.3f);
-                    gun.transform.localPosition -= on * new Vector3(placeOffsetAmount.x, 0, 0);
+                    gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.w, .7f);
+                    gun.transform.localPosition += on * new Vector3(placeOffsetAmount.x, 0, 0);
                     break;
                 case 3:
-                    gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.w, 1.3f);
+                    gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.w, .7f);
                     gun.transform.localPosition -= on * new Vector3(0, placeOffsetAmount.y, 0);
                     break;
             }

@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
-
+    Vector3 startPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +50,7 @@ public class Gun : MonoBehaviour
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
             }
+            startPos = this.transform.localPosition;
         }
     }
     public void Initalize()
@@ -60,6 +61,7 @@ public class Gun : MonoBehaviour
         animator.SetFloat("fireSpeed", firerate);
         animator.SetFloat("reloadSpeed", reloadSpeed);
         ammoCount = ammoTotal;
+        startPos = this.transform.localPosition;
         /*
         foreach (AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
@@ -83,6 +85,7 @@ public class Gun : MonoBehaviour
     }
     void FireWeapon()
     {
+        this.transform.localPosition = startPos;
         Vector3 camDir = Camera.main.transform.forward;
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
@@ -130,6 +133,7 @@ public class Gun : MonoBehaviour
     }
     void FireWeaponBullet()
     {
+        this.transform.localPosition = startPos;
         GameObject g = ObjectLoader.LoadObject(bullet.name);
             //Instantiate<GameObject>(bullet);
         g.transform.position = this.transform.GetChild(0).position;
