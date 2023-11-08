@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: e7180c2c6eabd8443953c9873cda6693
+  - enabled: 1
     path: Assets/Skeletor/Scenes/Enemy Test.unity
     guid: e62ccf0d3786a2042aa28cacc261a746
   m_configObjects: {}
