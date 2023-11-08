@@ -6,10 +6,11 @@ using UnityEngine;
 
 // Created By Skeletor
 // simple script for the enemy test scene don't use this in the game
-public class DebugTestCamera : MonoBehaviour
+public class EnemyTester : MonoBehaviour
 {
     // static reference to the player
     public static GameObject s_playerObject;
+    public static Rigidbody s_playerPhysics;
     // public accessor for player
     public static GameObject PlayerObject => s_playerObject;
     [SerializeField] private float sensitivity = 300;
@@ -20,6 +21,7 @@ public class DebugTestCamera : MonoBehaviour
     void Awake()
     {
         s_playerObject = GameObject.FindGameObjectWithTag("Player");
+        s_playerPhysics = s_playerObject.GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         // shouldn't be allowed in built versions of the game
         #if !UNITY_EDITOR
@@ -38,6 +40,14 @@ public class DebugTestCamera : MonoBehaviour
         {
             ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
         }
+        /*
+        if(Input.GetMouseButtonDown(0))
+        {
+            GameObject newPlayerProjectile = ObjectLoader.LoadObject("Player Projectile");
+            newPlayerProjectile.transform.position = Camera.main.transform.position + (Camera.main.transform.forward * 2);
+            newPlayerProjectile.transform.rotation = Camera.main.transform.rotation;
+        }
+        */
     }
 
     void LateUpdate()

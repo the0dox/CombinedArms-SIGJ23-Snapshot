@@ -56,8 +56,7 @@ public class Gun : MonoBehaviour
     {
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
-        bool hit = Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
-        if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
+        bool hit = GamePhysics.AttackRayCast(new Ray(this.transform.GetChild(0).position, dir), dmg, range, out info);
         if (!hit)
         {
             info.point = this.transform.GetChild(0).position +  dir.normalized * range;

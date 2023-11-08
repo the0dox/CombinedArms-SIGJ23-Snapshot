@@ -55,11 +55,14 @@ MonoBehaviour:
   _upperBodyRotation: 110
   _visionRadius: 20.9
   _attackRadius: 10
+  _repositionVariance: 5
+  _repositionRefreshRate: 4
   _visionTransform: {fileID: 41259086264024059}
   _attackCooldownDuration: 5
   _turnSpeed: 75
   _startingHealth: 60
   myRagdoll: {fileID: 527837092}
+  _animationHandler: {fileID: 0}
 --- !u!54 &789602053523078835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99,7 +102,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 789602053523078831}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -111,7 +114,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0.005
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!1 &5826630529182912321
 GameObject:
   m_ObjectHideFlags: 0

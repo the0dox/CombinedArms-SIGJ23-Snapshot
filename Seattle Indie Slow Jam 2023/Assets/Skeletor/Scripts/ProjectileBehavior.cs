@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // created by Skeletor
 // the behavior for a simple enemy projectile
-public class ProjectileBehavior : MonoBehaviour
+public class ProjectileBehavior : DamageZone
 {
     // the speed at which the projectile travels
     [SerializeField] private float _speed;
-    // the damage the projectile deals
-    [SerializeField] private float _damage;
     // reference to the sprite visual of the projectile
     [SerializeField] private Transform _sprite;
     // time in seconds the projectile will travel before unloading
@@ -27,18 +26,8 @@ public class ProjectileBehavior : MonoBehaviour
         _sprite.LookAt(Camera.main.transform.position);
     }
 
-    // Called whenever the projectile collides with somethin
-    void OnTriggerEnter(Collider other)
-    {
-        // remove this projectile on collision
-        Die();
-        // see if the hit target can be attacked, if so deal damage to it
-        if (other.TryGetComponent(out IAttackable target))
-            target.TakeDamage(transform.position, _damage);
-    }
-
     // called when the projectile is destroyed
-    public virtual void Die()
+    protected override void OnCollisionTriggered(Collider other)
     {
         CancelInvoke();
         gameObject.SetActive(false);

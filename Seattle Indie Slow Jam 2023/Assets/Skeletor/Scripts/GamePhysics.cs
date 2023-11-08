@@ -18,7 +18,7 @@ public static class GamePhysics
     // the maximum y offset that can be applied from a single attack
     private static readonly float YMAXNITUDEMAX = 0.6f;
     // determines the point at which a rigidbody is moving too fast to safetly recieve any additional force
-    private static readonly float MAXIMUMANGULARVELOCITY = 2.5f;
+    private static readonly float MAXIMUMANGULARVELOCITY = 3f;
 
     // applies force to a rigid body from a point origin and a given amount of damage
     private static void ApplyDamageForce(this Rigidbody affectedBody, Vector3 damageOrigin, float damage)

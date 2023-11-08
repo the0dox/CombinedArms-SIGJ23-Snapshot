@@ -42,7 +42,7 @@ public class EnemyInjuredState : State<EnemyBehavior>
         _stunTimer -= Time.deltaTime;
         if(_stunTimer < 0)
         {
-            if(Physics.Raycast(_myContext.transform.position, Vector3.down, 0.55f, LayerMask.GetMask("Terrain")))
+            if(Physics.Raycast(_myContext.transform.position, Vector3.down, 1.05f, LayerMask.GetMask("Terrain")))
             {
                 _myContext.SetState(_myContext.Idle);
             }
