@@ -24,10 +24,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
     }
 
-    void PickupGun()
+    public void PickupGun(GunData data)
     {
-        GunData data = ScriptableObject.CreateInstance<GunData>();
-        data.RandomizeProperties();
         GameObject gun = Instantiate(gunPrefab, this.transform.GetChild(0).GetChild(0));
         gun.GetComponent<Gun>().Initalize();
         gun.GetComponent<Gun>().ApplyGunData(data);
@@ -66,6 +64,12 @@ public class PlayerManager : MonoBehaviour, IAttackable
             gunCount++;
         }
         gun.GetComponent<Animator>().enabled = true;
+    }
+    void PickupGun()
+    {
+        GunData data = ScriptableObject.CreateInstance<GunData>();
+        data.RandomizeProperties();
+        PickupGun(data);
     }
     // Update is called once per frame
     void Update()

@@ -46,6 +46,7 @@ public class Gun : MonoBehaviour
             else if (a.name.Contains("Fire") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
+                AnimationEvent f = new AnimationEvent();
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
@@ -83,9 +84,12 @@ public class Gun : MonoBehaviour
         }
         */
     }
-    void FireWeapon()
+    void EndFire()
     {
         this.transform.localPosition = startPos;
+    }
+    void FireWeapon()
+    {
         Vector3 camDir = Camera.main.transform.forward;
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
@@ -133,7 +137,6 @@ public class Gun : MonoBehaviour
     }
     void FireWeaponBullet()
     {
-        this.transform.localPosition = startPos;
         GameObject g = ObjectLoader.LoadObject(bullet.name);
             //Instantiate<GameObject>(bullet);
         g.transform.position = this.transform.GetChild(0).position;
@@ -193,12 +196,14 @@ public class Gun : MonoBehaviour
             {
                 if(!barrel.isPlaying) barrel.PlayOneShot(clickSound);
                 animator.SetBool("IsFiring", false);
+                EndFire();
             }
             //FireWeapon();
         }
         else
         {
             animator.SetBool("IsFiring", false);
+            EndFire();
         }
         if(Input.GetKeyDown(KeyCode.R) && !isReloading && ammoCount != ammoTotal)
         {

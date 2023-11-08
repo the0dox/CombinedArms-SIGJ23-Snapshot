@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[CreateAssetMenu(fileName ="New GunData",menuName ="Assets/GunData")]
 public class GunData : ScriptableObject
 {
     [SerializeField]
@@ -25,6 +25,12 @@ public class GunData : ScriptableObject
     public float range = 10f;
     [SerializeField]
     public Color gunColor = Color.red;
+
+    //Enemy checks
+    [SerializeField]
+    public bool isEnemy = false;
+    [SerializeField]
+    public GunData gunDrop;
 
     public void RandomizeProperties()
     {
