@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
             {
                 case 0:
                     gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.z, .7f);
-                    placeOffsetAmount /= 2f;
+                    placeOffsetAmount /= 1.5f;//2f;
                     gun.transform.localPosition -= on * new Vector3(placeOffsetAmount.x, 0, 0); 
                     break;
                 case 1:
