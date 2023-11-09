@@ -175,10 +175,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // sets animation values every frame
     void AnimateMotion()
     {
-        _relativeVelocity = transform.InverseTransformVector(_myAgent.velocity);
-        //Debug.LogFormat($"current relative velocity {_relativeVelocity}");
-        _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z);
-        _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x);
+        if(_myAgent.enabled)
+        {
+            _relativeVelocity = transform.InverseTransformVector(_myAgent.velocity);
+            //Debug.LogFormat($"current relative velocity {_relativeVelocity}");
+            _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z);
+            _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x);
+        }
+        else
+        {
+            _animationComponent.SetFloat("Vertical_f", 0, 0.2f, Time.deltaTime);
+            _animationComponent.SetFloat("Horizontal_f", 0, 0.2f, Time.deltaTime);
+        }
 
         // sets upper body rotation directly ahead if there is no look target
         if(_lookTarget == null)
