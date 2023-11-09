@@ -76,3 +76,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/Seattle Indie Slow Jam 2023/Logs
+/Seattle Indie Slow Jam 2023/obj/Debug
+/Seattle Indie Slow Jam 2023/Temp
