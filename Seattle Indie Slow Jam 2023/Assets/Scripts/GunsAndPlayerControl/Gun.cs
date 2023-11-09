@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -18,6 +19,8 @@ public class Gun : MonoBehaviour
     public AudioClip clickSound;
     public GameObject bullet;
     public TrailRenderer hitscanBullet;
+    public bool UsesUI = false;
+    public GameObject ammoUI;
     AudioSource barrel;
     float ammoCount;
     Animator animator;
@@ -111,15 +114,21 @@ public class Gun : MonoBehaviour
         
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
-
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
     }
     IEnumerator HitscanTrail(TrailRenderer t,RaycastHit info)
     {
@@ -143,14 +152,21 @@ public class Gun : MonoBehaviour
         g.GetComponent<Bullet>().dir = this.transform.GetChild(0).position - this.transform.position;
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
 
     }
     void ReloadWeapon()
@@ -159,10 +175,17 @@ public class Gun : MonoBehaviour
             isReloading = false;
             ammoCount = ammoTotal;
             animator.SetBool("IsReloading", false);
-            MaterialPropertyBlock block = new MaterialPropertyBlock();
-            renderer.GetPropertyBlock(block);
-            block.SetFloat("_AmmoLevel", -1f);
-            renderer.SetPropertyBlock(block);
+            if (!UsesUI)
+            {
+                MaterialPropertyBlock block = new MaterialPropertyBlock();
+                renderer.GetPropertyBlock(block);
+                block.SetFloat("_AmmoLevel", -1f);
+                renderer.SetPropertyBlock(block);
+            }
+            else
+            {
+                ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+            }
             barrel.PlayOneShot(reloadSound);
             PlayerManager.instance.gunsReloading--;
             Debug.Log(this.transform.gameObject.name);
@@ -177,11 +200,18 @@ public class Gun : MonoBehaviour
         ammoTotal = data.ammoTotal;
         range = data.range;
         ammoPerBullet = data.ammoPerBullet;
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetColor("_LevelColor", data.gunColor);
-        renderer.SetPropertyBlock(block);
+        if (this.UsesUI)
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
+        else
+        {
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetColor("_LevelColor", data.gunColor);
+            renderer.SetPropertyBlock(block);
 
+        }
     }
     // Update is called once per frame
     void Update()
