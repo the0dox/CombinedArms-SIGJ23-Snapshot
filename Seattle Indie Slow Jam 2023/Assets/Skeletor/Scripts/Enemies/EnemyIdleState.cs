@@ -16,15 +16,22 @@ public class EnemyIdleState :  State<EnemyBehavior>
     // called when state is first entered 
     protected override void OnStateEnter()
     {
-        _myContext.MyAgent.enabled = false;
+        _myContext.ToggleNavAgent(false);
         idleTimer = Random.Range(MINIDLETIME, MAXIDLETIME);
     }
 
     // called every frame
     protected override void OnStateUpdate()
     {
-        CheckTimer();
-        _myContext.LookForPlayer();
+        if(_myContext.Grounded)
+        {
+            CheckTimer();
+            _myContext.LookForPlayer();
+        }
+        else
+        {
+            _myContext.SetState(_myContext.Falling);
+        }
     }
 
     // called every physics update frame

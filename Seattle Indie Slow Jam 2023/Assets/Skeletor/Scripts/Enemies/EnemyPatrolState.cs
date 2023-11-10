@@ -15,7 +15,7 @@ public class EnemyPatrolState : State<EnemyBehavior>
     // allows class that derive State to 
     protected override void OnStateEnter()
     {
-        _myContext.MyAgent.enabled = true;
+        _myContext.ToggleNavAgent(true);
         _myContext.MyAgent.speed = 3.5f;
         _myContext.MyAgent.SetDestination(RandomWanderPosition);
     }

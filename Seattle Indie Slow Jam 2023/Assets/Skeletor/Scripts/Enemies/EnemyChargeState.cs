@@ -19,7 +19,7 @@ public class EnemyChargeState : State<EnemyBehavior>
             _myContext.SetState(_myContext.Idle);
             return;
         }
-        _myContext.MyAgent.enabled = true;
+        _myContext.ToggleNavAgent(true);
         FindRepositionPoint();
     }
 
