@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 
@@ -80,8 +81,8 @@ public class ObjectLoader
     private GameObject LoadObject()
     {
         GameObject output = LoadObjectRecursive(3);
-        output.gameObject.SetActive(true);
         output.transform.SetParent(null);
+        output.gameObject.SetActive(true);
         return output;
     }
 

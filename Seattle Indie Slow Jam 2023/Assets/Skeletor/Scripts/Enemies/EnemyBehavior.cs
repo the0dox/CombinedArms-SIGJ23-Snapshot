@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.VisualScripting;
+using GameFilters;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -30,6 +30,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public State<EnemyBehavior> Approach => _approach;
     public State<EnemyBehavior> Attack => _attack;
     public EnemyFallingState Falling => _falling;
+    public EnemyLoadoutBehavior Loadout => _loadout;
 
     
     
@@ -61,7 +62,12 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField] private RagdollSpawner myRagdoll;
     // used to track when animations have been completed
     [SerializeField] private AnimationEventHandler _animationHandler;
+    // used to check every frame if the enemy is on the ground
     [SerializeField] private GroundedCheck _myGroundCheck;
+    // used to handle any weapons this enemy has equipped
+    [SerializeField] private EnemyLoadoutBehavior _loadout;
+    // reference to any possible weapon prefabs this enemy could equip
+    [SerializeField] private GameObject[] WeaponPrefabs;
     // the current amount of health this enemy has
     private float _health;
     // returns true if this enemy can attack this frame
@@ -104,6 +110,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _approach = new EnemyRepositionState();
         _attack = new EnemyAttackState();
         _hurt = new EnemyInjuredState();
+        Loadout.EquipWeapon(WeaponPrefabs.GetRandomElement());
     }
 
     // each frame, update animations and states
@@ -124,6 +131,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             {
                 try
                 {
+                    ToggleNavAgent(false); 
+                    myRagdoll.SpawnRagdoll();     
                     OnDeath(source);
                 }
                 finally
@@ -139,10 +148,10 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // called when the enemy has been reduced to zero hit points
     protected virtual void OnDeath(Vector3 source)
     {
-        ToggleNavAgent(false); 
-        RagdollBehavior ragdoll = myRagdoll.SpawnRagdoll();
+        _loadout.DropWeapon();       
     }
 
+    // can be used to enable/disable the status of alpha* movement of the enemy
     public void ToggleNavAgent(bool enabled)
     {
         _myAgent.enabled = enabled;
