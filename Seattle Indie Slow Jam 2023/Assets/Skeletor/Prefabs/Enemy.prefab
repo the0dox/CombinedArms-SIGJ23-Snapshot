@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 789602053523078835}
   - component: {fileID: 789602053523078832}
   - component: {fileID: 789602053523078833}
+  - component: {fileID: 13947210}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -255,6 +256,7 @@ MonoBehaviour:
   _startingHealth: 60
   myRagdoll: {fileID: 527837092}
   _animationHandler: {fileID: 0}
+  _myGroundCheck: {fileID: 13947210}
 --- !u!54 &789602053523078835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -307,6 +309,21 @@ NavMeshAgent:
   m_BaseOffset: 0.005
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &13947210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789602053523078831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc58a922c5e12e748ad9aee75ccd6039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!1 &5826630529182912321
 GameObject:
   m_ObjectHideFlags: 0

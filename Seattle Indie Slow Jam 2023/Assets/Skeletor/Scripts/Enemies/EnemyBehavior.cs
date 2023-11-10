@@ -24,10 +24,12 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public float AttackCoolDownDuration => _attackCooldownDuration;
     public Transform VisionTransform => _visionTransform;
     public bool AttackCoolDown {get => _attackCooldown; set => _attackCooldown = value;}
+    public bool Grounded => _myGroundCheck.Grounded;
     public State<EnemyBehavior> Idle => _idle;
     public State<EnemyBehavior> Patrol => _patrol;
     public State<EnemyBehavior> Approach => _approach;
     public State<EnemyBehavior> Attack => _attack;
+    public EnemyFallingState Falling => _falling;
 
     
     
@@ -59,6 +61,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField] private RagdollSpawner myRagdoll;
     // used to track when animations have been completed
     [SerializeField] private AnimationEventHandler _animationHandler;
+    [SerializeField] private GroundedCheck _myGroundCheck;
     // the current amount of health this enemy has
     private float _health;
     // returns true if this enemy can attack this frame
@@ -80,6 +83,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     protected State<EnemyBehavior> _attack;
     // stunned for a brief moment after damage
     protected State<EnemyBehavior> _hurt;
+    // state when not touching the ground 
+    protected EnemyFallingState _falling = new EnemyFallingState();
 
     // assign states before first frame
     void OnEnable()
@@ -134,8 +139,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // called when the enemy has been reduced to zero hit points
     protected virtual void OnDeath(Vector3 source)
     {
-        _myAgent.enabled = false; 
+        ToggleNavAgent(false); 
         RagdollBehavior ragdoll = myRagdoll.SpawnRagdoll();
+    }
+
+    public void ToggleNavAgent(bool enabled)
+    {
+        _myAgent.enabled = enabled;
+        _myBody.useGravity = !enabled;
+        if(enabled)
+        {
+            _myBody.velocity = Vector3.zero;
+        }
     }
 
     // sets a new transform as the look target of this enemy
@@ -162,7 +177,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             return;
         } 
         Vector3 targetDirection = (_lookTarget.position - transform.position).normalized;
-        targetDirection = new Vector3(targetDirection.x, transform.position.y, targetDirection.z);
+        targetDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection) , Time.deltaTime * _turnSpeed);
     }
 

@@ -6,8 +6,4 @@ public class EnemyWeaponBehavior : MonoBehaviour
 {
     [SerializeField] private RagdollSpawner mySpawner;
 
-    void OnDisable()
-    {
-        mySpawner.SpawnRagdoll();
-    }
 }

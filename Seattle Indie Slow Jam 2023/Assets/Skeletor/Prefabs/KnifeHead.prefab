@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 5950594054445613641}
   - component: {fileID: 5950594054445613642}
   - component: {fileID: 5950594054445613643}
+  - component: {fileID: 1854188555}
   m_Layer: 10
   m_Name: KnifeHead
   m_TagString: Enemy
@@ -206,6 +207,7 @@ MonoBehaviour:
   _startingHealth: 40
   myRagdoll: {fileID: 6368647469724015454}
   _animationHandler: {fileID: 2957732356764789815}
+  _myGroundCheck: {fileID: 1854188555}
   _meleeHitBox: {fileID: 399227904}
 --- !u!54 &5950594054445613641
 Rigidbody:
@@ -256,9 +258,24 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.005
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &1854188555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950594054445613653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc58a922c5e12e748ad9aee75ccd6039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!1001 &7351705881369586173
 PrefabInstance:
   m_ObjectHideFlags: 0
