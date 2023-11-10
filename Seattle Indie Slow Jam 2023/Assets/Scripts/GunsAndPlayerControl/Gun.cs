@@ -98,7 +98,7 @@ public class Gun : MonoBehaviour
         Vector3 camDir = Camera.main.transform.forward;
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
-        bool hit = GamePhysics.AttackRayCast(new Ray(this.transform.GetChild(0).position, camDir), dmg, range, out info); 
+        bool hit = GamePhysics.AttackRayCast(new Ray(Camera.main.transform.position, camDir), dmg, range, out info); 
             //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
         if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
         if (!hit)

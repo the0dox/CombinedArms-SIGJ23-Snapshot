@@ -7,12 +7,18 @@ public class PlayerManager : MonoBehaviour, IAttackable
     public static PlayerManager instance;
     [SerializeField]
     GameObject gunPrefab;
+    [SerializeField]
+    GameObject deathUI;
+    [SerializeField]
+    GameObject dmgDirection;
     public float health = 100f;
     public int gunCount = 0;
     [HideInInspector]
     public int gunsReloading = 0;
     Vector4 gunPlacementRange = new Vector4(-1, 1, -.8f, .8f);
     Vector2 placeOffsetAmount = Vector2.zero;
+    float timer = 0f;
+    float timeLimit = 1f;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -98,11 +104,21 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             PickupGun();
         }
+        timer += Time.deltaTime;
+        if(timer > timeLimit)
+        {
+            dmgDirection.SetActive(false);
+            timer = 0;
+        }
     }
 
     public void TakeDamage(Vector3 hit, float value)
     {
         health -= value;
-        if (health < 0) Debug.Log("I AM DEAD! NOOOOOOO!");
+        Vector3 v = Camera.main.WorldToScreenPoint(hit);
+        dmgDirection.transform.position = v;
+        dmgDirection.SetActive(true);
+        timer = 0;
+        if (health < 0) deathUI.SetActive(true);
     }
 }
