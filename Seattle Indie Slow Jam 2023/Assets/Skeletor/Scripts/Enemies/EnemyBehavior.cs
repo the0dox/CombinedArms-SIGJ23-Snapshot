@@ -162,9 +162,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // checks to see if the player is within the vision range, switches the enemy to approach the enemy
     public void LookForPlayer()
     {
-        if(Vector3.Distance(_visionTransform.position, EnemyTester.PlayerObject.transform.position) < _visionRadius)
+        if(Vector3.Distance(_visionTransform.position, PlayerManager.instance.transform.position) < _visionRadius)
         {
-            SetLookTarget(EnemyTester.PlayerObject.transform);
+            SetLookTarget(PlayerManager.instance.transform);
             SetState(_approach);
         }
     }

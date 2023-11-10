@@ -26,6 +26,7 @@ public class Gun : MonoBehaviour
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
+    bool isFiring = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,6 @@ public class Gun : MonoBehaviour
             else if (a.name.Contains("Fire") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
-                AnimationEvent f = new AnimationEvent();
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
@@ -90,9 +90,11 @@ public class Gun : MonoBehaviour
     void EndFire()
     {
         this.transform.localPosition = startPos;
+        isFiring = false;
     }
     void FireWeapon()
     {
+        if (!isFiring) return;
         Vector3 camDir = Camera.main.transform.forward;
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
@@ -146,6 +148,7 @@ public class Gun : MonoBehaviour
     }
     void FireWeaponBullet()
     {
+        if (!isFiring) return;
         GameObject g = ObjectLoader.LoadObject(bullet.name);
             //Instantiate<GameObject>(bullet);
         g.transform.position = this.transform.GetChild(0).position;
@@ -221,10 +224,14 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1)
         {
             //Keep it nested so that reactions to running out of ammo can be handled
-            if (ammoCount > 0) animator.SetBool("IsFiring", true);
+            if (ammoCount > 0)
+            {
+                animator.SetBool("IsFiring", true);
+                isFiring = true;
+            }
             else
             {
-                if(!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
                 animator.SetBool("IsFiring", false);
                 EndFire();
             }

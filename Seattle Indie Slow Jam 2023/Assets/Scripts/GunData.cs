@@ -12,7 +12,7 @@ public class GunData : ScriptableObject
     [SerializeField]
     public float dmg = 1f;
     [SerializeField]
-    Vector2 dmgRange = new Vector2(.5f, 1.5f);
+    Vector2 dmgRange = new Vector2(2f, 3f);
     [SerializeField]
     public float reloadSpeed = 1f;
     [SerializeField]
