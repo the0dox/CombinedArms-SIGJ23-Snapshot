@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour, IAttackable
 {
@@ -11,7 +12,10 @@ public class PlayerManager : MonoBehaviour, IAttackable
     GameObject deathUI;
     [SerializeField]
     GameObject dmgDirection;
+    [SerializeField]
+    Slider slider;
     public float health = 100f;
+    float currentHealth;
     public int gunCount = 0;
     [HideInInspector]
     public int gunsReloading = 0;
@@ -26,6 +30,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = health;
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
     }
@@ -114,7 +119,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
 
     public void TakeDamage(Vector3 hit, float value)
     {
-        health -= value;
+        currentHealth -= value;
+        slider.value = currentHealth / health;
         Vector3 v = Camera.main.WorldToScreenPoint(hit);
         dmgDirection.transform.position = v;
         dmgDirection.SetActive(true);
