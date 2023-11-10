@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameFilters;
 using UnityEngine;
 
 // created by skeletor
@@ -21,7 +22,7 @@ public class RagdollSpawner : MonoBehaviour
     void Awake()
     {
         _prefabName = _prefab.name;
-        _rigTransforms = GetComponentsInChildren<Transform>();
+        _rigTransforms = gameObject.GetComponentsInChildrenByCondition((Transform bone) => bone.CompareTag(tag));
     }
 
     // called 

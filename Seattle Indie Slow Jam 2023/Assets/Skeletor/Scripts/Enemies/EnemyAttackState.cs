@@ -20,7 +20,7 @@ public class EnemyAttackState : State<EnemyBehavior>
             _myContext.SetState(_myContext.Idle);
             return;
         }
-        _myContext.MyAgent.enabled = false;
+        _myContext.ToggleNavAgent(false);
         _myContext.AttackCoolDown = true;
         //_myContext.transform.LookAt(new Vector3(_myContext.LookTarget.position.x ,_myContext.transform.position.y, _myContext.LookTarget.position.z));
         _myContext.AnimationComponent.SetTrigger("Attack");

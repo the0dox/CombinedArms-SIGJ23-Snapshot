@@ -26,7 +26,7 @@ public class EnemyMeleeAttackState : State<EnemyBehavior>
         {
             _myConvertedContext = _myContext as MeleeEnemyBehavior;
         }
-        _myContext.MyAgent.enabled = false;
+        _myContext.ToggleNavAgent(false);
         _myContext.AnimationComponent.SetTrigger("Attack");
         SetInterceptionPoint();
     }
