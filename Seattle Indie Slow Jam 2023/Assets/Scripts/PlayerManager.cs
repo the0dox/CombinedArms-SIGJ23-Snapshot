@@ -125,6 +125,6 @@ public class PlayerManager : MonoBehaviour, IAttackable
         dmgDirection.transform.position = v;
         dmgDirection.SetActive(true);
         timer = 0;
-        if (health < 0) deathUI.SetActive(true);
+        if (health <= 0) deathUI.SetActive(true);
     }
 }
