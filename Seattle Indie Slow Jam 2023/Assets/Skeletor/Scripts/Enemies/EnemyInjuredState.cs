@@ -13,7 +13,7 @@ public class EnemyInjuredState : State<EnemyBehavior>
     // allows class that derive State to 
     protected override void OnStateEnter()
     {
-        _myContext.MyAgent.enabled = false;
+        _myContext.ToggleNavAgent(false);
         _myContext.AnimationComponent.SetTrigger("Hurt");
         _stunTimer = STUNDURATION;
     }
@@ -42,14 +42,13 @@ public class EnemyInjuredState : State<EnemyBehavior>
         _stunTimer -= Time.deltaTime;
         if(_stunTimer < 0)
         {
-            if(Physics.Raycast(_myContext.transform.position, Vector3.down, 0.55f, LayerMask.GetMask("Terrain")))
+            if(_myContext.Grounded)
             {
                 _myContext.SetState(_myContext.Idle);
             }
             else
             {
-                Debug.Log("not grounded, checking again");
-                _stunTimer = STUNDURATION;
+                _myContext.SetState(_myContext.Falling);
             }
         }
     }

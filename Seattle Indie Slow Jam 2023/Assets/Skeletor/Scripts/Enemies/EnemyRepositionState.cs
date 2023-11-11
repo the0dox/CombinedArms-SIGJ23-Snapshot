@@ -7,9 +7,7 @@ using UnityEngine;
 public class EnemyRepositionState : State<EnemyBehavior>
 {
     // the random time the enemy will wait to reposition
-    public float NodeWaitTime => Random.Range(0.2f, 0.5f); 
-    // the distance at which the enemy will attempt to stand away from the player 
-    public float RepositionDistance => Random.Range(6, 14); 
+    public float NodeWaitTime => Random.Range(0.25f, 0.5f); 
     // the radius at which the enemy can reposition around the player 0 = no variation (enemy will only every walk directly towards player)
     private float _repositionRadius = 60;
     private float _repositionTimer;
@@ -21,7 +19,7 @@ public class EnemyRepositionState : State<EnemyBehavior>
             _myContext.SetState(_myContext.Idle);
             return;
         }
-        _myContext.MyAgent.enabled = true;
+        _myContext.ToggleNavAgent(true);
         FindRepositionPoint();
     }
 
@@ -30,6 +28,7 @@ public class EnemyRepositionState : State<EnemyBehavior>
     {
         CheckDestination();
         CheckAttackDistance();
+        RepositionTimer();
     }
 
     // called every physics update frame
@@ -53,6 +52,16 @@ public class EnemyRepositionState : State<EnemyBehavior>
         {
             _myContext.SetState(_myContext.Attack);
         }
+    }   
+
+    // after a random amount of time waiting, find a new destination
+    void RepositionTimer()
+    {
+        _repositionTimer -= Time.deltaTime;
+        if(_repositionTimer < 0)
+        {
+            FindRepositionPoint();
+        }
     }
 
     void FindRepositionPoint()
@@ -62,21 +71,19 @@ public class EnemyRepositionState : State<EnemyBehavior>
 
         targetDirection = Quaternion.Euler(0, Random.Range(-_repositionRadius, _repositionRadius), 0) * targetDirection;
         
-        targetDirection *= RepositionDistance;
+        targetDirection *= _myContext.AttackRadius + Random.Range(-_myContext.RepositionVariance, 0);
 
         Debug.DrawRay(_myContext.LookTarget.position, targetDirection, Color.blue);
-        _repositionTimer = NodeWaitTime;
+        _repositionTimer = _myContext.RepositionRefreshRate + NodeWaitTime;
         _myContext.MyAgent.SetDestination(_myContext.LookTarget.position + targetDirection);
     }
 
+    // if I arrive at my destination find a new one,
     void CheckDestination()
     {
         if(_myContext.MyAgent.remainingDistance < 0.02f)
         {
-            _repositionTimer -= Time.deltaTime;
-            if(_repositionTimer < 0)
-                FindRepositionPoint();
+            FindRepositionPoint();
         }
     }
-
 }

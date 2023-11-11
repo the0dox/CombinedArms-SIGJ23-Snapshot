@@ -46,19 +46,39 @@ public class PlayerManager : MonoBehaviour, IAttackable
                 case 0:
                     gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.z, .7f);
                     placeOffsetAmount /= 1.5f;//2f;
-                    gun.transform.localPosition -= on * new Vector3(placeOffsetAmount.x, 0, 0); 
+                    gun.transform.localPosition -= on * new Vector3(placeOffsetAmount.x, 0, 0);
+                    if (gun.GetComponent<Gun>().UsesUI)
+                    {
+                        gun.GetComponent<Gun>().ammoUI.transform.localPosition = new Vector3(-0.2f,.2f, 0.5f);
+                        gun.GetComponent<Gun>().ammoUI.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                    }
                     break;
                 case 1:
                     gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.z, .7f);
                     gun.transform.localPosition += on * new Vector3(0, placeOffsetAmount.y, 0);
+                    if (gun.GetComponent<Gun>().UsesUI)
+                    {
+                        gun.GetComponent<Gun>().ammoUI.transform.localPosition = new Vector3(0.2f, 0.2f, 0.5f);
+                        gun.GetComponent<Gun>().ammoUI.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+                    }
                     break;
                 case 2:
                     gun.transform.localPosition = new Vector3(gunPlacementRange.x, gunPlacementRange.w, .7f);
                     gun.transform.localPosition += on * new Vector3(placeOffsetAmount.x, 0, 0);
+                    if (gun.GetComponent<Gun>().UsesUI)
+                    {
+                        gun.GetComponent<Gun>().ammoUI.transform.localPosition = new Vector3(0.2f, 0.2f,0.5f);
+                        gun.GetComponent<Gun>().ammoUI.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+                    }
                     break;
                 case 3:
                     gun.transform.localPosition = new Vector3(gunPlacementRange.y, gunPlacementRange.w, .7f);
                     gun.transform.localPosition -= on * new Vector3(0, placeOffsetAmount.y, 0);
+                    if (gun.GetComponent<Gun>().UsesUI)
+                    {
+                        gun.GetComponent<Gun>().ammoUI.transform.localPosition = new Vector3(-0.2f,0.2f, 0.5f);
+                        gun.GetComponent<Gun>().ammoUI.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                    }
                     break;
             }
             gunCount++;

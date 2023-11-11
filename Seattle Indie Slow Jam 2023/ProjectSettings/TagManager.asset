@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Model
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Friendly Projectile
   - Player
   - QueryAttack
-  - 
+  - DestructibleSpawns
   - 
   - 
   - 

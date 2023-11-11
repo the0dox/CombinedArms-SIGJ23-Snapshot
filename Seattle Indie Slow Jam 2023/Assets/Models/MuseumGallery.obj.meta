@@ -1,9 +1,54 @@
 fileFormatVersion: 2
-guid: 01551ff901015d1429f6a602dcdf311d
+guid: 23934726dd89f154491c902647881b6c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMeshMat
+    second: {fileID: 2100000, guid: b8792a508ca309b4cb2e3997f5910679, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_Door_CrownMolding_polySurface45Mat
+    second: {fileID: 2100000, guid: 85f016893289f2e4488b05d92c257270, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_Ground_CrownMolding_polySurface47Mat
+    second: {fileID: 2100000, guid: 2e31658543e78ee4ba68e8d74d3359f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_Ground_CrownMolding_polySurface48Mat
+    second: {fileID: 2100000, guid: 0cddfb79f9c4d124287499b4454aef54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_polySurface44_Door_CrownMoldingMat
+    second: {fileID: 2100000, guid: c85f8407917030941a688dd8ff8be682, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_polySurface46_Ground_CrownMolding_polySurface50Mat
+    second: {fileID: 2100000, guid: 6805637a7a0d60c43b440d051e7dff2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrownMoldingMesh_polySurface49_polySurface46_Ground_CrownMoldingMat
+    second: {fileID: 2100000, guid: 4dfd8896c44303847920815342232267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lights1Mat
+    second: {fileID: 2100000, guid: 9df68025fc331eb4aa54056e6a4efa93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MuseumGalleryMeshMat
+    second: {fileID: 2100000, guid: cc819926983ed7b4bb7b2fb88c7d70bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

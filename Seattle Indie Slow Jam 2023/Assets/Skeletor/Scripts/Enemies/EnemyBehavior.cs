@@ -19,13 +19,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public Rigidbody MyBody => _myBody;
     public Transform LookTarget => _lookTarget;
     public float AttackRadius => _attackRadius;
+    public float RepositionVariance => _repositionVariance;
+    public float RepositionRefreshRate => _repositionRefreshRate;
     public float AttackCoolDownDuration => _attackCooldownDuration;
     public Transform VisionTransform => _visionTransform;
     public bool AttackCoolDown {get => _attackCooldown; set => _attackCooldown = value;}
+    public bool Grounded => _myGroundCheck.Grounded;
     public State<EnemyBehavior> Idle => _idle;
     public State<EnemyBehavior> Patrol => _patrol;
     public State<EnemyBehavior> Approach => _approach;
     public State<EnemyBehavior> Attack => _attack;
+    public EnemyFallingState Falling => _falling;
+
     
     
     // used to control movement
@@ -40,6 +45,10 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField, Range(0.0f, 50.0f)] private float _visionRadius;
     // the radius at which the enemy will attack the player
     [SerializeField, Range(0.0f, 50.0f)] private float _attackRadius;
+    // how much will the enemy aim to move within it's minimum attack range
+    [SerializeField] private float _repositionVariance;
+    // how often should the enemy choose to recalculate their move destination
+    [SerializeField] private float _repositionRefreshRate;
     // the transform that the enemy draws vision and attacks from
     [SerializeField] private Transform _visionTransform;
     // the time in seconds the enemy must wait before attacking again
@@ -50,6 +59,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField] private float _startingHealth;
     // used to spawn a rag doll on death
     [SerializeField] private RagdollSpawner myRagdoll;
+    // used to track when animations have been completed
+    [SerializeField] private AnimationEventHandler _animationHandler;
+    [SerializeField] private GroundedCheck _myGroundCheck;
     // the current amount of health this enemy has
     private float _health;
     // returns true if this enemy can attack this frame
@@ -71,6 +83,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     protected State<EnemyBehavior> _attack;
     // stunned for a brief moment after damage
     protected State<EnemyBehavior> _hurt;
+    // state when not touching the ground 
+    protected EnemyFallingState _falling = new EnemyFallingState();
 
     // assign states before first frame
     void OnEnable()
@@ -125,8 +139,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // called when the enemy has been reduced to zero hit points
     protected virtual void OnDeath(Vector3 source)
     {
-        _myAgent.enabled = false; 
+        ToggleNavAgent(false); 
         RagdollBehavior ragdoll = myRagdoll.SpawnRagdoll();
+    }
+
+    public void ToggleNavAgent(bool enabled)
+    {
+        _myAgent.enabled = enabled;
+        _myBody.useGravity = !enabled;
+        if(enabled)
+        {
+            _myBody.velocity = Vector3.zero;
+        }
     }
 
     // sets a new transform as the look target of this enemy
@@ -138,9 +162,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // checks to see if the player is within the vision range, switches the enemy to approach the enemy
     public void LookForPlayer()
     {
-        if(Vector3.Distance(_visionTransform.position, DebugTestCamera.PlayerObject.transform.position) < _visionRadius)
+        if(Vector3.Distance(_visionTransform.position, PlayerManager.instance.transform.position) < _visionRadius)
         {
-            SetLookTarget(DebugTestCamera.PlayerObject.transform);
+            SetLookTarget(PlayerManager.instance.transform);
             SetState(_approach);
         }
     }
@@ -153,17 +177,31 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             return;
         } 
         Vector3 targetDirection = (_lookTarget.position - transform.position).normalized;
-        targetDirection = new Vector3(targetDirection.x, transform.position.y, targetDirection.z);
+        targetDirection = new Vector3(targetDirection.x, 0, targetDirection.z);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection) , Time.deltaTime * _turnSpeed);
+    }
+
+    public void ApplyRootMotion()
+    {
+        transform.position += _animationHandler.RootPositionDelta;
+        transform.rotation *= _animationHandler.RootRotationDelta;
     }
 
     // sets animation values every frame
     void AnimateMotion()
     {
-        _relativeVelocity = transform.InverseTransformVector(_myAgent.velocity);
-        //Debug.LogFormat($"current relative velocity {_relativeVelocity}");
-        _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z);
-        _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x);
+        if(_myAgent.enabled)
+        {
+            _relativeVelocity = transform.InverseTransformVector(_myAgent.velocity);
+            //Debug.LogFormat($"current relative velocity {_relativeVelocity}");
+            _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z);
+            _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x);
+        }
+        else
+        {
+            _animationComponent.SetFloat("Vertical_f", 0, 0.2f, Time.deltaTime);
+            _animationComponent.SetFloat("Horizontal_f", 0, 0.2f, Time.deltaTime);
+        }
 
         // sets upper body rotation directly ahead if there is no look target
         if(_lookTarget == null)

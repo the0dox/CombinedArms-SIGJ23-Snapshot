@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -18,11 +19,14 @@ public class Gun : MonoBehaviour
     public AudioClip clickSound;
     public GameObject bullet;
     public TrailRenderer hitscanBullet;
+    public bool UsesUI = false;
+    public GameObject ammoUI;
     AudioSource barrel;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
+    bool isFiring = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -46,7 +50,6 @@ public class Gun : MonoBehaviour
             else if (a.name.Contains("Fire") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
-                AnimationEvent f = new AnimationEvent();
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
@@ -87,9 +90,11 @@ public class Gun : MonoBehaviour
     void EndFire()
     {
         this.transform.localPosition = startPos;
+        isFiring = false;
     }
     void FireWeapon()
     {
+        if (!isFiring) return;
         Vector3 camDir = Camera.main.transform.forward;
         Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
         RaycastHit info;
@@ -111,15 +116,21 @@ public class Gun : MonoBehaviour
         
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
-
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
     }
     IEnumerator HitscanTrail(TrailRenderer t,RaycastHit info)
     {
@@ -137,20 +148,28 @@ public class Gun : MonoBehaviour
     }
     void FireWeaponBullet()
     {
+        if (!isFiring) return;
         GameObject g = ObjectLoader.LoadObject(bullet.name);
             //Instantiate<GameObject>(bullet);
         g.transform.position = this.transform.GetChild(0).position;
         g.GetComponent<Bullet>().dir = this.transform.GetChild(0).position - this.transform.position;
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
 
     }
     void ReloadWeapon()
@@ -159,10 +178,17 @@ public class Gun : MonoBehaviour
             isReloading = false;
             ammoCount = ammoTotal;
             animator.SetBool("IsReloading", false);
-            MaterialPropertyBlock block = new MaterialPropertyBlock();
-            renderer.GetPropertyBlock(block);
-            block.SetFloat("_AmmoLevel", -1f);
-            renderer.SetPropertyBlock(block);
+            if (!UsesUI)
+            {
+                MaterialPropertyBlock block = new MaterialPropertyBlock();
+                renderer.GetPropertyBlock(block);
+                block.SetFloat("_AmmoLevel", -1f);
+                renderer.SetPropertyBlock(block);
+            }
+            else
+            {
+                ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+            }
             barrel.PlayOneShot(reloadSound);
             PlayerManager.instance.gunsReloading--;
             Debug.Log(this.transform.gameObject.name);
@@ -177,11 +203,18 @@ public class Gun : MonoBehaviour
         ammoTotal = data.ammoTotal;
         range = data.range;
         ammoPerBullet = data.ammoPerBullet;
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetColor("_LevelColor", data.gunColor);
-        renderer.SetPropertyBlock(block);
+        if (this.UsesUI)
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
+        else
+        {
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetColor("_LevelColor", data.gunColor);
+            renderer.SetPropertyBlock(block);
 
+        }
     }
     // Update is called once per frame
     void Update()
@@ -191,10 +224,14 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1)
         {
             //Keep it nested so that reactions to running out of ammo can be handled
-            if (ammoCount > 0) animator.SetBool("IsFiring", true);
+            if (ammoCount > 0)
+            {
+                animator.SetBool("IsFiring", true);
+                isFiring = true;
+            }
             else
             {
-                if(!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
                 animator.SetBool("IsFiring", false);
                 EndFire();
             }
