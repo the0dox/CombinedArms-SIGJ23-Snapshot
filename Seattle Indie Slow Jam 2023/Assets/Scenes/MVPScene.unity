@@ -313,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 10
   numberperspawn: 5
+  maxNum: 20
 --- !u!4 &61268420
 Transform:
   m_ObjectHideFlags: 0
@@ -2977,11 +2978,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181301192047816151, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
       propertyPath: dmg
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7181301192047816151, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: reloadSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7181301192047816151, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
       propertyPath: ammoPerBullet
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8027792450461734239, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
       propertyPath: slider
@@ -3111,6 +3116,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104223103}
     m_Modifications:
+    - target: {fileID: 573074165474129267, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
+      propertyPath: dmg
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 573074165474129267, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
+      propertyPath: reloadSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 573074165474129277, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
       propertyPath: m_RootOrder
       value: 3
