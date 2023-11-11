@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
 {
     public static PlayerManager instance;
     [SerializeField]
-    GameObject gunPrefab;
+    GunData[] gunDatas;
     [SerializeField]
     GameObject deathUI;
     [SerializeField]
@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
 
     public void PickupGun(GunData data)
     {
-        GameObject gun = Instantiate(gunPrefab, this.transform.GetChild(0).GetChild(0));
+        GameObject gun = Instantiate(data.gunPrefab, this.transform.GetChild(0).GetChild(0));
         gun.GetComponent<Gun>().Initalize();
         gun.GetComponent<Gun>().ApplyGunData(data);
         gun.GetComponent<Animator>().enabled = false;
@@ -98,7 +98,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     }
     void PickupGun()
     {
-        GunData data = ScriptableObject.CreateInstance<GunData>();
+        int r = Random.Range(0, gunDatas.Length);
+        GunData data = gunDatas[r];
         data.RandomizeProperties();
         PickupGun(data);
     }

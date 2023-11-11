@@ -3000,6 +3000,18 @@ PrefabInstance:
       propertyPath: dmgDirection
       value: 
       objectReference: {fileID: 408986895}
+    - target: {fileID: 8027792450461734239, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: gunDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027792450461734239, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: gunDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1c3b35855f000546813272d5bc7cd6d, type: 2}
+    - target: {fileID: 8027792450461734239, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: gunDatas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1e1885f1259b6f43945043d49ead530, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
 --- !u!4 &2104223103 stripped
@@ -3116,14 +3128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104223103}
     m_Modifications:
-    - target: {fileID: 573074165474129267, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
-      propertyPath: dmg
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 573074165474129267, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
-      propertyPath: reloadSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 573074165474129277, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3171,6 +3175,10 @@ PrefabInstance:
     - target: {fileID: 916525707209322439, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
       propertyPath: m_Name
       value: PumpActionShotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 916525707209322439, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
