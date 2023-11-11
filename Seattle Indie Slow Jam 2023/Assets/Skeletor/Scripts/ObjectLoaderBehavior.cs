@@ -8,6 +8,7 @@ using UnityEngine;
 // created by Skeletor
 // loaders must be present in a scene to create instances of prefabs for cost effective object spawning
 // an example loader is provided in the prefab folder
+[DefaultExecutionOrder(-100)]
 public class ObjectLoaderBehavior: MonoBehaviour
 {
     // reference to the prefab this loader creates

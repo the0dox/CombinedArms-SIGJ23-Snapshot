@@ -9,16 +9,14 @@ public class EnemyLoadoutBehavior : MonoBehaviour
 {
     // public accessor
     public EnemyWeaponBehavior ActiveWeapon => _activeWeapon;
-    // reference to the rig constraint that matches the left hand to the weapon
-    [SerializeField] private TwoBoneIKConstraint _leftHandIK;
-    // reference to the rig constraint that matches the right hand to the weapon
-    [SerializeField] private TwoBoneIKConstraint _rightHandIK;
     // reference to the point the weapon is attached to on the enemy model
     [SerializeField] private Transform _weaponAttachRoot;
+    // reference to the rig constraint that matches the left hand to the weapon
+    [SerializeField] private Transform _leftHandAttachPoint;
+    // reference to the rig constraint that matches the right hand to the weapon
+    [SerializeField] private Transform _rightHandAttachPoint;
     // reference to the rigid body of the enemy that is passed onto the weapon
     [SerializeField] private Rigidbody _originalBody;
-    // primary controller of the IK components
-    [SerializeField] private RigBuilder _rig;
     // reference to the weapon the enemy is currently holding
     private EnemyWeaponBehavior _activeWeapon;
 
@@ -30,9 +28,10 @@ public class EnemyLoadoutBehavior : MonoBehaviour
         _activeWeapon.transform.localPosition = Vector3.zero;
         _activeWeapon.transform.localRotation = Quaternion.identity;
         _activeWeapon.MySpawner.OriginalBody = _originalBody;
-        _leftHandIK.data.target = _activeWeapon.LeftHandRigTarget;
-        _rightHandIK.data.target = _activeWeapon.RightHandRigTarget;
-        _rig.Build();
+        _leftHandAttachPoint.transform.localPosition = _activeWeapon.LeftHandRigTarget.transform.localPosition;
+        _leftHandAttachPoint.transform.localRotation = _activeWeapon.LeftHandRigTarget.transform.localRotation;
+        _rightHandAttachPoint.transform.localPosition = _activeWeapon.RightHandRigTarget.transform.localPosition;
+        _rightHandAttachPoint.transform.localRotation = _activeWeapon.RightHandRigTarget.transform.localRotation;
     }
 
     // unassigns weapon and drops a weapon where it was
@@ -45,7 +44,5 @@ public class EnemyLoadoutBehavior : MonoBehaviour
             _activeWeapon.gameObject.SetActive(false);    
         }
         _activeWeapon = null;
-        _leftHandIK.data.target = null;
-        _leftHandIK.data.target = null;
     }
 }

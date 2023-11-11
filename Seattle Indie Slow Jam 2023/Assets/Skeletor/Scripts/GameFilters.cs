@@ -44,5 +44,11 @@ namespace GameFilters
         {
             return original[Random.Range(0, original.Length)];
         }
+
+        // returns a random element from an array
+        public static bool WithinRange<T>(this T[] original, int index)
+        {
+            return index >= 0 && index < original.Length;
+        }
     }
 }
