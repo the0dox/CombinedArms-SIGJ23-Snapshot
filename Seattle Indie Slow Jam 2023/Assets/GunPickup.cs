@@ -9,6 +9,6 @@ public class GunPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(gun != null) PlayerManager.instance.PickupGun(gun);
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }
