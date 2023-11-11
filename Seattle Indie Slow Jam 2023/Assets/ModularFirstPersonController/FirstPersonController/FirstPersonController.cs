@@ -736,7 +736,7 @@ public class FirstPersonController : MonoBehaviour
 
         GUI.enabled = fpc.enableJump;
         fpc.jumpKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Jump Key", "Determines what key is used to jump."), fpc.jumpKey);
-        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 20f);
+        fpc.jumpPower = EditorGUILayout.Slider(new GUIContent("Jump Power", "Determines how high the player will jump."), fpc.jumpPower, .1f, 200f);
         GUI.enabled = true;
 
         EditorGUILayout.Space();
