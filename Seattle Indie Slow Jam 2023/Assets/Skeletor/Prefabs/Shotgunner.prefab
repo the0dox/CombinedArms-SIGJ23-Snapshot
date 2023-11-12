@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 13947210}
   - component: {fileID: 5727089127640941606}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Shotgunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   _myBody: {fileID: 789602053523078835}
   _upperBodyRotation: 110
   _visionRadius: 20.9
-  _attackRadius: 10
+  _attackRadius: 5
   _repositionVariance: 5
   _repositionRefreshRate: 4
   _visionTransform: {fileID: 41259086264024059}
@@ -404,8 +404,6 @@ MonoBehaviour:
   _myGroundCheck: {fileID: 13947210}
   _loadout: {fileID: 6604740350183072557}
   WeaponPrefabs:
-  - {fileID: 2132373863478674537, guid: 85358d0a2b18c274b9f9c1f5867be0ba, type: 3}
-  - {fileID: 2132373863478674537, guid: f67fffa35808d5d4096f9df029cf7a1e, type: 3}
   - {fileID: 2132373863478674537, guid: 905a449912557394cb2a0d1c9a79ead4, type: 3}
 --- !u!114 &6604740350183072557
 MonoBehaviour:
@@ -463,7 +461,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.75
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
