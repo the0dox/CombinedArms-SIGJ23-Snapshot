@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 336641258}
   - component: {fileID: 336641259}
   - component: {fileID: 336641260}
+  - component: {fileID: 336641261}
   m_Layer: 0
   m_Name: EnemyRagdollLoader
   m_TagString: Untagged
@@ -484,6 +485,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2132373863478674537, guid: f67fffa35808d5d4096f9df029cf7a1e, type: 3}
   _count: 3
+--- !u!114 &336641261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336641253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e5d4b621625d41b3b625113986b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 4571391942006055351, guid: 0b427fb1cf02d894cad0ea41554764f2, type: 3}
+  _count: 30
 --- !u!1 &481325529
 GameObject:
   m_ObjectHideFlags: 0
