@@ -153,19 +153,17 @@ public class PlayerManager : MonoBehaviour, IAttackable
                 gunList[nextPlacement] = gun;
                 //Find the next empty space
                 //We know the there isn't an empty space behind the space we just filled, so look ahead.
-                if(nextPlacement == gunList.Count - 1)
-                {
-                    nextPlacement++;
-                    return; //Don't need to search since we know there can't be any more empty spots after this
-                }
+                int result = -1;
                 for(int n = nextPlacement;n < gunList.Count; n++)
                 {
                     if(gunList[n] == null)
                     {
-                        nextPlacement = n;
+                        result = n;
                         break;
                     }
                 }
+                if (result < 0) nextPlacement = gunList.Count;
+                else nextPlacement = result;
             }
         }
         gun.GetComponent<Animator>().enabled = true;
