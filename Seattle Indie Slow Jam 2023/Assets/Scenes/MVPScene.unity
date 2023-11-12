@@ -3835,6 +3835,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870530454892396957}
   m_Mesh: {fileID: 7479997029363590899, guid: 379c3b9cb374b8c48b0e164e08a8dca3, type: 3}
+--- !u!1001 &2840402272545058360
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2104223103}
+    m_Modifications:
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338064738570067933, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862821628627486055, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+      propertyPath: m_Name
+      value: AssaultRifle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
 --- !u!4 &2894015365094928831
 Transform:
   m_ObjectHideFlags: 0
