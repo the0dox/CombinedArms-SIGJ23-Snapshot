@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     GameObject dmgDirection;
     [SerializeField]
     Slider slider;
+    [SerializeField]
+    AudioSource eatSource;
     public float health = 100f;
     float currentHealth;
     public int gunCount = 0;
@@ -47,13 +49,14 @@ public class PlayerManager : MonoBehaviour, IAttackable
         parentMap = new Dictionary<GameObject, GameObject>();
         gunList = new List<GameObject>();
         nextPlacement = 0; //Next index in the gun array
+        eatSource.pitch = eatLimit * .16f;
     }
 
     void EatGun()
     {
         if (gunCount < 2) return;
         int max = -999;
-        GameObject p = parentMap[gunList[0]];
+        GameObject p = null;
         foreach(KeyValuePair<GameObject,int> k in prefabCount)
         {
             if( k.Value > max)
@@ -62,6 +65,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
                 p = k.Key;
             }
         }
+        if (p == null) return;
         List<int> SelctedPrefabIndices = new List<int>();
         for(int i = 0;i < gunList.Count;i++)
         {
@@ -74,10 +78,12 @@ public class PlayerManager : MonoBehaviour, IAttackable
         gunCount--;
         prefabCount[parentMap[g]]--;
         parentMap.Remove(g);
-        nextPlacement = gunList.IndexOf(g);
-        gunList[gunList.IndexOf(g)] = null;
+        int index = gunList.IndexOf(g);
+        nextPlacement =  index < nextPlacement ? index : nextPlacement;
+        gunList[index] = null;
         Destroy(g);
         currentHealth = Mathf.Clamp(currentHealth + healthInc, currentHealth, health);
+        slider.value = currentHealth / health;
     }
     public void PickupGun(GunData data)
     {
@@ -192,6 +198,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             eatTimer += Time.deltaTime;
             Debug.Log("Eat in: " + eatTimer);
+            if(!eatSource.isPlaying) eatSource.Play();
             if (eatTimer > eatLimit) {
                 EatGun();
                 eatTimer = 0f;
@@ -199,6 +206,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         }
         else
         {
+            if(eatSource.isPlaying) eatSource.Stop();
             eatTimer = 0f;
         }
     }
