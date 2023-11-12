@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+
 
 // created by Skeletor
 // tools used to filter lists
@@ -36,6 +37,18 @@ namespace GameFilters
                     yield return item;
                 }
             }
+        }
+
+        // returns a random element from an array
+        public static T GetRandomElement<T>(this T[] original)
+        {
+            return original[Random.Range(0, original.Length)];
+        }
+
+        // returns a random element from an array
+        public static bool WithinRange<T>(this T[] original, int index)
+        {
+            return index >= 0 && index < original.Length;
         }
     }
 }

@@ -16,6 +16,7 @@ public class EnemyTester : MonoBehaviour
     [SerializeField] private float sensitivity = 300;
     private float xRotation;
     private float yRotation;
+    private int previousGunCount;
 
     // finds the player on first frame
     void Awake()
@@ -40,6 +41,11 @@ public class EnemyTester : MonoBehaviour
         {
             ObjectLoader.LoadObject("Enemy").transform.position = new Vector3(0,0,5);
         }
+        if(PlayerManager.instance.gunCount != previousGunCount)
+        {
+            MusicPlayer.CurrentLayer++;
+        }
+        previousGunCount = PlayerManager.instance.gunCount;
         /*
         if(Input.GetMouseButtonDown(0))
         {

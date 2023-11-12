@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore;
 using UnityEngine.UIElements;
 
 // created by Skeletor
@@ -30,6 +31,11 @@ public class ProjectileBehavior : DamageZone
     protected override void OnCollisionTriggered(Collider other)
     {
         CancelInvoke();
+        gameObject.SetActive(false);
+    }
+
+    void Die()
+    {
         gameObject.SetActive(false);
     }
 }

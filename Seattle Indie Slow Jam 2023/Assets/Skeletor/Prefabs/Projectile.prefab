@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6401474697009204262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.182, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,8 +158,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.20058587, b: 0, a: 1}
-      key1: {r: 1, g: 0.9238702, b: 0, a: 1}
+      key0: {r: 1, g: 0, b: 0.08203983, a: 1}
+      key1: {r: 0.18867922, g: 0.039211717, b: 0.01512994, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -167,7 +167,7 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 37972
+      ctime1: 65535
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd4fa4d87cb17a44819eabda4f8ce8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
   _damage: 5
+  _speed: 20
   _sprite: {fileID: 6401474697009204263}
   _maxRuntime: 20
