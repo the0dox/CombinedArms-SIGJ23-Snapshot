@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour, IAttackable
 {
     public static PlayerManager instance;
     [SerializeField]
-    GameObject gunPrefab;
+    GunData[] gunDatas;
+    [SerializeField]
+    GameObject deathUI;
+    [SerializeField]
+    GameObject dmgDirection;
+    [SerializeField]
+    Slider slider;
     public float health = 100f;
+    float currentHealth;
     public int gunCount = 0;
     [HideInInspector]
     public int gunsReloading = 0;
     Vector4 gunPlacementRange = new Vector4(-1, 1, -.8f, .8f);
     Vector2 placeOffsetAmount = Vector2.zero;
+    float timer = 0f;
+    float timeLimit = 1f;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -20,13 +30,14 @@ public class PlayerManager : MonoBehaviour, IAttackable
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = health;
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
     }
 
     public void PickupGun(GunData data)
     {
-        GameObject gun = Instantiate(gunPrefab, this.transform.GetChild(0).GetChild(0));
+        GameObject gun = Instantiate(data.gunPrefab, this.transform.GetChild(0).GetChild(0));
         gun.GetComponent<Gun>().Initalize();
         gun.GetComponent<Gun>().ApplyGunData(data);
         gun.GetComponent<Animator>().enabled = false;
@@ -87,7 +98,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     }
     void PickupGun()
     {
-        GunData data = ScriptableObject.CreateInstance<GunData>();
+        int r = Random.Range(0, gunDatas.Length);
+        GunData data = gunDatas[r];
         data.RandomizeProperties();
         PickupGun(data);
     }
@@ -98,11 +110,22 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             PickupGun();
         }
+        timer += Time.deltaTime;
+        if(timer > timeLimit)
+        {
+            dmgDirection.SetActive(false);
+            timer = 0;
+        }
     }
 
     public void TakeDamage(Vector3 hit, float value)
     {
-        health -= value;
-        if (health < 0) Debug.Log("I AM DEAD! NOOOOOOO!");
+        currentHealth -= value;
+        slider.value = currentHealth / health;
+        Vector3 v = Camera.main.WorldToScreenPoint(hit);
+        dmgDirection.transform.position = v;
+        dmgDirection.SetActive(true);
+        timer = 0;
+        if (currentHealth <= 0) deathUI.SetActive(true);
     }
 }
