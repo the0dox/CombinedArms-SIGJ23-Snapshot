@@ -117,9 +117,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _patrol = new EnemyPatrolState();
         _idle = new EnemyIdleState();
         _approach = new EnemyRepositionState();
-        _attack = new EnemyStrafeVolleyState();
         _hurt = new EnemyInjuredState();
         Loadout.EquipWeapon(WeaponPrefabs.GetRandomElement());
+        _attack = Loadout.ActiveWeapon.AttackState;
     }
 
     // each frame, update animations and states
@@ -184,6 +184,11 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         {
             SetLookTarget(PlayerManager.instance.transform);
             SetState(_approach);
+            Debug.Log("found player approaching");
+        }
+        else
+        {
+            Debug.Log("unable to find player, waiting");
         }
     }
 

@@ -10,6 +10,7 @@ public class EnemyWeaponBehavior : MonoBehaviour
     public Transform LeftHandRigTarget => _leftHandRigTarget;
     public Transform RightHandRigTarget => _rightHandRigTarget;
     public RagdollSpawner MySpawner => _mySpawner;
+    public State<EnemyBehavior> AttackState => EnemyStateFactory.BuildState(_attackState);
 
     // reference to the left arm attach point of the weapon
     [SerializeField] private Transform _leftHandRigTarget;
@@ -17,5 +18,7 @@ public class EnemyWeaponBehavior : MonoBehaviour
     [SerializeField] private Transform _rightHandRigTarget;
     // used to make a weapon drop when disabled
     [SerializeField] private RagdollSpawner _mySpawner;
+    // matches a particular weapon type to an attack pattern
+    [SerializeField] private StateKey _attackState;
 
 }
