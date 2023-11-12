@@ -12,6 +12,9 @@ public class Gun : MonoBehaviour
     public float ammoTotal = 100f;
     public float ammoPerBullet = 1f;
     public float range = 10f;
+    public float weaponSpread = 0f;
+    public int numOfBullets = 1;
+    public bool isAuto = true;
     public AnimationClip fireAni;
     public AnimationClip reloadAni;
     public AudioClip fireSound;
@@ -27,6 +30,7 @@ public class Gun : MonoBehaviour
     MeshRenderer renderer;
     bool isReloading = false;
     bool isFiring = false;
+    bool hasFired = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -56,6 +60,7 @@ public class Gun : MonoBehaviour
             }
             startPos = this.transform.localPosition;
         }
+        ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
     }
     public void Initalize()
     {
@@ -95,26 +100,37 @@ public class Gun : MonoBehaviour
     void FireWeapon()
     {
         if (!isFiring) return;
-        Vector3 camDir = Camera.main.transform.forward;
-        Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
-        RaycastHit info;
-        bool hit = GamePhysics.AttackRayCast(new Ray(this.transform.GetChild(0).position, camDir), dmg, range, out info); 
-            //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
-        if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
-        if (!hit)
-        {
-            info.point = Camera.main.transform.position + camDir.normalized * range;
-                //this.transform.GetChild(0).position +  dir.normalized * range;
+        for(int i = 0; i < numOfBullets; i++) { 
+            Vector3 camDir = Camera.main.transform.forward;
+            if(weaponSpread > 0)
+            {
+                float ang = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+                float yaw = Random.Range(0, weaponSpread) * Mathf.Deg2Rad;
+                Vector3 newDir = new Vector3(Mathf.Sin(yaw)* Mathf.Cos(ang)
+                    , Mathf.Sin(yaw)* Mathf.Sin(ang), Mathf.Cos(yaw));
+                newDir = Camera.main.transform.TransformDirection(newDir);
+                camDir = newDir.normalized;
+            }
+            Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
+            RaycastHit info;
+            bool hit = GamePhysics.AttackRayCast(new Ray(Camera.main.transform.position, camDir), dmg, range, out info); 
+                //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
+            if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
+            if (!hit)
+            {
+                info.point = Camera.main.transform.position + camDir.normalized * range;
+                    //this.transform.GetChild(0).position +  dir.normalized * range;
+            }
+            TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
+            t.transform.position = this.transform.GetChild(0).position;
+                //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
+            StartCoroutine(HitscanTrail(t,info));
         }
-        TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
-        t.transform.position = this.transform.GetChild(0).position;
-            //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
-        StartCoroutine(HitscanTrail(t,info));
         barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
         //info.collider.GetComponent<Enemy>().takeDamage();
         
-        ammoCount -= ammoPerBullet;
+        ammoCount -= ammoPerBullet*numOfBullets;
         if (ammoCount < 0) ammoCount = 0;
         if (!UsesUI)
         {
@@ -221,11 +237,13 @@ public class Gun : MonoBehaviour
     {
         Debug.Log(PlayerManager.instance.gunsReloading);
         Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
-        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1)
+        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1
+            && (isAuto || !hasFired))
         {
             //Keep it nested so that reactions to running out of ammo can be handled
             if (ammoCount > 0)
             {
+                hasFired = true;
                 animator.SetBool("IsFiring", true);
                 isFiring = true;
             }
@@ -239,6 +257,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
+            if (Input.GetMouseButtonUp(0)) hasFired = false;
             animator.SetBool("IsFiring", false);
             EndFire();
         }

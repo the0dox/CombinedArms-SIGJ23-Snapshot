@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 2c5d165551014c542a6020fc7b74b046
+guid: 2e0257d44ada5404fb762e274c121bbd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrandHall_FloorMat
+    second: {fileID: 2100000, guid: e8688ced5854b9540b5da2763f542759, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

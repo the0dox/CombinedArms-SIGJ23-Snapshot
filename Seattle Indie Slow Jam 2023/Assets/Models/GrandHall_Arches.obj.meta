@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: aedac10f293786d489a724a56654e3f9
+guid: 76673c945ba9fcb4f9bd3db6cb304398
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arch_9Mat
+    second: {fileID: 2100000, guid: df82f841a23dbda4eb3a616b8637ffc3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

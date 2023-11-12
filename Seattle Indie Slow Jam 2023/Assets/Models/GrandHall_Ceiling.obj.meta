@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 9d2d035e5b1402f4c832fc823115bb9f
+guid: 74ab0a42402f9be4c96c4a8277daf14b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_pCube14Mat
+    second: {fileID: 2100000, guid: ebf38373215cd0542830abc200aca9d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
