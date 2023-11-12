@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     Vector2 placeOffsetAmount = Vector2.zero;
     float timer = 0f;
     float timeLimit = 1f;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -126,6 +127,10 @@ public class PlayerManager : MonoBehaviour, IAttackable
         dmgDirection.transform.position = v;
         dmgDirection.SetActive(true);
         timer = 0;
-        if (currentHealth <= 0) deathUI.SetActive(true);
+        if (currentHealth <= 0)
+        {
+            deathUI.SetActive(true);
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
