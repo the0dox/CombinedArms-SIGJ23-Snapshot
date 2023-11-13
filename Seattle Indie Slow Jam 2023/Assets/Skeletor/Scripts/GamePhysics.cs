@@ -46,6 +46,12 @@ public static class GamePhysics
     {
         if(Physics.Raycast(attackRay,hitInfo: out RaycastHit hit,  maxDistance: range, layerMask: LayerMask.GetMask("QueryAttack")))
         {
+            hitInfo = hit;
+            // check a second time if line of sight is blocked
+            if(Physics.Raycast(attackRay, hit.distance, LayerMask.GetMask("Terrain")))
+            {
+                return false;
+            }
             if(hit.collider.TryGetComponent(out Rigidbody body))
             {
                 body.ApplyDamageForce(hit.point, damage);
@@ -54,7 +60,6 @@ public static class GamePhysics
             {
                 damageTarget.TakeDamage(hit.point, damage);
             }
-            hitInfo = hit;
             return true;
         }
         hitInfo = hit;
