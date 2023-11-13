@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be6cfd037390fdf46a45cfbe4a4be2c6
+guid: e4ad2030ee68a1f41b78b34adc29d317
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Frame_A7Mat
-    second: {fileID: 2100000, guid: be0f872957e88994f991c944f74b9fc8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Frame_A7_Frame_B1Mat
-    second: {fileID: 2100000, guid: 60ccddcf57e680d4e8c75ad8ca6d4a7a, type: 2}
+      name: ShelfLargeMat
+    second: {fileID: 2100000, guid: b1e213a783a73f24a9e416864e7c0a3d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

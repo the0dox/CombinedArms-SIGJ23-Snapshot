@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be6cfd037390fdf46a45cfbe4a4be2c6
+guid: 7c83c50a988e34c43a10064e3aa51c75
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Frame_A7Mat
-    second: {fileID: 2100000, guid: be0f872957e88994f991c944f74b9fc8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Frame_A7_Frame_B1Mat
-    second: {fileID: 2100000, guid: 60ccddcf57e680d4e8c75ad8ca6d4a7a, type: 2}
+      name: polySurface362Mat
+    second: {fileID: 2100000, guid: ef2deed4606389241b1bf2703e682c5b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
