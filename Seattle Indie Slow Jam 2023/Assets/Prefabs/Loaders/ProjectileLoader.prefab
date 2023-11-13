@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7660283780745667833}
   - component: {fileID: 7660283780745667814}
+  - component: {fileID: -5198820950691433009}
   m_Layer: 0
   m_Name: ProjectileLoader
   m_TagString: Untagged
@@ -45,4 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6401474698263423156, guid: 25538ed3d546ea5498c790fe7a4e0e12, type: 3}
-  _count: 20
+  _count: 100
+--- !u!114 &-5198820950691433009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660283780745667832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e5d4b621625d41b3b625113986b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 6401474698263423156, guid: 51f282801c2e0d74eba52a65110f025c, type: 3}
+  _count: 100

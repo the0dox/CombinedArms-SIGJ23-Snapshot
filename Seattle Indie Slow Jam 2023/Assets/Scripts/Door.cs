@@ -305,6 +305,6 @@ public class Door : MonoBehaviour, IAttackable
     //Austin: I could not get this working for the life of me
     public void TakeDamage(Vector3 source, float damage)
     {
-
+        DestroyMesh();
     }
 }

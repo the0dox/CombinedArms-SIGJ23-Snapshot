@@ -9,6 +9,8 @@ using UnityEngine;
 // ensure that this component is attached to the model of the enemy and not the enemy itself for the most accurate ragdoll
 public class RagdollSpawner : MonoBehaviour
 {
+    // public setter
+    public Rigidbody OriginalBody {set => _originalBody = value;}
     // reference to the main rigidbody of the object spawning the ragdoll, used to inherit the original velocity of the character
     [SerializeField] private Rigidbody _originalBody;
     // reference to the ragdoll prefab that this spawner will spawn. MAKE SURE THIS IS SET UP PROPERLY

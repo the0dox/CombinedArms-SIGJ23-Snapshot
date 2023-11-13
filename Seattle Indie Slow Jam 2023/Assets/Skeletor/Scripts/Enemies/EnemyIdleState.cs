@@ -9,7 +9,7 @@ public class EnemyIdleState :  State<EnemyBehavior>
     // minimum time enemy can remain idel
     private const float MINIDLETIME = 2;
     // maximum time enemy can remain idle
-    private const float MAXIDLETIME = 8;
+    private const float MAXIDLETIME = 3;
     // duration in seconds the enemy has remaining idle
     private float idleTimer; 
 

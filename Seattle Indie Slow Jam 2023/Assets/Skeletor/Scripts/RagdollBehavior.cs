@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using GameFilters;
+using Unity.VisualScripting;
 
 // created by skeletor
 // attached to an object that can ragdoll
@@ -31,7 +34,7 @@ public class RagdollBehavior : MonoBehaviour
         _bodies = GetComponentsInChildren<Rigidbody>();
         _joints = GetComponentsInChildren<CharacterJoint>();
         _colliders = GetComponentsInChildren<Collider>();
-        _rigTransforms = GetComponentsInChildren<Transform>();
+        _rigTransforms = gameObject.GetComponentsInChildrenByCondition((Transform child) => child.tag.Equals(tag));
     }
 
     // called every time this ragdoll is spawned
@@ -101,16 +104,18 @@ public class RagdollBehavior : MonoBehaviour
         }
         else
         {
+            //StringBuilder debugString = new StringBuilder($"Assigning Ragdoll Transforms for {gameObject.name}\n");
             for(int i = 0; i < _rigTransforms.Length; i++)
             {
+                //debugString.AppendFormat($"Matching Transform: ({_rigTransforms[i].name}) to Original: ({newTransforms[i].name}) position: {newTransforms[i].transform.position} rotation: ({newTransforms[i].transform.rotation})\n");
                 _rigTransforms[i].transform.position = newTransforms[i].transform.position;
                 _rigTransforms[i].transform.rotation = newTransforms[i].transform.rotation;
             }
             foreach(Rigidbody body in _bodies)
             {
                 body.velocity = inhertitedBody.velocity;
-                //body.angularVelocity = inhertitedBody.angularVelocity;
             }
+            //Debug.Log(debugString.ToString());
         }
     }
 
