@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2030329210903708450}
   - component: {fileID: 6465302647645558186}
   m_Layer: 10
-  m_Name: DestructibleDoor
+  m_Name: InvincibleDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1194365170432060600, guid: fc383f6b47073a741839ab55c42f5ad1, type: 3}
+  - {fileID: 2100000, guid: f03f17f1f347ca641aa594a74cc48214, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CutCascades: 4
   ExplodeForce: 500
-  Destructible: 1
+  Destructible: 0
 --- !u!65 &6465302647645558186
 BoxCollider:
   m_ObjectHideFlags: 0
