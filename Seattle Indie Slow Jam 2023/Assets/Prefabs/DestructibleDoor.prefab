@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2564854342602530302}
   - component: {fileID: 2564854342602530289}
   - component: {fileID: 2564854342602530288}
-  - component: {fileID: 2564854342602530291}
   - component: {fileID: 2030329210903708450}
+  - component: {fileID: 6465302647645558186}
   m_Layer: 10
   m_Name: DestructibleDoor
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564854342602530293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 2.49, z: -12.23}
-  m_LocalScale: {x: 2.1, y: 3.63, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2564854342602530293}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 1595783810130990727, guid: fc383f6b47073a741839ab55c42f5ad1, type: 3}
 --- !u!23 &2564854342602530288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7798b68ea7f93a438a3c55fab40e6de, type: 2}
+  - {fileID: -1194365170432060600, guid: fc383f6b47073a741839ab55c42f5ad1, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2564854342602530291
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2564854342602530293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2030329210903708450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +99,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CutCascades: 10
   ExplodeForce: 100
+--- !u!65 &6465302647645558186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2564854342602530293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 185.99377, y: 387.9536, z: 31.864426}
+  m_Center: {x: 0, y: 0, z: 0}
