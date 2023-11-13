@@ -16,7 +16,6 @@ public class EnemyPatrolState : State<EnemyBehavior>
     protected override void OnStateEnter()
     {
         _myContext.ToggleNavAgent(true);
-        _myContext.MyAgent.speed = 3.5f;
         _myContext.MyAgent.SetDestination(RandomWanderPosition);
     }
 

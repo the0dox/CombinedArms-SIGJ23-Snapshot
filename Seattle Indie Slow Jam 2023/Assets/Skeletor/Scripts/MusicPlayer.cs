@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using GameFilters;
+using System.ComponentModel;
 
 // created by skeletor
 // behavior for the dynamic music player can cross fade between different song tracks
@@ -8,6 +10,20 @@ public class MusicPlayer : MonoBehaviour
 {
     // one instance of a music player in any scene
     private static MusicPlayer s_instance;
+    // public getter that can also be used as an alternative way to increment the music layer
+    public static int CurrentLayer {get=> s_instance._currentLayer; 
+    set
+        {
+            if(value < 0)
+            {
+                Stop();
+            }
+            else
+            {
+                PlayLayer(value);
+            }
+        }
+    } 
     // editable list of all tracks this music player can play
     [SerializeField] private AudioClip[] _musicLayers;
     // the time in seconds at which songs fade in
@@ -18,6 +34,7 @@ public class MusicPlayer : MonoBehaviour
     private AudioSource[] _audioChannels;
     // reference to index of the active audio source, used swap between sources when cross fading tracks
     private static int s_activeSource;
+    [SerializeField, ReadOnly(true)] private int _currentLayer;
 
     // assign instance before first frame
     void Awake()
@@ -26,6 +43,7 @@ public class MusicPlayer : MonoBehaviour
         {
             s_instance = this;
             s_activeSource = 0;
+            _currentLayer = -1;
             _audioChannels = GetComponents<AudioSource>();
         }
         else
@@ -59,6 +77,12 @@ public class MusicPlayer : MonoBehaviour
     // fades out any exisitng tracks 
     public static void PlayLayer(int layer)
     {
+        if(!s_instance._musicLayers.WithinRange(layer))
+        {
+            Debug.LogWarning($"Music Player was asked to play a layer at invalid index {layer}");
+            return;
+        }
+        s_instance._currentLayer = layer;
         AudioClip clip = s_instance._musicLayers[layer];
         AudioSource activeChannel = s_instance._audioChannels[s_activeSource];
         if(activeChannel.clip == clip)
@@ -77,6 +101,7 @@ public class MusicPlayer : MonoBehaviour
     // fades out all music layers
     public static void Stop()
     {
+        s_instance._currentLayer = -1;
         s_instance.StopAllCoroutines();
         s_instance.StartCoroutine(FadeOutPlayer(s_instance._audioChannels[0]));
         s_instance.StartCoroutine(FadeOutPlayer(s_instance._audioChannels[1]));
@@ -85,6 +110,7 @@ public class MusicPlayer : MonoBehaviour
     // abruptly ends all music layers
     public static void StopInstant()
     {
+        s_instance._currentLayer = -1;
         s_instance.StopAllCoroutines();
         s_instance._audioChannels[0].Stop();
         s_instance._audioChannels[0].clip = null;

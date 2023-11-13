@@ -22,9 +22,11 @@ public class AnimationEventHandler : MonoBehaviour
         SendMessageUpwards(eventMsg);
     }
 
+    // called whenever the animation would ever apply root motion to the game object. Stores that root motion so that enemybehavior can apply it selectively
     void OnAnimatorMove()
     {
         RootPositionDelta = _animationComponent.deltaPosition;
         RootRotationDelta = _animationComponent.deltaRotation;
     }
+
 }

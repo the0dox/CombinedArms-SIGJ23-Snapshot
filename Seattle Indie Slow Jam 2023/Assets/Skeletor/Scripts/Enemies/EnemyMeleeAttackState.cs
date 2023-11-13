@@ -8,15 +8,15 @@ using UnityEngine;
 // state a melee enemy uses to lunge and attack the player in close range
 public class EnemyMeleeAttackState : State<EnemyBehavior>
 {
-    // the amount of time between the enemy starting the attack and ending their swing
-    // the fastest the enemy can move while trying to collide with the player
-    private const float ATTACKVELOCITYBASE = 6f;
-    // a build in inaccuracy of where the the enemy will predict the player will end up
+    // the maximum angle the enemy can rotate to try and catch the player
     private const float MAXANGLE = 45;
+    // determines how fast (in seconds) the enemy will attempt to reach the player from their position when entering this stat
     private const float ATTACKDURATION = 0.5f;
+    // determines how much faster the enemy will move if the player is moving away from them
     private const float OVERSHOTFACTOR = 2f;
+    // my context needs to be casted once to get additional information specific to the melee enemy
     private MeleeEnemyBehavior _myConvertedContext;
-
+    // the distance vector the enemy moves along for the duration of the attack
     private Vector3 AttackVelocity;
     
     // called when this state is started
@@ -47,7 +47,8 @@ public class EnemyMeleeAttackState : State<EnemyBehavior>
     // called when this state is ended
     protected override void OnStateExit()
     {
-        _myConvertedContext.MeleeHitBox.SetActive(false);
+        _myConvertedContext.MeleeHitBox.SetActive(false);       
+        _myContext.AnimationComponent.SetBool("Falling", false);
     }
 
     // determines where the enemy should move for the duration of the attack animation
@@ -56,10 +57,10 @@ public class EnemyMeleeAttackState : State<EnemyBehavior>
     {
         Vector3 playerPosition = _myContext.LookTarget.transform.position;
         Vector3 playerToEnemy = _myContext.transform.position - playerPosition;
-        Vector3 playerHeading =  EnemyTester.s_playerPhysics.velocity * ATTACKDURATION;
-        float playerAngle = Vector3.SignedAngle(playerToEnemy, playerHeading, Vector3.up); 
-        Vector3 playerDestinationToEnemy = _myContext.transform.position - (playerPosition + playerHeading);
-        float anticipationAngle = Vector3.SignedAngle(playerDestinationToEnemy, -playerHeading, Vector3.up);
+        Vector3 playerToDestination =  EnemyTester.s_playerPhysics.velocity * ATTACKDURATION;
+        float playerAngle = Vector3.SignedAngle(playerToEnemy, playerToDestination, Vector3.up); 
+        Vector3 playerDestinationToEnemy = _myContext.transform.position - (playerPosition + playerToDestination);
+        float anticipationAngle = Vector3.SignedAngle(playerDestinationToEnemy, -playerToDestination, Vector3.up);
         float enemyAngle = playerAngle - anticipationAngle + ( playerAngle > 0 ? -180 : 180 );
         AttackVelocity = -playerToEnemy;
         // if enemy is going to miss because the angle is too great, just attack directly

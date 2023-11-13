@@ -18,9 +18,14 @@ MonoBehaviour:
   dmgRange: {x: 0.5, y: 1.5}
   reloadSpeed: 1
   reloadSpeedRange: {x: 0.5, y: 3.5}
+  spreadAngle: 0
+  spreadAngleRange: {x: 0, y: 45}
+  numOfBullets: 1
+  numOfBulletsRange: {x: 1, y: 6}
   ammoTotal: 100
   ammoPerBullet: 1
   range: 10
   gunColor: {r: 1, g: 0.6401814, b: 0, a: 1}
+  gunPrefab: {fileID: 4781947733604480584, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
   isEnemy: 0
   gunDrop: {fileID: 0}

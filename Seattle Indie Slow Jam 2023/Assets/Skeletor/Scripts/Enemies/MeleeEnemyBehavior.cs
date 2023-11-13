@@ -30,5 +30,11 @@ public class MeleeEnemyBehavior : EnemyBehavior
     public void AttackStarted()
     {
         _meleeHitBox.SetActive(true);
+        // there is a possibility this enemy has fallen of a ledge trying to reach the player. If that is the case they should start playing the fall animation
+        if(!Grounded)
+            AnimationComponent.SetBool("Falling", true);
     }
+
+    // melee enemies do not drop anything on death at the moment
+    protected override void OnDeath(Vector3 source){}
 }
