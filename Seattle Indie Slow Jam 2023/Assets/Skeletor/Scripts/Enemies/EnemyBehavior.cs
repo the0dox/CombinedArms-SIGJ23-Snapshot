@@ -135,6 +135,10 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         if(gameObject.activeInHierarchy)
         {
             _health -= damage;
+            GameObject bloodParticle = ObjectLoader.LoadObject("BloodParticleFX", true);
+            Vector3 enemyToSouce = transform.position - source;
+            bloodParticle.transform.position = _visionTransform.position;
+            bloodParticle.transform.rotation = Quaternion.LookRotation(enemyToSouce);
             SetState(_hurt);
             if(_health <= 0)
             {
