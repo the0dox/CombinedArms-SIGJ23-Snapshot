@@ -100,6 +100,7 @@ MonoBehaviour:
   CutCascades: 4
   ExplodeForce: 500
   Destructible: 1
+  health: 100
 --- !u!65 &6465302647645558186
 BoxCollider:
   m_ObjectHideFlags: 0
