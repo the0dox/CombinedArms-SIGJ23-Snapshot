@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     public int gunsReloading = 0;
     Vector4 gunPlacementRange = new Vector4(-1, 1, -.8f, .8f);
     Vector2 placeOffsetAmount = Vector2.zero;
+    private Rigidbody physicsBody;
+    public static Vector3 CurrentVelocity => instance.physicsBody.velocity;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -20,6 +22,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     // Start is called before the first frame update
     void Start()
     {
+        physicsBody = GetComponent<Rigidbody>();
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
     }
