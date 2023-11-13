@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3ecc20716274d640923a5e49027b01a
+guid: 4327c579f3df76b4b9393102ad071156
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Frame_B1_Frame_A3Mat
-    second: {fileID: 2100000, guid: 3e85cc24c0f3c8d4caec85b63e75c8e9, type: 2}
+      name: RailwayMat
+    second: {fileID: 2100000, guid: bdf954d85d4e2494484f184edf867f46, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
