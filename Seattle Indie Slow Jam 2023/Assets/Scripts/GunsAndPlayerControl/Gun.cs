@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
     public TrailRenderer hitscanBullet;
     public bool UsesUI = false;
     public GameObject ammoUI;
-    AudioSource barrel;
+    public AudioSource barrel;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
