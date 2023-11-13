@@ -235,8 +235,8 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerManager.instance.gunsReloading);
-        Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
+        //Debug.Log(PlayerManager.instance.gunsReloading);
+        //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
         if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1
             && (isAuto || !hasFired))
         {
