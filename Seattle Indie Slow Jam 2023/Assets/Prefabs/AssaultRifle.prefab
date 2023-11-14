@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1338064738570067933}
   - component: {fileID: 1862821628627486041}
   - component: {fileID: 1862821628627486040}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2840402272159107325}
   - component: {fileID: 2840402272159107324}
   - component: {fileID: 2840402272159107323}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 2840402272750596988}
   - component: {fileID: 2840402272750596990}
   - component: {fileID: 2840402272750596989}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 2840402272829768595}
   - component: {fileID: 2840402272829768597}
   - component: {fileID: 2840402272829768596}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 5734171699047292836}
   - component: {fileID: 49018387067439716}
   - component: {fileID: 6549370117283959879}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pasted__polySurface35_pasted__polySurface33_group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
