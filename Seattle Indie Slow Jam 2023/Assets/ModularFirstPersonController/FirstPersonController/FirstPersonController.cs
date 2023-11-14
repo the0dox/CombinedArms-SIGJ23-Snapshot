@@ -480,7 +480,7 @@ public class FirstPersonController : MonoBehaviour
                 if (rb.SweepTest(rb.velocity.normalized, out info,0.001f))
                 {
                     rb.AddForce(-rb.velocity - rb.velocity, ForceMode.VelocityChange);
-                    //Debug.Log("Hit! "+adj);
+                    Debug.Log("WEEEP");
                 }
             }
         }

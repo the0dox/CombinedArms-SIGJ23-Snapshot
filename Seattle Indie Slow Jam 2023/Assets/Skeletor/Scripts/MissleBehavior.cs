@@ -17,6 +17,7 @@ public class MissleBehavior : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private GameObject _explosionPrefab;
     [SerializeField] private AudioClip _explosionSound;
+    public Vector3 Direction; //We want the player to overide the direction
 
     // reference to the physics body attached to the object
     private Rigidbody _myBody;
@@ -25,12 +26,14 @@ public class MissleBehavior : MonoBehaviour
     void Awake()
     {
         _myBody = GetComponent<Rigidbody>();
+        Direction = transform.forward;
     }
 
     // apply speed as force every frame, while enforcing maximum speed
     void FixedUpdate()
     {
-        _myBody.AddForce(transform.forward * _acceleration * (_myBody.velocity.magnitude < _maximumSpeed ? 1 : -1));
+        _myBody.AddForce(Direction * _acceleration * (_myBody.velocity.magnitude < _maximumSpeed ? 1 : -1));
+        this.transform.LookAt(this.transform.position+Direction, Vector3.up);
     } 
 
     // when the the rocket collides with something trigger an explosion!

@@ -126,7 +126,7 @@ public class Gun : MonoBehaviour
             {
                 GameObject g = ObjectLoader.LoadObject(bullet.name);
                 g.transform.position = this.transform.GetChild(0).position;
-                g.GetComponent<Bullet>().dir = camDir;
+                g.GetComponent<MissleBehavior>().Direction = camDir;
             }
             else
             {
