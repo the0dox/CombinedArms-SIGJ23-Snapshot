@@ -3,7 +3,12 @@ guid: bf689c8a4d7fb134d90b96c48d8cf5be
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NautralHistoryGalleryMat
+    second: {fileID: 2100000, guid: 20f16328ac66c4a468cfe17a86d17b98, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

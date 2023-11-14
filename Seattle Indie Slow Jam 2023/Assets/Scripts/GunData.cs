@@ -12,11 +12,19 @@ public class GunData : ScriptableObject
     [SerializeField]
     public float dmg = 1f;
     [SerializeField]
-    Vector2 dmgRange = new Vector2(.5f, 1.5f);
+    Vector2 dmgRange = new Vector2(2f, 3f);
     [SerializeField]
     public float reloadSpeed = 1f;
     [SerializeField]
     Vector2 reloadSpeedRange = new Vector2(.5f,3.5f);
+    [SerializeField]
+    public float spreadAngle = 0f;
+    [SerializeField]
+    Vector2 spreadAngleRange = new Vector2(0f, 45f);
+    [SerializeField]
+    public int numOfBullets = 1;
+    [SerializeField]
+    Vector2 numOfBulletsRange = new Vector2(1, 6);
     [SerializeField]
     public float ammoTotal = 100f;
     [SerializeField]
@@ -25,6 +33,8 @@ public class GunData : ScriptableObject
     public float range = 10f;
     [SerializeField]
     public Color gunColor = Color.red;
+    [SerializeField]
+    public GameObject gunPrefab;
 
     //Enemy checks
     [SerializeField]
@@ -39,5 +49,8 @@ public class GunData : ScriptableObject
         reloadSpeed = Random.Range(reloadSpeedRange.x, reloadSpeedRange.y);
         gunColor = new Color(Random.Range(.3f, 1f),
             Random.Range(.3f, 1f), Random.Range(.3f, 1f), 1f);
+        spreadAngle = Random.Range(spreadAngleRange.x, spreadAngleRange.y);
+        numOfBullets = Random.Range((int)numOfBulletsRange.x, (int)numOfBulletsRange.y);
+
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -11,6 +12,9 @@ public class Gun : MonoBehaviour
     public float ammoTotal = 100f;
     public float ammoPerBullet = 1f;
     public float range = 10f;
+    public float weaponSpread = 0f;
+    public int numOfBullets = 1;
+    public bool isAuto = true;
     public AnimationClip fireAni;
     public AnimationClip reloadAni;
     public AudioClip fireSound;
@@ -18,11 +22,15 @@ public class Gun : MonoBehaviour
     public AudioClip clickSound;
     public GameObject bullet;
     public TrailRenderer hitscanBullet;
-    AudioSource barrel;
+    public bool UsesUI = false;
+    public GameObject ammoUI;
+    public AudioSource barrel;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
+    bool isFiring = false;
+    bool hasFired = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -46,13 +54,13 @@ public class Gun : MonoBehaviour
             else if (a.name.Contains("Fire") && a.events.Length < 1)
             {
                 AnimationEvent e = new AnimationEvent();
-                AnimationEvent f = new AnimationEvent();
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
             }
             startPos = this.transform.localPosition;
         }
+        ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
     }
     public void Initalize()
     {
@@ -87,39 +95,58 @@ public class Gun : MonoBehaviour
     void EndFire()
     {
         this.transform.localPosition = startPos;
+        isFiring = false;
     }
     void FireWeapon()
     {
-        Vector3 camDir = Camera.main.transform.forward;
-        Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
-        RaycastHit info;
-        bool hit = GamePhysics.AttackRayCast(new Ray(this.transform.GetChild(0).position, camDir), dmg, range, out info); 
-            //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
-        if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
-        if (!hit)
-        {
-            info.point = Camera.main.transform.position + camDir.normalized * range;
-                //this.transform.GetChild(0).position +  dir.normalized * range;
+        if (!isFiring) return;
+        for(int i = 0; i < numOfBullets; i++) { 
+            Vector3 camDir = Camera.main.transform.forward;
+            if(weaponSpread > 0)
+            {
+                float ang = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+                float yaw = Random.Range(0, weaponSpread) * Mathf.Deg2Rad;
+                Vector3 newDir = new Vector3(Mathf.Sin(yaw)* Mathf.Cos(ang)
+                    , Mathf.Sin(yaw)* Mathf.Sin(ang), Mathf.Cos(yaw));
+                newDir = Camera.main.transform.TransformDirection(newDir);
+                camDir = newDir.normalized;
+            }
+            Vector3 dir = this.transform.GetChild(0).position - this.transform.position;
+            RaycastHit info;
+            bool hit = GamePhysics.AttackRayCast(new Ray(Camera.main.transform.position, camDir), dmg, range, out info); 
+                //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
+            if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
+            if (!hit)
+            {
+                info.point = Camera.main.transform.position + camDir.normalized * range;
+                    //this.transform.GetChild(0).position +  dir.normalized * range;
+            }
+            TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
+            t.transform.position = this.transform.GetChild(0).position;
+                //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
+            StartCoroutine(HitscanTrail(t,info));
         }
-        TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
-        t.transform.position = this.transform.GetChild(0).position;
-            //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
-        StartCoroutine(HitscanTrail(t,info));
         barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
         //info.collider.GetComponent<Enemy>().takeDamage();
         
-        ammoCount -= ammoPerBullet;
+        ammoCount -= ammoPerBullet*numOfBullets;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
-
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
     }
     IEnumerator HitscanTrail(TrailRenderer t,RaycastHit info)
     {
@@ -137,20 +164,28 @@ public class Gun : MonoBehaviour
     }
     void FireWeaponBullet()
     {
+        if (!isFiring) return;
         GameObject g = ObjectLoader.LoadObject(bullet.name);
             //Instantiate<GameObject>(bullet);
         g.transform.position = this.transform.GetChild(0).position;
         g.GetComponent<Bullet>().dir = this.transform.GetChild(0).position - this.transform.position;
         ammoCount -= ammoPerBullet;
         if (ammoCount < 0) ammoCount = 0;
-        float rVal = ammoCount / ammoTotal;
-        rVal = 2f * rVal - 1f;
-        rVal = -rVal;
-        rVal = Mathf.Clamp(rVal, -1f, 1f);
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetFloat("_AmmoLevel", rVal);
-        renderer.SetPropertyBlock(block);
+        if (!UsesUI)
+        {
+            float rVal = ammoCount / ammoTotal;
+            rVal = 2f * rVal - 1f;
+            rVal = -rVal;
+            rVal = Mathf.Clamp(rVal, -1f, 1f);
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetFloat("_AmmoLevel", rVal);
+            renderer.SetPropertyBlock(block);
+        }
+        else
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
 
     }
     void ReloadWeapon()
@@ -159,10 +194,17 @@ public class Gun : MonoBehaviour
             isReloading = false;
             ammoCount = ammoTotal;
             animator.SetBool("IsReloading", false);
-            MaterialPropertyBlock block = new MaterialPropertyBlock();
-            renderer.GetPropertyBlock(block);
-            block.SetFloat("_AmmoLevel", -1f);
-            renderer.SetPropertyBlock(block);
+            if (!UsesUI)
+            {
+                MaterialPropertyBlock block = new MaterialPropertyBlock();
+                renderer.GetPropertyBlock(block);
+                block.SetFloat("_AmmoLevel", -1f);
+                renderer.SetPropertyBlock(block);
+            }
+            else
+            {
+                ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+            }
             barrel.PlayOneShot(reloadSound);
             PlayerManager.instance.gunsReloading--;
             Debug.Log(this.transform.gameObject.name);
@@ -177,24 +219,37 @@ public class Gun : MonoBehaviour
         ammoTotal = data.ammoTotal;
         range = data.range;
         ammoPerBullet = data.ammoPerBullet;
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        renderer.GetPropertyBlock(block);
-        block.SetColor("_LevelColor", data.gunColor);
-        renderer.SetPropertyBlock(block);
+        if (this.UsesUI)
+        {
+            ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
+        }
+        else
+        {
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(block);
+            block.SetColor("_LevelColor", data.gunColor);
+            renderer.SetPropertyBlock(block);
 
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerManager.instance.gunsReloading);
-        Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
-        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1)
+        //Debug.Log(PlayerManager.instance.gunsReloading);
+        //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
+        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1
+            && (isAuto || !hasFired))
         {
             //Keep it nested so that reactions to running out of ammo can be handled
-            if (ammoCount > 0) animator.SetBool("IsFiring", true);
+            if (ammoCount > 0)
+            {
+                hasFired = true;
+                animator.SetBool("IsFiring", true);
+                isFiring = true;
+            }
             else
             {
-                if(!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
                 animator.SetBool("IsFiring", false);
                 EndFire();
             }
@@ -202,6 +257,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
+            if (Input.GetMouseButtonUp(0)) hasFired = false;
             animator.SetBool("IsFiring", false);
             EndFire();
         }
