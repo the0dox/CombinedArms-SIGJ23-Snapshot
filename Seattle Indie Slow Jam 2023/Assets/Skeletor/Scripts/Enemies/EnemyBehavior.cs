@@ -155,24 +155,35 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             SetState(_hurt);
             if(_health <= 0)
             {
-                try
-                {
-                    ToggleNavAgent(false); 
-                    myRagdoll.SpawnRagdoll();     
-                    OnDeath(source);
-                }
-                finally
-                {
-                    gameObject.SetActive(false);
-                    transform.position = Vector3.zero;
-                }
+                StartCoroutine(Die());
             }
         }
     }   
 
+    // need to wait one frame to die to allow velocity to properly transfer to ragdoll
+    IEnumerator Die()
+    {
+        // wait for two frames
+        for(int i = 0; i < 2; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        try
+        {
+            ToggleNavAgent(false); 
+            myRagdoll.SpawnRagdoll();     
+            OnDeath();
+        }
+        finally
+        {
+            gameObject.SetActive(false);
+            transform.position = Vector3.zero;
+        }
+    }
+
 
     // called when the enemy has been reduced to zero hit points
-    protected virtual void OnDeath(Vector3 source)
+    protected virtual void OnDeath()
     {
         AudioSource.PlayClipAtPoint(_deathSound, _visionTransform.position, 3);
         _loadout.DropWeapon();       
