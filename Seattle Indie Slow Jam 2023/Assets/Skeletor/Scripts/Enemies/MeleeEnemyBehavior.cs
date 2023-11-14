@@ -31,7 +31,7 @@ public class MeleeEnemyBehavior : EnemyBehavior
     // called by the animation controller when the attack animation has reached a point where the player can be damaged
     public void AttackStarted()
     {
-        MyAudio.PlayOneShot(_meleeSFX);
+        PlaySound(_meleeSFX);
         _meleeHitBox.SetActive(true); 
         // there is a possibility this enemy has fallen of a ledge trying to reach the player. If that is the case they should start playing the fall animation
         if(!Grounded)

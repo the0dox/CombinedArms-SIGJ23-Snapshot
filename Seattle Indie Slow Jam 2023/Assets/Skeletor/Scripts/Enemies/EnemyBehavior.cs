@@ -39,7 +39,6 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public bool LockedOnTarget => _lockedOnTarget;
     public AudioClip HurtSound => _hurtSound;
     public AudioClip DeathSound => _deathSound;
-    public AudioSource MyAudio => _myAudio;
     public Vector3 OriginalPosition => _originalPosition;
 
 
@@ -94,6 +93,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     private Transform _lookTarget;
     // original world position the enemy started in
     private Vector3 _originalPosition;
+    // randomizes enemy sound pitches
+    private readonly FloatRange _enemyPitch = new FloatRange(0.9f, 1);
     
     // enemy states should be overriden for different enemy variants
     // starts in idle state by default
@@ -267,6 +268,12 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         { 
             _lockedOnTarget = false;
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        _myAudio.pitch = _enemyPitch.RandomValue;
+        _myAudio.PlayOneShot(clip);
     }
 
     #if UNITY_EDITOR

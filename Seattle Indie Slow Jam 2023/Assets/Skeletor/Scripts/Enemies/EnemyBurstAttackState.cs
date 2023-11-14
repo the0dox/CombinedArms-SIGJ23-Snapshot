@@ -72,7 +72,7 @@ public class EnemyBurstAttackState: State<EnemyBehavior>
             Attack(attackVector + spread);
         }
         _myContext.SetState(_myContext.Approach);    
-        _myContext.MyAudio.PlayOneShot(_myContext.Loadout.ActiveWeapon.SoundFX);
+        _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }
 
     void Attack(Vector3 attackVector)
