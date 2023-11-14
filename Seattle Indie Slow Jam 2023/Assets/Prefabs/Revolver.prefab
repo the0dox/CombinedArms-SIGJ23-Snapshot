@@ -215,10 +215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firerate: 5
-  dmg: 1
-  reloadSpeed: 0.2
+  dmg: 5
+  reloadSpeed: 5
   ammoTotal: 100
-  ammoPerBullet: 10
+  ammoPerBullet: 2
   range: 10
   weaponSpread: 0
   numOfBullets: 1
@@ -232,6 +232,7 @@ MonoBehaviour:
   hitscanBullet: {fileID: 6243618347938933727, guid: 10d44ade5cfc5224a83eeacdb80778e8, type: 3}
   UsesUI: 1
   ammoUI: {fileID: 5664839974078453051}
+  barrel: {fileID: 0}
 --- !u!95 &4781947733604480587
 Animator:
   serializedVersion: 5

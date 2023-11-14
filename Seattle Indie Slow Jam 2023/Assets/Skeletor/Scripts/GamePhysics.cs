@@ -19,23 +19,31 @@ public static class GamePhysics
     private static readonly float YMAXNITUDEMAX = 0.6f;
     // determines the point at which a rigidbody is moving too fast to safetly recieve any additional force
     private static readonly float MAXIMUMANGULARVELOCITY = 3f;
-
+    // how much extra force is applied by explosions
+    private static readonly float EXPLOSIONMULTIPLIER = 2;
+    // how much less force is applied to the player
+    private static readonly float PLAYERMULTIPLER = 0.1f;
+    public static Vector3 worldVelocity = Vector3.zero;
     // applies force to a rigid body from a point origin and a given amount of damage
-    private static void ApplyDamageForce(this Rigidbody affectedBody, Vector3 damageOrigin, float damage)
+    private static void ApplyDamageForce(this Rigidbody affectedBody, Vector3 damageOrigin, float damage, bool explosion = false, bool isPlayer = false)
     {
         // only applies force if the bodies angular velocity is under the cap
         if(affectedBody.angularVelocity.magnitude < MAXIMUMANGULARVELOCITY)
         {
             Vector3 relativeAngle = affectedBody.transform.position - damageOrigin;
             relativeAngle = new Vector3(relativeAngle.x, 0, relativeAngle.z).normalized + new Vector3(0, FORCEYOFFSET + Mathf.Clamp(YMAGNITUDEMODIFIER * damage, 0, YMAXNITUDEMAX), 0);
-            affectedBody.AddForce(relativeAngle * Mathf.Clamp(damage * MAGNITUDEMODIFIER, 0, MAXMAGNITUDE), ForceMode.Impulse);
+            float force = Mathf.Clamp(damage * MAGNITUDEMODIFIER, 0, MAXMAGNITUDE);
+            force *= explosion ? EXPLOSIONMULTIPLIER : 1;
+            force *= isPlayer ? PLAYERMULTIPLER : 1;
+            worldVelocity += relativeAngle* force; //add to the world velocity
+            affectedBody.AddForce(relativeAngle * force, ForceMode.Impulse);
         }
         else
         {
             Debug.LogFormat($"angular velocity on {affectedBody.name} excedees max, preventing force from being applied");
         }
    }
-
+    
     // this is the method that should be used by raycast weapons to attack targets
     // returns true if the raycast hit something that can be attacked
     // attackRay: the normalized directional ray of the weapon attack
@@ -54,7 +62,7 @@ public static class GamePhysics
             }
             if(hit.collider.TryGetComponent(out Rigidbody body))
             {
-                body.ApplyDamageForce(hit.point, damage);
+                body.ApplyDamageForce(hit.point, damage, false);
             }
             if(hit.collider.TryGetComponent(out IAttackable damageTarget))
             {
@@ -64,5 +72,27 @@ public static class GamePhysics
         }
         hitInfo = hit;
         return false;
+    }
+
+    public static void AttackSphereCast(Vector3 origin, float radius, float damage)
+    {
+        foreach(Collider collision in Physics.OverlapSphere(origin, radius))
+        {
+            Vector3 originToCollision = collision.transform.position + new Vector3(0, 0.25f, 0) - origin;
+            float ratio = 1 - originToCollision.magnitude/radius;
+            // check a second time if line of sight is blocked
+            if(Physics.Raycast(origin, originToCollision, originToCollision.magnitude, LayerMask.GetMask("Terrain")))
+            {
+                continue;
+            }
+            if(collision.TryGetComponent(out Rigidbody body))
+            {
+                body.ApplyDamageForce(origin, damage * ratio, true, collision.gameObject.tag.Equals("Player"));
+            }
+            if(collision.TryGetComponent(out IAttackable damageTarget))
+            {
+                damageTarget.TakeDamage(origin, damage * ratio);
+            }
+        }
     }
 }

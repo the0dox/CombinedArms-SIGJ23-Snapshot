@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2238325657317272432}
   - component: {fileID: 7653932876986046880}
   - component: {fileID: 607668626541573615}
+  - component: {fileID: 1764862076711377798}
   m_Layer: 0
   m_Name: ArtGallery_LeftWall
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1764862076711377798
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746272703932834302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4004774375831823772, guid: b90aacef6cc75214189f6ed0e1d72ae8, type: 3}

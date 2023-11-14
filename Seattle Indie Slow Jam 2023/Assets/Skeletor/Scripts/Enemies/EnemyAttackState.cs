@@ -62,6 +62,7 @@ public class EnemyAttackState : State<EnemyBehavior>
         projectile.transform.position = _myContext.VisionTransform.position + (attackVector * 2);
         projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
         _myContext.SetState(_myContext.Approach);
+        _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }
 }
 

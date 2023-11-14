@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8394632480124943424}
   - component: {fileID: 7594944772408186430}
   - component: {fileID: 810259636947608243}
+  - component: {fileID: -1910189309598162134}
   m_Layer: 0
   m_Name: NaturalHistory_Floor
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1910189309598162134
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575839445185266078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7428866170964380917, guid: cd96556da7c1da34a8470071fdef2541, type: 3}

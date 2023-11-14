@@ -57,7 +57,7 @@ public class EnemyMeleeAttackState : State<EnemyBehavior>
     {
         Vector3 playerPosition = _myContext.LookTarget.transform.position;
         Vector3 playerToEnemy = _myContext.transform.position - playerPosition;
-        Vector3 playerToDestination =  EnemyTester.s_playerPhysics.velocity * ATTACKDURATION;
+        Vector3 playerToDestination =  PlayerManager.CurrentVelocity * ATTACKDURATION;
         float playerAngle = Vector3.SignedAngle(playerToEnemy, playerToDestination, Vector3.up); 
         Vector3 playerDestinationToEnemy = _myContext.transform.position - (playerPosition + playerToDestination);
         float anticipationAngle = Vector3.SignedAngle(playerDestinationToEnemy, -playerToDestination, Vector3.up);

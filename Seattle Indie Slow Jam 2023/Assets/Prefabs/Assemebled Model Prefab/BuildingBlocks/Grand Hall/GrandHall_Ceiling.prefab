@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3354676832344747733}
   - component: {fileID: 1361901850602517015}
   - component: {fileID: 8337800173004558649}
+  - component: {fileID: -6986953909163998886}
   m_Layer: 0
   m_Name: GrandHall_Ceiling
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-6986953909163998886
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293006891858966286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2880184359276925020, guid: 74ab0a42402f9be4c96c4a8277daf14b, type: 3}

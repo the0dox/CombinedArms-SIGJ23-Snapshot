@@ -11,6 +11,7 @@ public class EnemyWeaponBehavior : MonoBehaviour
     public Transform RightHandRigTarget => _rightHandRigTarget;
     public RagdollSpawner MySpawner => _mySpawner;
     public State<EnemyBehavior> AttackState => EnemyStateFactory.BuildState(_attackState);
+    public AudioClip SoundFX => _soundFX;
 
     // reference to the left arm attach point of the weapon
     [SerializeField] private Transform _leftHandRigTarget;
@@ -20,5 +21,7 @@ public class EnemyWeaponBehavior : MonoBehaviour
     [SerializeField] private RagdollSpawner _mySpawner;
     // matches a particular weapon type to an attack pattern
     [SerializeField] private StateKey _attackState;
+    // the sound the enemy should play when firing this weapon type
+    [SerializeField] private AudioClip _soundFX;
 
 }

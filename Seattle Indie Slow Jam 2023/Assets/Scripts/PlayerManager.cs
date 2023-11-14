@@ -34,6 +34,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     int nextPlacement;
     private float eatTimer;
 
+    private Rigidbody physicsBody;
+    public static Vector3 CurrentVelocity => instance.physicsBody.velocity;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -42,6 +44,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     void Start()
     {
         currentHealth = health;
+        physicsBody = GetComponent<Rigidbody>();
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
         maxPlaceOffset = placeOffsetAmount;
