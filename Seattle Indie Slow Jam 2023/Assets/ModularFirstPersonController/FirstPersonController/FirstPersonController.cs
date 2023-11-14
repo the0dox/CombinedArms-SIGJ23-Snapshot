@@ -383,8 +383,8 @@ public class FirstPersonController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(rb.velocity);
         #region Movement
-
         if (playerCanMove)
         {
             // Calculate how fast we should be moving
@@ -473,7 +473,7 @@ public class FirstPersonController : MonoBehaviour
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
 
-                rb.AddForce(velocityChange, ForceMode.VelocityChange);
+                if(isGrounded || GamePhysics.worldVelocity.magnitude < 0.1f) rb.AddForce(velocityChange, ForceMode.VelocityChange);
                 //Sweep check to avoid getting stuck on a wall
                 float distance = rb.velocity.magnitude * Time.fixedDeltaTime;
                 RaycastHit info;
@@ -499,6 +499,7 @@ public class FirstPersonController : MonoBehaviour
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
+            if(isGrounded == false) GamePhysics.worldVelocity = Vector3.zero;
             isGrounded = true;
         }
         else

@@ -23,7 +23,7 @@ public static class GamePhysics
     private static readonly float EXPLOSIONMULTIPLIER = 2;
     // how much less force is applied to the player
     private static readonly float PLAYERMULTIPLER = 0.1f;
-
+    public static Vector3 worldVelocity = Vector3.zero;
     // applies force to a rigid body from a point origin and a given amount of damage
     private static void ApplyDamageForce(this Rigidbody affectedBody, Vector3 damageOrigin, float damage, bool explosion = false, bool isPlayer = false)
     {
@@ -31,10 +31,11 @@ public static class GamePhysics
         if(affectedBody.angularVelocity.magnitude < MAXIMUMANGULARVELOCITY)
         {
             Vector3 relativeAngle = affectedBody.transform.position - damageOrigin;
-            relativeAngle = 5f * new Vector3(relativeAngle.x, 0, relativeAngle.z).normalized + new Vector3(0, FORCEYOFFSET + Mathf.Clamp(YMAGNITUDEMODIFIER * damage, 0, YMAXNITUDEMAX), 0);
+            relativeAngle = new Vector3(relativeAngle.x, 0, relativeAngle.z).normalized + new Vector3(0, FORCEYOFFSET + Mathf.Clamp(YMAGNITUDEMODIFIER * damage, 0, YMAXNITUDEMAX), 0);
             float force = Mathf.Clamp(damage * MAGNITUDEMODIFIER, 0, MAXMAGNITUDE);
             force *= explosion ? EXPLOSIONMULTIPLIER : 1;
             force *= isPlayer ? PLAYERMULTIPLER : 1;
+            worldVelocity += relativeAngle* force; //add to the world velocity
             affectedBody.AddForce(relativeAngle * force, ForceMode.Impulse);
         }
         else
