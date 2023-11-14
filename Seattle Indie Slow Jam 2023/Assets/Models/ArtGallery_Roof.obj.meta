@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 883b5cf0516a0a24e9c79f7eb44cbc10
+guid: f0e6d55bfc138cf438f66b929baeac4f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MuseumGalleryMesh4Mat
+    second: {fileID: 2100000, guid: f8e1cc44b579b6f479ed99f19e49794d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

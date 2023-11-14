@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 813e578d607edee409c4111b12120f20
+guid: 460434e806caba640bbcb68e4eba3394
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NautralHistoryGallery1Mat
+    second: {fileID: 2100000, guid: 5ddc1e15769e6764395644751fcf10e3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

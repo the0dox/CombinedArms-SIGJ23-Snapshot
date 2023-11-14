@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 5ac9c61655cd9be48be1b4b24747ff19
+guid: 6a78e7d1d8383d0479b2a9d3301d46c6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SoloPillar8Mat
+    second: {fileID: 2100000, guid: 2ad4e0ca573c55e47947b66b21f78843, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
