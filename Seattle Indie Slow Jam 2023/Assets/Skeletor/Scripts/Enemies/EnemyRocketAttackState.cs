@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // created by Skeletor
-// the state in which the enemy make an a attack and a target
-public class EnemyAttackState : State<EnemyBehavior>
+// the state in which the enemy will fire a rocket at the player
+public class EnemyRocketAttackState : State<EnemyBehavior>
 {
     // temporary variables
-    private const float ATTACKWINDUP = 1.5f;
+    private const float ATTACKWINDUP = 2f;
     private const float ATTACKWINDDOWN = 0.25f;
 
     private float _attackTimer;
@@ -33,7 +33,15 @@ public class EnemyAttackState : State<EnemyBehavior>
         _attackTimer -= Time.deltaTime;
         if(_attackTimer < 0)
         {
-            Attack();
+            Vector3 enemyToPlayer = _myContext.LookTarget.transform.position - _myContext.transform.position;
+            if(Physics.Raycast(_myContext.transform.position, enemyToPlayer, enemyToPlayer.magnitude, LayerMask.GetMask("Terrain")))
+            {
+                _myContext.SetState(_myContext.Approach);
+            }
+            else
+            {
+                Attack();
+            }
         }
     }
 
@@ -58,7 +66,7 @@ public class EnemyAttackState : State<EnemyBehavior>
     void Attack()
     {
         Vector3 attackVector = (_myContext.LookTarget.transform.position - _myContext.VisionTransform.position).normalized;
-        GameObject projectile = ObjectLoader.LoadObject("Projectile");
+        GameObject projectile = ObjectLoader.LoadObject("Rocket");
         projectile.transform.position = _myContext.VisionTransform.position + (attackVector * 2);
         projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
         _myContext.SetState(_myContext.Approach);

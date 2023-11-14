@@ -71,7 +71,8 @@ public class EnemyBurstAttackState: State<EnemyBehavior>
             , Mathf.Sin(yaw)* Mathf.Sin(ang), Mathf.Sin(yaw)* Mathf.Cos(yaw));
             Attack(attackVector + spread);
         }
-        _myContext.SetState(_myContext.Approach);
+        _myContext.SetState(_myContext.Approach);    
+        _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }
 
     void Attack(Vector3 attackVector)
