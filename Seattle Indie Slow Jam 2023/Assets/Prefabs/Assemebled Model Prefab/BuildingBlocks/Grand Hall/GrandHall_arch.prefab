@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5078594345140507}
   - component: {fileID: 6084981465383783101}
   - component: {fileID: 3038569776396962067}
+  - component: {fileID: 5983952352168089029}
   m_Layer: 0
   m_Name: GrandHall_arch
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5983952352168089029
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881111195615872599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -70007914455661569, guid: 76673c945ba9fcb4f9bd3db6cb304398, type: 3}

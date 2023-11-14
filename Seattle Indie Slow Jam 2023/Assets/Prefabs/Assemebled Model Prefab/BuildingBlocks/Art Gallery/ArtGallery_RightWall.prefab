@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5389070280668728390}
   - component: {fileID: 2171605894707850352}
   - component: {fileID: 4236891012768617429}
+  - component: {fileID: 3076169370300413868}
   m_Layer: 0
   m_Name: ArtGallery_RightWall
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3076169370300413868
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722835702670846555}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1419225569670015297, guid: 3679eaff9acbf5a4aa8340b431796a07, type: 3}
