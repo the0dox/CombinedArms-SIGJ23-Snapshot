@@ -12,9 +12,6 @@ public class Door : MonoBehaviour, IAttackable
 
     public int CutCascades = 1;
     public float ExplodeForce = 0;
-    public bool Destructible = true;
-    public float health = 100;
-
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +22,10 @@ public class Door : MonoBehaviour, IAttackable
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    DestroyMesh();
-        //}
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DestroyMesh();
+        }
     }
 
     private void DestroyMesh()
@@ -76,7 +73,7 @@ public class Door : MonoBehaviour, IAttackable
         for (var i = 0; i < parts.Count; i++)
         {
             parts[i].MakeGameobject(this);
-            parts[i].GameObject.GetComponent<Rigidbody>().AddForceAtPosition((parts[i].Bounds.center /*- Vector3.forward*/) * ExplodeForce, transform.position);
+            parts[i].GameObject.GetComponent<Rigidbody>().AddForceAtPosition((parts[i].Bounds.center - Vector3.forward) * ExplodeForce, transform.position);
         }
 
         Destroy(gameObject);
@@ -308,31 +305,6 @@ public class Door : MonoBehaviour, IAttackable
     //Austin: I could not get this working for the life of me
     public void TakeDamage(Vector3 source, float damage)
     {
-        if (Destructible)
-        {
-            health -= damage;
-
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(0,2);
-            float vibrateoffset = 0;
-
-            if (num == 0)
-            {
-                vibrateoffset = -0.005f;
-            }
-            if (num == 1)
-            {
-                vibrateoffset = 0.005f;
-            }
-
-            transform.localPosition = new Vector3(transform.localPosition.x - vibrateoffset, transform.localPosition.y - vibrateoffset, transform.localPosition.z - vibrateoffset);
-
-            if (health <= 0)
-            {
-                DestroyMesh();
-            }
-
-        }
-        
+        DestroyMesh();
     }
 }

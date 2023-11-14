@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 0ceb30289d68ab442b3d0f4f93a6b303
+guid: c2d2f5d101496954789f8305e8853387
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lights1Mat
-    second: {fileID: 2100000, guid: cfd8599df4ba5884eb35e3a486e8180d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

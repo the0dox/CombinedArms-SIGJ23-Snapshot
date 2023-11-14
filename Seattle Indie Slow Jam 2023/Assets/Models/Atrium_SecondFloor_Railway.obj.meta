@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 7bb2628b79577954c9d6afca78372200
+guid: 605df62d1ec6b304db6287e6255d0a3a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atrium_Railing_Big16Mat
-    second: {fileID: 2100000, guid: 4d4e9fd571905384b801c66f2c7b116d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 59c19138beddeb849a0c07de745ff988
+guid: c33ca59efe40fcc4eb01a2c8af6064cc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TriangleFixtureMat
-    second: {fileID: 2100000, guid: 09da869d6b799174788efa72f30fa542, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

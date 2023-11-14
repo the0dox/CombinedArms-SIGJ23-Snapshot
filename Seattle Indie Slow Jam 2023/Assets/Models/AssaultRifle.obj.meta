@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pasted__polySurface35_pasted__polySurface33_groupMat
-    second: {fileID: 2100000, guid: eb294de2de7f5d644afd8cd8dc6c0a5f, type: 2}
+    second: {fileID: 2100000, guid: 274b02618665b7b41a5a6818b47e517a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
