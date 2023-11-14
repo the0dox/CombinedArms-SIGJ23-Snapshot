@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2435814870914326716}
   - component: {fileID: 4012468968076137546}
   - component: {fileID: 3041492999521287121}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ArtGallery_C1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

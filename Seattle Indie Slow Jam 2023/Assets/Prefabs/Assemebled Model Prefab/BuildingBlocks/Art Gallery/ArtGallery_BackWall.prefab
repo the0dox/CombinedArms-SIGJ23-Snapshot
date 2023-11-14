@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6564163021341769750}
   - component: {fileID: 3121860282338518954}
   - component: {fileID: 2820555384894578867}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ArtGallery_BackWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

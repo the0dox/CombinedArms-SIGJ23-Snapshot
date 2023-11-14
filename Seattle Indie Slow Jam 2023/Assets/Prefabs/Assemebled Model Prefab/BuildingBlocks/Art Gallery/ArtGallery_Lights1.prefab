@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7016550183436065884}
   - component: {fileID: 4315659417697608881}
   - component: {fileID: 4093738280150413573}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ArtGallery_Lights1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

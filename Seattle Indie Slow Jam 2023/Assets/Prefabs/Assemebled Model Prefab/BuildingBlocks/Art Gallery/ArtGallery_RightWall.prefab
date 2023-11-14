@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6249897750756550838}
   - component: {fileID: 4693040699540512018}
   - component: {fileID: 4186077862388361871}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ArtGallery_RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

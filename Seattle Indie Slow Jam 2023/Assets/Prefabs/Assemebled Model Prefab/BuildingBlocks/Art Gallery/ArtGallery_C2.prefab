@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2111065229197290051}
   - component: {fileID: 8302926445370274502}
   - component: {fileID: 2147691615781819909}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: ArtGallery_C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
