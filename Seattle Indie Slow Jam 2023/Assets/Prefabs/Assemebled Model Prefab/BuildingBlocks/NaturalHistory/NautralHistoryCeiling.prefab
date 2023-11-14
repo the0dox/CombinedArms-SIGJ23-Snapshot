@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 218578380995686240}
   - component: {fileID: 7674736222748756619}
   - component: {fileID: 36202714607779545}
+  - component: {fileID: -5931773525178775727}
   m_Layer: 0
   m_Name: NautralHistoryCeiling
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-5931773525178775727
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692814186150762555}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6859127493944159880, guid: 460434e806caba640bbcb68e4eba3394, type: 3}
