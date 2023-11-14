@@ -9,7 +9,8 @@ public static class EnemyStateFactory
     {
         {StateKey.SimpleAttack, () => new EnemyAttackState()},
         {StateKey.StrafeVolley, () => new EnemyStrafeVolleyState()},
-        {StateKey.Burst, () => new EnemyBurstAttackState()}
+        {StateKey.Burst, () => new EnemyBurstAttackState()},
+        {StateKey.Rocket, () => new EnemyRocketAttackState()}
     }; 
 
     public static State<EnemyBehavior> BuildState(StateKey key)
@@ -28,4 +29,5 @@ public enum StateKey
     SimpleAttack,
     StrafeVolley,
     Burst,
+    Rocket,
 }
