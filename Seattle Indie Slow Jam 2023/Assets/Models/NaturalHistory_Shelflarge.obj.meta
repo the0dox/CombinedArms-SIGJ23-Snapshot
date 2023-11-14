@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: a7a1fe674fb89ec449911371a42d59bc
+guid: e4ad2030ee68a1f41b78b34adc29d317
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShelfLargeMat
+    second: {fileID: 2100000, guid: b1e213a783a73f24a9e416864e7c0a3d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

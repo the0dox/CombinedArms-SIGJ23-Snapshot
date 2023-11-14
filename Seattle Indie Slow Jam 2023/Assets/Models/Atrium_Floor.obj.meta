@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: fea27b3ed324f49439733a0662b3c8f1
+guid: 916512b0d4cf35948992699335fb9e8a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atrium_FloorMat
+    second: {fileID: 2100000, guid: 79512f586d86a214f880f70b138285ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

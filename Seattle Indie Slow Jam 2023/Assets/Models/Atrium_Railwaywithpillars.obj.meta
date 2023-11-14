@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 2040144c8370d9f499dd5b1dfe8e68e7
+guid: 4327c579f3df76b4b9393102ad071156
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RailwayMat
+    second: {fileID: 2100000, guid: bdf954d85d4e2494484f184edf867f46, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
