@@ -3625,7 +3625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1840861491125943239
 Transform:
   m_ObjectHideFlags: 0
@@ -3686,6 +3686,7 @@ MonoBehaviour:
   weaponSpread: 30
   numOfBullets: 6
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -3771,6 +3772,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 0
+  useBullets: 1
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}

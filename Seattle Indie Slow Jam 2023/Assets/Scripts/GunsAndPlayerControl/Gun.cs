@@ -15,6 +15,7 @@ public class Gun : MonoBehaviour
     public float weaponSpread = 0f;
     public int numOfBullets = 1;
     public bool isAuto = true;
+    public bool useBullets = false;
     public AnimationClip fireAni;
     public AnimationClip reloadAni;
     public AudioClip fireSound;
@@ -121,10 +122,19 @@ public class Gun : MonoBehaviour
                 info.point = Camera.main.transform.position + camDir.normalized * range;
                     //this.transform.GetChild(0).position +  dir.normalized * range;
             }
-            TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
-            t.transform.position = this.transform.GetChild(0).position;
+            if (useBullets)
+            {
+                GameObject g = ObjectLoader.LoadObject(bullet.name);
+                g.transform.position = this.transform.GetChild(0).position;
+                g.GetComponent<Bullet>().dir = camDir;
+            }
+            else
+            {
+                TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
+                t.transform.position = this.transform.GetChild(0).position;
                 //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
-            StartCoroutine(HitscanTrail(t,info));
+                StartCoroutine(HitscanTrail(t, info));
+            }
         }
         barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
@@ -162,6 +172,7 @@ public class Gun : MonoBehaviour
         t.transform.gameObject.SetActive(false);
         //Destroy(t.gameObject, t.time);
     }
+    [System.Obsolete]
     void FireWeaponBullet()
     {
         if (!isFiring) return;
