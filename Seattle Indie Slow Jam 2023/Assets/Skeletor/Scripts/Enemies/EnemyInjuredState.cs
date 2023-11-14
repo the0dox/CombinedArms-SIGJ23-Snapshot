@@ -15,6 +15,7 @@ public class EnemyInjuredState : State<EnemyBehavior>
     {
         _myContext.ToggleNavAgent(false);
         _myContext.AnimationComponent.SetTrigger("Hurt");
+        _myContext.PlaySound(_myContext.HurtSound);
         _stunTimer = STUNDURATION;
     }
 
