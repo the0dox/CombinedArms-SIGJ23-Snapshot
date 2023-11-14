@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 3800731084933936281}
   - component: {fileID: 4829034791416746393}
   - component: {fileID: 1466253713764530359}
-  - component: {fileID: 6543653702527728095}
+  - component: {fileID: 6564163021341769750}
+  - component: {fileID: 3121860282338518954}
+  - component: {fileID: 2820555384894578867}
   m_Layer: 0
   m_Name: ArtGallery_BackWall
   m_TagString: Untagged
@@ -84,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6543653702527728095
-MeshCollider:
+--- !u!65 &6564163021341769750
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +96,32 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1256576213468983573, guid: 66fec7c752ebdd14485fdc1901dd9efc, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 52.434105, y: 85.55389, z: 10.705417}
+  m_Center: {x: -581.8775, y: 52.450974, z: -89.63762}
+--- !u!65 &3121860282338518954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966488529223566219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 34.039635, y: 85.55389, z: 10.705417}
+  m_Center: {x: -508.18182, y: 52.450974, z: -89.63762}
+--- !u!65 &2820555384894578867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966488529223566219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30.90793, y: 33.90639, z: 10.705417}
+  m_Center: {x: -540.6483, y: 78.27466, z: -89.63762}

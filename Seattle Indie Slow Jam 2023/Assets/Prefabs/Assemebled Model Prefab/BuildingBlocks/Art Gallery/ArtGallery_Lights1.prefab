@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7434035277734770921}
   - component: {fileID: 7016550183436065884}
   - component: {fileID: 4315659417697608881}
-  - component: {fileID: -6786325471513844324}
+  - component: {fileID: 4093738280150413573}
   m_Layer: 0
   m_Name: ArtGallery_Lights1
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-6786325471513844324
-MeshCollider:
+--- !u!65 &4093738280150413573
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8610555485164514027, guid: 0ceb30289d68ab442b3d0f4f93a6b303, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 4.944016, y: 7.612687, z: 100.29218}
+  m_Center: {x: -14.42437, y: 99.32684, z: 2.0247538}

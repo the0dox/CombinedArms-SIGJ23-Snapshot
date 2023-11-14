@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3641483852382209872}
   - component: {fileID: 2111065229197290051}
   - component: {fileID: 8302926445370274502}
-  - component: {fileID: -7173702675310686211}
+  - component: {fileID: 2147691615781819909}
   m_Layer: 0
   m_Name: ArtGallery_C2
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-7173702675310686211
-MeshCollider:
+--- !u!65 &2147691615781819909
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2086640285184797774, guid: be6cfd037390fdf46a45cfbe4a4be2c6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.790848, y: 33.96336, z: 46.793934}
+  m_Center: {x: 52.935913, y: 56.794186, z: 172.85637}
