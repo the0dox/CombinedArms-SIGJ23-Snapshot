@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5707131653871603733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1050560687805718487}
+  - component: {fileID: 5421220368371859803}
+  m_Layer: 0
+  m_Name: ViewModelCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1050560687805718487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707131653871603733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5948390619437411922}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &5421220368371859803
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707131653871603733}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 90
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &5948390618958969431
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +235,7 @@ Transform:
   - {fileID: 5948390619670482640}
   - {fileID: 8027792450717937872}
   - {fileID: 7557827211574196079}
+  - {fileID: 1050560687805718487}
   m_Father: {fileID: 5948390619627870423}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,7 +270,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147487735
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -784,9 +860,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5948390619437411922}
     m_Modifications:
+    - target: {fileID: 8528583599855097527, guid: f33d3a2fc785a334dbecf4abdce90121, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8528583600250813792, guid: f33d3a2fc785a334dbecf4abdce90121, type: 3}
       propertyPath: m_Name
       value: GunProtyoe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528583600250813792, guid: f33d3a2fc785a334dbecf4abdce90121, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8528583600250813792, guid: f33d3a2fc785a334dbecf4abdce90121, type: 3}
       propertyPath: m_IsActive
@@ -866,9 +950,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5948390619437411922}
     m_Modifications:
+    - target: {fileID: 3616312025483567355, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813205257581394397, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4781947733604480584, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
       propertyPath: m_Name
       value: Revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781947733604480584, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5266736065691708658, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
       propertyPath: m_RootOrder
@@ -933,6 +1029,18 @@ PrefabInstance:
     - target: {fileID: 5664839974078453050, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664839974078453051, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664839974305217764, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5664839974370039275, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}

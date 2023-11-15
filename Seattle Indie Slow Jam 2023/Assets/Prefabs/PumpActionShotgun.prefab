@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 573074165474129277}
   - component: {fileID: 573074165474129267}
   - component: {fileID: 573074165474129266}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PumpActionShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,6 +66,7 @@ MonoBehaviour:
   hitscanBullet: {fileID: 6243618347938933727, guid: 10d44ade5cfc5224a83eeacdb80778e8, type: 3}
   UsesUI: 1
   ammoUI: {fileID: 2197750224238616790}
+  barrel: {fileID: 0}
 --- !u!95 &573074165474129266
 Animator:
   serializedVersion: 5
@@ -98,7 +99,7 @@ GameObject:
   - component: {fileID: 3915424176332701445}
   - component: {fileID: 4477139935068910366}
   - component: {fileID: 5425943796190404518}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: polySurface38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +182,7 @@ GameObject:
   - component: {fileID: 2197750223449957232}
   - component: {fileID: 2197750223449957238}
   - component: {fileID: 2197750223449957233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,7 @@ GameObject:
   - component: {fileID: 2197750224034397810}
   - component: {fileID: 2197750224034397821}
   - component: {fileID: 2197750224034397820}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +508,7 @@ GameObject:
   - component: {fileID: 2197750224238616791}
   - component: {fileID: 2197750224238616789}
   - component: {fileID: 2197750224238616788}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

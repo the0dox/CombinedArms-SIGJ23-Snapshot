@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2725645528157021927}
   - component: {fileID: 4524283833597735998}
   - component: {fileID: 509133944385914976}
-  - component: {fileID: -4945706809012668895}
-  m_Layer: 0
+  - component: {fileID: 4013707239363746285}
+  m_Layer: 31
   m_Name: Atrium_RailingSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-4945706809012668895
-MeshCollider:
+--- !u!65 &4013707239363746285
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8662054461312246208, guid: a240e6e759b48974a84e74d130bd1701, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 27.11499, y: 309.3335, z: 52.13037}
+  m_Center: {x: 2590.2563, y: 3142.3108, z: -1335.2008}

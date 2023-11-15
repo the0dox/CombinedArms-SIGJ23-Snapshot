@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2238325657317272432}
   - component: {fileID: 7653932876986046880}
   - component: {fileID: 607668626541573615}
-  - component: {fileID: 1764862076711377798}
-  m_Layer: 0
+  - component: {fileID: 1011767624381877003}
+  m_Layer: 31
   m_Name: ArtGallery_LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6746272703932834302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1764862076711377798
-MeshCollider:
+--- !u!65 &1011767624381877003
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4004774375831823772, guid: b90aacef6cc75214189f6ed0e1d72ae8, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.7393954, y: 83.22446, z: 178.44823}
+  m_Center: {x: -136.65776, y: 53.61569, z: 1.4327317}

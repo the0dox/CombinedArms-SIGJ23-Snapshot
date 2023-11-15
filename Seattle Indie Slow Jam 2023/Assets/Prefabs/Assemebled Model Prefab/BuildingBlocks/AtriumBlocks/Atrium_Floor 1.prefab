@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1597425650708335349}
   - component: {fileID: 7311163049335719992}
   - component: {fileID: 7884611227619884441}
-  - component: {fileID: 2598711825144147181}
-  m_Layer: 0
+  - component: {fileID: 4682138064926820426}
+  m_Layer: 31
   m_Name: Atrium_Floor 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2598711825144147181
-MeshCollider:
+--- !u!65 &4682138064926820426
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5786352474729385974, guid: 5427864a97ac21142b57d6153287ca02, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 712.6826, y: 128.3601, z: 2048.4211}
+  m_Center: {x: 2838.055, y: 3601.0117, z: -195.90134}
