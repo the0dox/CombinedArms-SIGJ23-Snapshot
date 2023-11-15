@@ -634,7 +634,7 @@ MonoBehaviour:
   sprintBarHeightPercent: 0.02
   enableJump: 1
   jumpKey: 32
-  jumpPower: 6.01
+  jumpPower: 7.5
   enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
