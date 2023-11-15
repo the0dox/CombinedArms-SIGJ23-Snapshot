@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 71499389295533352}
   - component: {fileID: 561270717947963790}
   - component: {fileID: 8552794849393415482}
-  - component: {fileID: -6931233020917041457}
-  m_Layer: 0
+  - component: {fileID: 1035470576613842184}
+  m_Layer: 31
   m_Name: SoloPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-6931233020917041457
-MeshCollider:
+--- !u!65 &1035470576613842184
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 524190345336733778, guid: 6a78e7d1d8383d0479b2a9d3301d46c6, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 42.2417, y: 98.21094, z: 90.58569}
+  m_Center: {x: 2558.78, y: 3710.86, z: -1077.9819}

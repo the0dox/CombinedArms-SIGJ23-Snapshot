@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5377872386793733848}
   - component: {fileID: 3993483622368910063}
   - component: {fileID: 7856793333489668783}
-  - component: {fileID: -8669923420788137445}
-  m_Layer: 0
+  - component: {fileID: 6911244162123877003}
+  m_Layer: 31
   m_Name: Railway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-8669923420788137445
-MeshCollider:
+--- !u!65 &6911244162123877003
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7931489899688698970, guid: 4327c579f3df76b4b9393102ad071156, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 130.79117, y: 104.34082, z: 674.2705}
+  m_Center: {x: 1790.1259, y: 2308.7734, z: -253.80118}

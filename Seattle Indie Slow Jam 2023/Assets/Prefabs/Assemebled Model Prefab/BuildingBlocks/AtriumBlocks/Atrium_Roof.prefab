@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 407496624429335583}
   - component: {fileID: 1601191989088555491}
   - component: {fileID: 811625963803901821}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Atrium_Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
