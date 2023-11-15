@@ -198,15 +198,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     // checks to see if the player is within the vision range, switches the enemy to approach the enemy
     public void LookForPlayer()
     {
-        if(Vector3.Distance(_visionTransform.position, PlayerManager.instance.transform.position) < _visionRadius)
+        if(_lookTarget != null)
         {
-            SetLookTarget(PlayerManager.instance.transform);
-            SetState(_approach);
-            Debug.Log("found player approaching");
-        }
-        else
+            SetState(_approach);    
+        } 
+        else if(PlayerManager.instance != null)
         {
-            Debug.Log("unable to find player, waiting");
+            Vector3 enemyToPlayer = PlayerManager.instance.transform.position - _visionTransform.position;
+            if(enemyToPlayer.magnitude < _visionRadius && !Physics.Raycast(_visionTransform.position, enemyToPlayer, enemyToPlayer.magnitude, LayerMask.GetMask("Terrain")))
+            {
+                SetLookTarget(PlayerManager.instance.transform);
+                SetState(_approach);
+            }
         }
     }
 
