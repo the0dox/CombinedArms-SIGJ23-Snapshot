@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7884611227619884441}
   - component: {fileID: 4682138064926820426}
   m_Layer: 31
-  m_Name: Atrium_Floor 1
+  m_Name: Atrium_FloorMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8038784077399399259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 22.098032, y: -17.331398, z: -0.13000059}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.02, y: 0.01, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
