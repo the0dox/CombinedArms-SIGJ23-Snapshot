@@ -26,12 +26,15 @@ public class Gun : MonoBehaviour
     public bool UsesUI = false;
     public GameObject ammoUI;
     public AudioSource barrel;
+    [SerializeField]
+    ParticleSystem smoke;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
     bool isFiring = false;
     bool hasFired = false;
+    bool smokeOn = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,13 @@ public class Gun : MonoBehaviour
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
+                if(smoke != null)
+                {
+                    AnimationEvent s = new AnimationEvent();
+                    s.time = 0;
+                    s.functionName = "PlaySmoke";
+                    a.AddEvent(s);
+                }
             }
             startPos = this.transform.localPosition;
         }
@@ -92,6 +102,12 @@ public class Gun : MonoBehaviour
             }
         }
         */
+    }
+    void PlaySmoke()
+    {
+        smoke.Play();
+        Debug.Log("SMOKE");
+        smokeOn = true;
     }
     void EndFire()
     {
@@ -246,6 +262,14 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (smokeOn)
+        {
+            if (smoke.time > 2f)
+            {
+                smoke.Stop();
+                smokeOn = false;
+            }
+        }
         //Debug.Log(PlayerManager.instance.gunsReloading);
         //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
         if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1

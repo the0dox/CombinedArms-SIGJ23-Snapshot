@@ -57,6 +57,7 @@ MonoBehaviour:
   weaponSpread: 30
   numOfBullets: 6
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -67,6 +68,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 2197750224238616790}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &573074165474129266
 Animator:
   serializedVersion: 5
@@ -532,7 +534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.081, y: 0.2}
+  m_AnchoredPosition: {x: -0.09, y: 0.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2197750224238616789

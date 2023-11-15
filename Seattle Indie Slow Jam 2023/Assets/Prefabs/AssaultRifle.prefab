@@ -68,6 +68,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 2840402272750596987}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &1862821628627486040
 Animator:
   serializedVersion: 5
@@ -225,7 +226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.181, y: 0.2}
+  m_AnchoredPosition: {x: -0.081, y: 0.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2840402272750596990
