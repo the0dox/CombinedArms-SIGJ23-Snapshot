@@ -248,8 +248,16 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     void AnimateMotion()
     {
         _relativeVelocity = transform.InverseTransformVector(_myVelocity.CurrentVelocity);
-        _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z, 0.1f, Time.deltaTime);
-        _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x, 0.1f, Time.deltaTime);
+        _animationComponent.SetFloat("Vertical_f", _relativeVelocity.z, 0.1f,  Time.unscaledDeltaTime);
+        _animationComponent.SetFloat("Horizontal_f", _relativeVelocity.x, 0.1f, Time.unscaledDeltaTime);
+        if(float.IsNaN(_animationComponent.GetFloat("Vertical_f")))
+        {
+            _animationComponent.SetFloat("Vertical_f", 0);
+        }   
+        if(float.IsNaN(_animationComponent.GetFloat("Horizontal_f")))
+        {
+            _animationComponent.SetFloat("Horizontal_f", 0);
+        }
     
         if(_lookTarget == null)
         {
