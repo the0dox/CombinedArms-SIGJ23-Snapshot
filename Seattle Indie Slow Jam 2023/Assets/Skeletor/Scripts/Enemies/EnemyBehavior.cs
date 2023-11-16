@@ -15,7 +15,7 @@ using UnityEditor;
 
 // created by Skeletor
 // primary state machine that drives enemy behavior
-[RequireComponent(typeof(VelocityTracker))]
+[RequireComponent(typeof(VelocityTracker)), DefaultExecutionOrder(100)]
 public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
 {
     // public accessors
@@ -50,16 +50,20 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField, Range(0.0f, 50.0f)] private float _visionRadius;
     // the radius at which the enemy will attack the player
     [SerializeField, Range(0.0f, 50.0f)] private float _attackRadius;
+    // the radius at which the enemy will attack the player
+    [SerializeField, Range(0.0f, 1f)] private float _dropRate;
     // how much will the enemy aim to move within it's minimum attack range
     [SerializeField] private float _repositionVariance;
     // how often should the enemy choose to recalculate their move destination
     [SerializeField] private float _repositionRefreshRate;
+    // speed that the enemy can rotate its transform
+    [SerializeField] private float _turnSpeed;
+    // reference to any possible weapon prefabs this enemy could equip
+    [SerializeField] private GameObject _startingWeapon;
     // the transform that the enemy draws vision and attacks from
     [SerializeField] protected Transform _visionTransform;
     // the time in seconds the enemy must wait before attacking again
     [SerializeField] private FloatRange _attackCooldownDuration;
-    // speed that the enemy can rotate its transform
-    [SerializeField] private float _turnSpeed;
     // used to control movement
     [SerializeField] private NavMeshAgent _myAgent;
     // used to control animation
@@ -74,8 +78,6 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     [SerializeField] private GroundedCheck _myGroundCheck;
     // used to handle any weapons this enemy has equipped
     [SerializeField] private EnemyLoadoutBehavior _loadout;
-    // reference to any possible weapon prefabs this enemy could equip
-    [SerializeField] private GameObject[] WeaponPrefabs;
     private VelocityTracker _myVelocity;
     // the current amount of health this enemy has
     private float _health;
@@ -131,7 +133,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _idle = new EnemyIdleState();
         _approach = new EnemyRepositionState();
         _hurt = new EnemyInjuredState();
-        Loadout.EquipWeapon(WeaponPrefabs.GetRandomElement());
+        Loadout.EquipWeapon(_startingWeapon);
         _attack = Loadout.ActiveWeapon.AttackState;
     }
 
@@ -186,7 +188,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     protected virtual void OnDeath()
     {
         AudioSource.PlayClipAtPoint(_deathSound, _visionTransform.position, 3);
-        _loadout.DropWeapon();       
+        _loadout.DropWeapon(_dropRate);       
     }
 
     // can be used to enable/disable the status of alpha* movement of the enemy

@@ -35,11 +35,14 @@ public class EnemyLoadoutBehavior : MonoBehaviour
     }
 
     // unassigns weapon and drops a weapon where it was
-    public void DropWeapon()
+    public void DropWeapon(float spawnRate = 1)
     {
         if(_activeWeapon != null)
         {
-            _activeWeapon.MySpawner.SpawnRagdoll();
+            if(Random.Range(0,1f) <= spawnRate)
+            {
+                _activeWeapon.MySpawner.SpawnRagdoll();
+            }
             _activeWeapon.transform.SetParent(null);
             _activeWeapon.gameObject.SetActive(false);    
         }

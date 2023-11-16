@@ -378,11 +378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &125691536 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9103402722983778866, guid: 75f5fb5f651a22147a036686ddb4dd69, type: 3}
-  m_PrefabInstance: {fileID: 83256629050666806}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &134520199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,52 +1192,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1472354632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1472354633}
-  - component: {fileID: 1472354634}
-  m_Layer: 0
-  m_Name: ExplosionLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1472354633
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472354632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 125691536}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1472354634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472354632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4e5d4b621625d41b3b625113986b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 6479971688928850867, guid: d12b4578f772f0e48bbf8d8eff335d22, type: 3}
-  _count: 20
 --- !u!1001 &1566072801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2242,14 +2191,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GodLoader
       objectReference: {fileID: 0}
-    - target: {fileID: 660782901906366109, guid: 75f5fb5f651a22147a036686ddb4dd69, type: 3}
-      propertyPath: _count
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 660782901906366109, guid: 75f5fb5f651a22147a036686ddb4dd69, type: 3}
-      propertyPath: _prefab
-      value: 
-      objectReference: {fileID: 6467927664716101335, guid: 2f3937bb8c9d85945aa128c5bc35e890, type: 3}
     - target: {fileID: 9103402722983778866, guid: 75f5fb5f651a22147a036686ddb4dd69, type: 3}
       propertyPath: m_RootOrder
       value: 22
