@@ -15,6 +15,7 @@ public class Gun : MonoBehaviour
     public float weaponSpread = 0f;
     public int numOfBullets = 1;
     public bool isAuto = true;
+    public bool useBullets = false;
     public AnimationClip fireAni;
     public AnimationClip reloadAni;
     public AudioClip fireSound;
@@ -25,12 +26,15 @@ public class Gun : MonoBehaviour
     public bool UsesUI = false;
     public GameObject ammoUI;
     public AudioSource barrel;
+    [SerializeField]
+    ParticleSystem smoke;
     float ammoCount;
     Animator animator;
     MeshRenderer renderer;
     bool isReloading = false;
     bool isFiring = false;
     bool hasFired = false;
+    bool smokeOn = false;
     Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,13 @@ public class Gun : MonoBehaviour
                 e.time = 0;
                 e.functionName = "FireWeapon";
                 a.AddEvent(e);
+                if(smoke != null)
+                {
+                    AnimationEvent s = new AnimationEvent();
+                    s.time = 0;
+                    s.functionName = "PlaySmoke";
+                    a.AddEvent(s);
+                }
             }
             startPos = this.transform.localPosition;
         }
@@ -92,6 +103,12 @@ public class Gun : MonoBehaviour
         }
         */
     }
+    void PlaySmoke()
+    {
+        smoke.Play();
+        Debug.Log("SMOKE");
+        smokeOn = true;
+    }
     void EndFire()
     {
         this.transform.localPosition = startPos;
@@ -121,10 +138,19 @@ public class Gun : MonoBehaviour
                 info.point = Camera.main.transform.position + camDir.normalized * range;
                     //this.transform.GetChild(0).position +  dir.normalized * range;
             }
-            TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
-            t.transform.position = this.transform.GetChild(0).position;
+            if (useBullets)
+            {
+                GameObject g = ObjectLoader.LoadObject(bullet.name);
+                g.transform.position = this.transform.GetChild(0).position;
+                g.transform.LookAt(info.point);
+            }
+            else
+            {
+                TrailRenderer t = ObjectLoader.LoadObject(hitscanBullet.name).GetComponent<TrailRenderer>();
+                t.transform.position = this.transform.GetChild(0).position;
                 //Instantiate(hitscanBullet, this.transform.GetChild(0).position, Quaternion.identity);
-            StartCoroutine(HitscanTrail(t,info));
+                StartCoroutine(HitscanTrail(t, info));
+            }
         }
         barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
@@ -162,6 +188,7 @@ public class Gun : MonoBehaviour
         t.transform.gameObject.SetActive(false);
         //Destroy(t.gameObject, t.time);
     }
+    [System.Obsolete]
     void FireWeaponBullet()
     {
         if (!isFiring) return;
@@ -237,6 +264,14 @@ public class Gun : MonoBehaviour
     {
         if(!PauseMenu.GameIsPaused)
         {
+            if (smokeOn)
+            {
+                if (smoke.time > 2f)
+                {
+                    smoke.Stop();
+                    smokeOn = false;
+                }
+            }
             //Debug.Log(PlayerManager.instance.gunsReloading);
             //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
             if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1

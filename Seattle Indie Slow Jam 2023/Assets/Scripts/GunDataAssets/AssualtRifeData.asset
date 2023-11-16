@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
+  m_Name: AssualtRifeData
+  m_EditorClassIdentifier: 
+  firerate: 10
+  firerateRange: {x: 8, y: 11}
+  dmg: 5
+  dmgRange: {x: 4, y: 6}
+  reloadSpeed: 2
+  reloadSpeedRange: {x: 1, y: 3}
+  spreadAngle: 10
+  spreadAngleRange: {x: 10, y: 15}
+  numOfBullets: 1
+  numOfBulletsRange: {x: 1, y: 6}
+  ammoTotal: 100
+  ammoPerBullet: 1
+  range: 10
+  gunColor: {r: 1, g: 0, b: 0, a: 1}
+  gunPrefab: {fileID: 1862821628627486055, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
+  isEnemy: 0
+  gunDrop: {fileID: 0}

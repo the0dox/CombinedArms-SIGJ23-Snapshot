@@ -1,9 +1,44 @@
 fileFormatVersion: 2
-guid: a0cc48870bb0ec94f88c885a7b2144f3
+guid: a5b3843a4b73b3048a9759b42ade51a8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface380_polySurface382Mat
+    second: {fileID: 2100000, guid: c783c20c568abf34cbed62dcfcca8dbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface380_polySurface385Mat
+    second: {fileID: 2100000, guid: b5d677e40edb4a4409da3fe676b2061b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface380_polySurface386Mat
+    second: {fileID: 2100000, guid: 6336805a419067140b28b686c7b9b416, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface380_polySurface388Mat
+    second: {fileID: 2100000, guid: 0bd9d3a72067ca0499522bb4dc37a4ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface380_polySurface389Mat
+    second: {fileID: 2100000, guid: c7d1c02b660294945bdca9a241be0d64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface383Mat
+    second: {fileID: 2100000, guid: 5c694bafdbdb4ae4ca199945cec1eeb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface387_polySurface380Mat
+    second: {fileID: 2100000, guid: 0cf525e8fc944a748af7bbed41a302f1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +70,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.01
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -88,7 +123,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

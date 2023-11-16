@@ -424,6 +424,18 @@ PrefabInstance:
     - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
       propertyPath: WeaponPrefabs.Array.data[0]
       value: 
+      objectReference: {fileID: 2132373863478674537, guid: af9ee7f51be3b8640959368c3ed771c1, type: 3}
+    - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2132373863478674537, guid: afc4488e033e567459fcb413ae8a9986, type: 3}
+    - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2132373863478674537, guid: afc4488e033e567459fcb413ae8a9986, type: 3}
+    - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
+      propertyPath: WeaponPrefabs.Array.data[3]
+      value: 
       objectReference: {fileID: 2132373863478674537, guid: afc4488e033e567459fcb413ae8a9986, type: 3}
     - target: {fileID: 2601370854645645120, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
       propertyPath: m_Pitch
@@ -1566,7 +1578,7 @@ Transform:
   - {fileID: 1925622976}
   - {fileID: 2137416531}
   m_Father: {fileID: 2061173824}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &641971750
 Animator:
@@ -1610,6 +1622,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -1620,6 +1633,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 658242020}
   barrel: {fileID: 1590661315}
+  smoke: {fileID: 0}
 --- !u!1 &658242020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +1979,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7711623024103528816, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8027792450461734239, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
       propertyPath: slider
       value: 
@@ -2061,6 +2079,7 @@ MonoBehaviour:
   weaponSpread: 30
   numOfBullets: 6
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -2071,6 +2090,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 1001354896}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!1 &835905571
 GameObject:
   m_ObjectHideFlags: 0
