@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: TriangleFixtureMat
     second: {fileID: 2100000, guid: 09da869d6b799174788efa72f30fa542, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface269_TriangleFixtureMat
+    second: {fileID: 2100000, guid: 5cdbe9f792521a246bf8b941e9d9a794, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
