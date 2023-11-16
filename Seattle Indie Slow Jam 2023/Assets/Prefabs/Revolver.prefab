@@ -223,6 +223,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 1
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}

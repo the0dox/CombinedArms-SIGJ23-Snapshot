@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1862821628627486055}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.89, y: -0.8, z: 0.73}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2840402272829768595}
@@ -57,6 +57,7 @@ MonoBehaviour:
   weaponSpread: 10
   numOfBullets: 1
   isAuto: 1
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -67,6 +68,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 2840402272750596987}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &1862821628627486040
 Animator:
   serializedVersion: 5
@@ -116,7 +118,7 @@ RectTransform:
   m_GameObject: {fileID: 2840402272159107321}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2840402272750596988}
@@ -224,7 +226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.181, y: 0.2}
+  m_AnchoredPosition: {x: -0.081, y: 0.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2840402272750596990
@@ -350,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2840402272829768594}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.24, y: 8.53, z: -33.3}
+  m_LocalPosition: {x: -0.074, y: 0.278, z: -1.193}
   m_LocalScale: {x: 10, y: 14, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
