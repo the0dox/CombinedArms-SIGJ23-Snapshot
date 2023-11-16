@@ -57,6 +57,7 @@ MonoBehaviour:
   weaponSpread: 30
   numOfBullets: 6
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -67,6 +68,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 4288219872345199979}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &2454141308640870607
 Animator:
   serializedVersion: 5
@@ -145,6 +147,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 0
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -155,6 +158,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 4288219872448368411}
   barrel: {fileID: 4288219873212168283}
+  smoke: {fileID: 0}
 --- !u!95 &2867618937924321640
 Animator:
   serializedVersion: 5
@@ -905,6 +909,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 1
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -915,6 +920,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 4288219873160027215}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &4288219872473911046
 Animator:
   serializedVersion: 5
@@ -2705,6 +2711,7 @@ MonoBehaviour:
   weaponSpread: 10
   numOfBullets: 1
   isAuto: 1
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -2715,6 +2722,7 @@ MonoBehaviour:
   UsesUI: 1
   ammoUI: {fileID: 4288219872359687232}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &4288219873912850892
 Animator:
   serializedVersion: 5
@@ -2874,6 +2882,7 @@ MonoBehaviour:
   weaponSpread: 0
   numOfBullets: 1
   isAuto: 1
+  useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
@@ -2884,6 +2893,7 @@ MonoBehaviour:
   UsesUI: 0
   ammoUI: {fileID: 0}
   barrel: {fileID: 0}
+  smoke: {fileID: 0}
 --- !u!95 &4288219873927594950
 Animator:
   serializedVersion: 5
@@ -8421,8 +8431,6 @@ MonoBehaviour:
   gunDatas:
   - {fileID: 11400000, guid: f1c3b35855f000546813272d5bc7cd6d, type: 2}
   - {fileID: 11400000, guid: f1e1885f1259b6f43945043d49ead530, type: 2}
-  deathUI: {fileID: 0}
-  dmgDirection: {fileID: 0}
   slider: {fileID: 0}
   eatSource: {fileID: 6003983686278879924}
   health: 100
@@ -8434,6 +8442,8 @@ MonoBehaviour:
   _dashParticle: {fileID: 4288219874380548480}
   _dashSFX: {fileID: 8300000, guid: ca3fe14bbb3e26d4aaa3d7f25fc02f84, type: 3}
   _jumpSFX: {fileID: 8300000, guid: d2f682aba2cd24545aa20be70fb0f7ba, type: 3}
+  _hurtSFX: {fileID: 8300000, guid: fbd1540fc024fcc4fb0f647de6a2ef36, type: 3}
+  _deathSFX: {fileID: 8300000, guid: 2cea2b9b17c459e4c9dfac2729a974bf, type: 3}
   _SFXSource: {fileID: 1358119348271713065}
 --- !u!82 &6003983686278879924
 AudioSource:

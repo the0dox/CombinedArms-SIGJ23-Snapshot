@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -10,12 +11,6 @@ public class PlayerManager : MonoBehaviour, IAttackable
     public static PlayerManager instance;
     [SerializeField]
     GunData[] gunDatas;
-    [SerializeField]
-    GameObject deathUI;
-    [SerializeField]
-    GameObject dmgDirection;
-    [SerializeField]
-    Slider slider;
     [SerializeField]
     AudioSource eatSource;
     public float health = 100f;
@@ -94,7 +89,10 @@ public class PlayerManager : MonoBehaviour, IAttackable
         gunList[index] = null;
         Destroy(g);
         currentHealth = Mathf.Clamp(currentHealth + healthInc, currentHealth, health);
-        slider.value = currentHealth / health;
+        if(OnHealthChanged != null)
+        {
+            OnHealthChanged(this, currentHealth/health);
+        }
     }
     public void PickupGun(GunData data)
     {
@@ -199,12 +197,6 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             PickupGun();
         }
-        timer += Time.deltaTime;
-        if(timer > timeLimit)
-        {
-            dmgDirection.SetActive(false);
-            timer = 0;
-        }
         if (Input.GetKey(KeyCode.F) && gunCount > 1)
         {
             eatTimer += Time.deltaTime;
@@ -224,20 +216,24 @@ public class PlayerManager : MonoBehaviour, IAttackable
 
     public void TakeDamage(Vector3 hit, float value)
     {
-        if(!_dashInvulnerable)
+        if(!_dashInvulnerable && !GameManager.GameHasEnded)
         {
-
             currentHealth -= value;
-            slider.value = currentHealth / health;
-            Vector3 v = Camera.main.WorldToScreenPoint(hit);
-            dmgDirection.transform.position = v;
-            dmgDirection.SetActive(true);
-            timer = 0;
+            _SFXSource.PlayOneShot(_hurtSFX);
+            if(OnPlayerInjured != null)
+            {
+                OnPlayerInjured(this, hit);
+            }
+            if(OnHealthChanged != null)
+            {
+                OnHealthChanged(this, currentHealth/health);
+            }
+            
             if (currentHealth <= 0)
             {
-                deathUI.SetActive(true);
                 PlayerMovement.playerCanMove = false;
                 PlayerMovement.cameraCanMove = false;
+                _SFXSource.PlayOneShot(_deathSFX);
                 GameManager.TriggerGameOver();
             }
         }
@@ -254,8 +250,16 @@ public class PlayerManager : MonoBehaviour, IAttackable
     [SerializeField] private AudioClip _dashSFX;
     // reference to the sound that plays when jumping
     [SerializeField] private AudioClip _jumpSFX;
+    // sound played when injured
+    [SerializeField] private AudioClip _hurtSFX;
+    // sound played when killed
+    [SerializeField] private AudioClip _deathSFX;
     // source of sound effects that aren't distorted when eating
     [SerializeField] private AudioSource _SFXSource;
+    // event raised when injured
+    public EventHandler<Vector3> OnPlayerInjured;
+    // event raised when injured
+    public EventHandler<float> OnHealthChanged;
 
     // called when player movement starts a dash
     public void OnDashStarted(object caller, EventArgs e)

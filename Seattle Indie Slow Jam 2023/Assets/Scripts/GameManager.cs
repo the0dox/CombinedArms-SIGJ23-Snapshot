@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 1f;
 
     public GameObject completeLevelUI;
+
+    public UnityEvent OnGameOver;
+    public static UnityEvent s_OnGameOver;
 
     public void CompleteLevel()
     {
@@ -42,10 +46,11 @@ public class GameManager : MonoBehaviour
     // called before first frame
     public void Awake()
     {
+        s_OnGameOver = OnGameOver;
         // if a game manager is already been assigned, I should remove myself
         if(s_instance != null)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         // if no game manager has been assigned, then I should assign myself as game manager and presist between scenes
         else
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
         if(!s_instance.gameHasEnded)
         {
             s_instance.EndGame();
+            s_OnGameOver!.Invoke();
         }
     }
 
