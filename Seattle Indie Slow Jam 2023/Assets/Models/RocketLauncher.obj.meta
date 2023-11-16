@@ -9,10 +9,15 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Barrel3Mat
     second: {fileID: 2100000, guid: d3d5726943d763343b4dba4a7c2ca25d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface403Mat
+    second: {fileID: 2100000, guid: 9655b2fc49268da46811887773a53aa7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4

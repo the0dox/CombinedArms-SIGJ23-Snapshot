@@ -1450,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
       propertyPath: _startingWeapon
       value: 
-      objectReference: {fileID: 2132373863478674537, guid: afc4488e033e567459fcb413ae8a9986, type: 3}
+      objectReference: {fileID: 2132373863478674537, guid: af9ee7f51be3b8640959368c3ed771c1, type: 3}
     - target: {fileID: 789602053523078834, guid: 9608a4b70d626c943b13a8cadd4ad1c0, type: 3}
       propertyPath: _upperBodyRotation
       value: 95
