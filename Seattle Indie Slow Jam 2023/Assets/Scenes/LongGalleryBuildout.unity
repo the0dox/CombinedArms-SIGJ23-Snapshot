@@ -17822,6 +17822,10 @@ PrefabInstance:
       propertyPath: enableHeadBob
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5948390620830893259, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
+      propertyPath: sprintDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5948390620830893261, guid: 4966444202cbf8d4495393bc3ea62eb0, type: 3}
       propertyPath: m_RootOrder
       value: 9
