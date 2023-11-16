@@ -111,12 +111,23 @@ public class Gun : MonoBehaviour
     }
     void EndFire()
     {
+        if (!isAuto)
+        {
+            isFiring = false;
+            this.transform.localPosition = startPos;
+            return;
+        }
+        if (isReloading || hasFired) return;
+        //this.transform.localPosition = startPos;
         this.transform.localPosition = startPos;
+        this.transform.localRotation = new Quaternion(0, 1, 0, 0);
         isFiring = false;
     }
     void FireWeapon()
     {
         if (!isFiring) return;
+        this.transform.localPosition = startPos;
+        //this.transform.localRotation = new Quaternion(0, 1, 0, 0);
         for(int i = 0; i < numOfBullets; i++) { 
             Vector3 camDir = Camera.main.transform.forward;
             if(weaponSpread > 0)
