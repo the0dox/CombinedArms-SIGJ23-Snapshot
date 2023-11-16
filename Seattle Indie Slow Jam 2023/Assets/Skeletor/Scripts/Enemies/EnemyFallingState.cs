@@ -7,7 +7,7 @@ using UnityEngine;
 // state triggered when enemy is falling, tracks how long the enemy falls
 public class EnemyFallingState : State<EnemyBehavior>
 {
-    private const float MINIMUMDAMAGINGVELOCITY = 3;
+    private const float MINIMUMDAMAGINGVELOCITY = 10;
     // minimum time enemy can remain idel
     private const float FallingDamageMultipler = 1;
 

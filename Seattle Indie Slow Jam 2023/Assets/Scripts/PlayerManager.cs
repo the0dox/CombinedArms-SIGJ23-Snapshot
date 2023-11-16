@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerManager : MonoBehaviour, IAttackable
 {
@@ -48,6 +50,9 @@ public class PlayerManager : MonoBehaviour, IAttackable
         currentHealth = health;
         physicsBody = GetComponent<Rigidbody>();
         PlayerMovement = GetComponent<FirstPersonController>();
+        PlayerMovement.DashStarted += OnDashStarted;
+        PlayerMovement.DashEnded += OnDashEnded;
+        PlayerMovement.JumpStarted += OnJumpStarted;
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
         maxPlaceOffset = placeOffsetAmount;
@@ -219,16 +224,73 @@ public class PlayerManager : MonoBehaviour, IAttackable
 
     public void TakeDamage(Vector3 hit, float value)
     {
-        currentHealth -= value;
-        slider.value = currentHealth / health;
-        Vector3 v = Camera.main.WorldToScreenPoint(hit);
-        dmgDirection.transform.position = v;
-        dmgDirection.SetActive(true);
-        timer = 0;
-        if (currentHealth <= 0)
+        if(!_dashInvulnerable)
         {
-            deathUI.SetActive(true);
-            FindObjectOfType<GameManager>().EndGame();
+
+            currentHealth -= value;
+            slider.value = currentHealth / health;
+            Vector3 v = Camera.main.WorldToScreenPoint(hit);
+            dmgDirection.transform.position = v;
+            dmgDirection.SetActive(true);
+            timer = 0;
+            if (currentHealth <= 0)
+            {
+                deathUI.SetActive(true);
+                PlayerMovement.playerCanMove = false;
+                PlayerMovement.cameraCanMove = false;
+                GameManager.TriggerGameOver();
+            }
         }
     }
+
+    # region skeletor
+    // is set to true the player cannot take damage
+    private bool _dashInvulnerable;
+    // the number of frames the player is invulnerable 
+    [SerializeField] private int _dashFrames;
+    // reference to the particles that appear when dashing
+    [SerializeField] private ParticleSystem _dashParticle;
+    // reference to sound that plays when dashing
+    [SerializeField] private AudioClip _dashSFX;
+    // reference to the sound that plays when jumping
+    [SerializeField] private AudioClip _jumpSFX;
+    // source of sound effects that aren't distorted when eating
+    [SerializeField] private AudioSource _SFXSource;
+
+    // called when player movement starts a dash
+    public void OnDashStarted(object caller, EventArgs e)
+    {
+        Vector3 particleDirection = CurrentVelocity;
+        particleDirection = new Vector3(particleDirection.x, 0, particleDirection.z);
+        particleDirection = particleDirection.magnitude > 0.05f ? particleDirection : transform.forward;
+        _dashParticle.transform.rotation = Quaternion.LookRotation(particleDirection);
+        _dashParticle.Play();
+        _SFXSource.PlayOneShot(_dashSFX, 1);
+        StartCoroutine(DashDelay());
+    }
+
+    // called when player movement starts a jump
+    public void OnJumpStarted(object caller, EventArgs e)
+    {
+        _SFXSource.PlayOneShot(_jumpSFX);
+    }
+
+    // called when player ends a dash
+    public void OnDashEnded(object caller, EventArgs e)
+    {
+        _dashParticle.Stop();
+    }
+
+    // while active, the player cannot take damage
+    private IEnumerator DashDelay()
+    {
+        _dashInvulnerable = true;
+        for(int i = 0; i < _dashFrames; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        _dashInvulnerable = false;
+    }
+
+    #endregion
 }

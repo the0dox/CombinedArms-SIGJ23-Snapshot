@@ -8,9 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
 
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
     using System.Net;
 #endif
 
@@ -135,6 +137,15 @@ public class FirstPersonController : MonoBehaviour
     private float timer = 0;
 
     #endregion
+
+    # region skeletor
+        // called when dash starts
+        public EventHandler DashStarted;
+        // called when dash ends
+        public EventHandler DashEnded;
+        // called when dash ends
+        public EventHandler JumpStarted;
+    #endregion 
 
     private void Awake()
     {
@@ -305,6 +316,7 @@ public class FirstPersonController : MonoBehaviour
                         isSprinting = false;
                         isDashing = false;
                         isSprintCooldown = true;
+                        DashEnded!(this, EventArgs.Empty);
                     }
                 }
             }
@@ -457,6 +469,7 @@ public class FirstPersonController : MonoBehaviour
                     isDashing = true;
                     sprintKeyPressed = false;
                     Debug.Log("Sprint started");
+                    DashStarted!(this, EventArgs.Empty);
                     return;
                 }
                 if (hideBarWhenFull && sprintRemaining == sprintDuration)
@@ -512,6 +525,7 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (isGrounded)
         {
+            JumpStarted!(this, EventArgs.Empty);
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
         }
@@ -685,7 +699,7 @@ public class FirstPersonController : MonoBehaviour
 
         //GUI.enabled = !fpc.unlimitedSprint;
         fpc.sprintDuration = EditorGUILayout.Slider(new GUIContent("Sprint Duration", "Determines how long the player can sprint while unlimited sprint is disabled."), fpc.sprintDuration, .01f, 20f);
-        fpc.sprintCooldown = EditorGUILayout.Slider(new GUIContent("Sprint Cooldown", "Determines how long the recovery time is when the player runs out of sprint."), fpc.sprintCooldown, .01f, fpc.sprintDuration);
+        fpc.sprintCooldown = EditorGUILayout.Slider(new GUIContent("Sprint Cooldown", "Determines how long the recovery time is when the player runs out of sprint."), fpc.sprintCooldown, .01f, 3);
         //GUI.enabled = true;
 
         fpc.sprintFOV = EditorGUILayout.Slider(new GUIContent("Sprint FOV", "Determines the field of view the camera changes to while sprinting."), fpc.sprintFOV, fpc.fov, 179f);
