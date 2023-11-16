@@ -262,45 +262,48 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (smokeOn)
+        if(!PauseMenu.GameIsPaused)
         {
-            if (smoke.time > 2f)
+            if (smokeOn)
             {
-                smoke.Stop();
-                smokeOn = false;
+                if (smoke.time > 2f)
+                {
+                    smoke.Stop();
+                    smokeOn = false;
+                }
             }
-        }
-        //Debug.Log(PlayerManager.instance.gunsReloading);
-        //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
-        if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1
-            && (isAuto || !hasFired))
-        {
-            //Keep it nested so that reactions to running out of ammo can be handled
-            if (ammoCount > 0)
+            //Debug.Log(PlayerManager.instance.gunsReloading);
+            //Debug.Log("GUn count: " + PlayerManager.instance.gunCount);
+            if (Input.GetMouseButton(0) && !isReloading && PlayerManager.instance.gunsReloading < 1
+                && (isAuto || !hasFired))
             {
-                hasFired = true;
-                animator.SetBool("IsFiring", true);
-                isFiring = true;
+                //Keep it nested so that reactions to running out of ammo can be handled
+                if (ammoCount > 0)
+                {
+                    hasFired = true;
+                    animator.SetBool("IsFiring", true);
+                    isFiring = true;
+                }
+                else
+                {
+                    if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                    animator.SetBool("IsFiring", false);
+                    EndFire();
+                }
+                //FireWeapon();
             }
             else
             {
-                if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                if (Input.GetMouseButtonUp(0)) hasFired = false;
                 animator.SetBool("IsFiring", false);
                 EndFire();
             }
-            //FireWeapon();
-        }
-        else
-        {
-            if (Input.GetMouseButtonUp(0)) hasFired = false;
-            animator.SetBool("IsFiring", false);
-            EndFire();
-        }
-        if(Input.GetKeyDown(KeyCode.R) && !isReloading && ammoCount != ammoTotal)
-        {
-            isReloading = true;
-            PlayerManager.instance.gunsReloading++;
-            animator.SetBool("IsReloading", true);
+            if(Input.GetKeyDown(KeyCode.R) && !isReloading && ammoCount != ammoTotal)
+            {
+                isReloading = true;
+                PlayerManager.instance.gunsReloading++;
+                animator.SetBool("IsReloading", true);
+            }
         }
     }
 }

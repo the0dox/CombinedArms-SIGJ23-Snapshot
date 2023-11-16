@@ -36,6 +36,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
 
     private Rigidbody physicsBody;
     public static Vector3 CurrentVelocity => instance.physicsBody.velocity;
+    private FirstPersonController PlayerMovement;
+    public static bool CameraCanMove{set => instance.PlayerMovement.cameraCanMove = value;}
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -45,6 +47,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     {
         currentHealth = health;
         physicsBody = GetComponent<Rigidbody>();
+        PlayerMovement = GetComponent<FirstPersonController>();
         placeOffsetAmount.x = gunPlacementRange.y - gunPlacementRange.x;
         placeOffsetAmount.y = gunPlacementRange.w - gunPlacementRange.z;
         maxPlaceOffset = placeOffsetAmount;

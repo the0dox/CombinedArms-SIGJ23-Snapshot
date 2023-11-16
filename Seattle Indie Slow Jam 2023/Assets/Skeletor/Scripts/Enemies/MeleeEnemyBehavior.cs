@@ -39,7 +39,7 @@ public class MeleeEnemyBehavior : EnemyBehavior
     }
 
     // melee enemies do not drop anything on death at the moment
-    protected override void OnDeath(Vector3 source)
+    protected override void OnDeath()
     {
          AudioSource.PlayClipAtPoint(DeathSound, _visionTransform.position, 3);
     }

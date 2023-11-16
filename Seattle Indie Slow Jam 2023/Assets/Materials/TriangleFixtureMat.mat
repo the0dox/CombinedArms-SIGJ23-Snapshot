@@ -30,6 +30,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CutoutMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -70,6 +74,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TransparentMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -82,6 +90,7 @@ Material:
     - _Brightness: 1
     - _BumpScale: 1
     - _ContrastDetailMap: 0
+    - _ContrastTransparentMap: 0
     - _Cull: 0
     - _Cutoff: 0.5
     - _DetailBrightness: 1
@@ -98,8 +107,11 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _IntensityMask: 1
+    - _IntensityTransparentMap: 0
     - _InvertABaseColor: 0
+    - _InvertCutout: 0
     - _InvertMask: 0
+    - _InvertTransparent: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -110,11 +122,13 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0.2
     - _SpreadDetailMap: 0
+    - _SpreadTransparentMap: 0
     - _SrcBlend: 1
     - _TriplanarFalloff: 20
     - _TriplanarSpaceProjection: 0
     - _UVSec: 0
     - _UseAoFromMainProperties: 1
+    - _UseBaseColorAlpha: 0
     - _UseEmissionFromMainProperties: 1
     - _VisualizeMask: 0
     - _ZTest: 4
@@ -128,4 +142,5 @@ Material:
     - _GlobalXYTilingXYZWOffsetXY: {r: 1, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
     - _TriplanarXYTilingXYZWOffsetXY: {r: 1, g: 1, b: 0, a: 0}
+    - _TriplanarXYTilingXYZWOffsetXY1: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
