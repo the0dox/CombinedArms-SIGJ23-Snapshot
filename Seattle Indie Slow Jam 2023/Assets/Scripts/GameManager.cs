@@ -1,19 +1,19 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-900)]
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
 
     public float restartDelay = 1f;
 
-    public GameObject completeLevelUI;
-
-    public void CompleteLevel()
-    {
-        completeLevelUI.SetActive(true);
-    }
+    public UnityEvent OnGameOver;
+    public UnityEvent OnLevelComplete;
+    public static UnityEvent s_OnGameOver;
+    public static UnityEvent s_OnLevelComplete;
 
     public void EndGame()
     {
@@ -38,14 +38,22 @@ public class GameManager : MonoBehaviour
     public static bool GameHasEnded => s_instance.gameHasEnded;
     // reference to the current scene loaded
     private Scene _activeScene;
+    // if set to true, this scene will call object loaders. Should only be set to false for menu scenes
+    [SerializeField] private bool _loadPrefabs;
 
     // called before first frame
     public void Awake()
     {
+        s_OnGameOver = OnGameOver;
+        s_OnLevelComplete = OnLevelComplete;
+        if(_loadPrefabs)
+        {
+            ObjectLoader.InstantiateLoaders();
+        }
         // if a game manager is already been assigned, I should remove myself
         if(s_instance != null)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         // if no game manager has been assigned, then I should assign myself as game manager and presist between scenes
         else
@@ -62,6 +70,7 @@ public class GameManager : MonoBehaviour
         if(!s_instance.gameHasEnded)
         {
             s_instance.EndGame();
+            s_OnGameOver!.Invoke();
         }
     }
 
@@ -69,7 +78,7 @@ public class GameManager : MonoBehaviour
     public static void TriggerLevelComplete()
     {
         s_instance.gameHasEnded = true;
-        s_instance.CompleteLevel();
+        s_OnLevelComplete!.Invoke();
     }
 
     // called whenever the scene is changed, think of it as a replacement for Start()

@@ -11,7 +11,7 @@ using Unity.VisualScripting;
 public class RagdollBehavior : MonoBehaviour
 {   
     // public accessor for the root of this ragdoll
-    public Rigidbody Root => _root;
+    [SerializeField] private bool _despawn;
     // reference to each rigid body on the ragdoll
     private Rigidbody[] _bodies;
     // reference to each join on the ragdoll
@@ -41,7 +41,8 @@ public class RagdollBehavior : MonoBehaviour
     void OnEnable()
     {
         EnableRagdoll(true);
-        InvokeRepeating("Freeze", FREEZETIME, FREEZETIME);
+        if(_despawn)
+            InvokeRepeating("Freeze", FREEZETIME, FREEZETIME);
     }
 
     // once this ragdoll is despawned it shouldn't check to despawn itself anymore

@@ -1,15 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // created by Skeletor
 // loaders must be present in a scene to create instances of prefabs for cost effective object spawning
 // an example loader is provided in the prefab folder
-[DefaultExecutionOrder(-100)]
-public class ObjectLoaderBehavior: MonoBehaviour
+ public class ObjectLoaderBehavior: MonoBehaviour
 {
     // reference to the prefab this loader creates
     [SerializeField] private GameObject _prefab;
@@ -19,13 +18,18 @@ public class ObjectLoaderBehavior: MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        new ObjectLoader(_prefab, _count, transform);
+        Debug.LogWarningFormat($"{name} uses an object loader behavior, this component is deperciated remove this object from your scene.", gameObject);
+        gameObject.SetActive(false);
+        //new ObjectLoader(_prefab, _count, transform);
     }
+
 }
 
 // this is a generic class that is created in runtime to help with handling the loading and unloading of different objects
+[DefaultExecutionOrder(-1000)]
 public class ObjectLoader
 {
+    private static SortedList<int, LoadableObject> s_resources = new SortedList<int, LoadableObject>();
     // static dictionary connecting loaders to different object types
     // keys are the name of the prefab and values are the loaders that contain instances of the prefab
     private static Dictionary<string, ObjectLoader> s_loaders = new Dictionary<string, ObjectLoader>();
@@ -37,6 +41,43 @@ public class ObjectLoader
     private int _index = -1;
     // setter for the object loader index
     private int Index {get => _index; set {_index = value < _objects.Length ? value : 0;}}
+    // file path for prefabs referenced by the object loader
+    private const string filePath = "Prefabs/ObjectLoader";
+
+
+    // read through all resources an determine their load order before the first scene is loaded
+    // this is very expensive and should only be done once per game
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void LoadResources()
+    {
+        GameObject[] prefabs = Resources.LoadAll<GameObject>(filePath);
+        foreach(GameObject prefab in prefabs)
+        {
+            if(prefab.TryGetComponent(out LoadableObject info))
+            {
+                int Order = info.Order;
+                while(s_resources.ContainsKey(Order))
+                {
+                    Order++;
+                }
+                s_resources.Add(Order, info);
+            }
+        }
+    }
+    
+    // called on scene change by the game manager creates object loaders for all prefabs in filepath
+    public static void InstantiateLoaders()
+    {
+        GameObject root = new GameObject();
+        root.name = "Object Loader";
+        s_loaders = new Dictionary<string, ObjectLoader>();
+        foreach(LoadableObject prefab in s_resources.Values)
+        {
+            new ObjectLoader(prefab.gameObject, prefab.Count, root.transform);
+        }
+    }
+
+
 
     // creates an object loader of a specific prefab 
     // generates instances and hides them until called

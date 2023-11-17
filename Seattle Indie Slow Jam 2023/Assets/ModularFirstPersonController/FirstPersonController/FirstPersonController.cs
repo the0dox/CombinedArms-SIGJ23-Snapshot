@@ -395,7 +395,7 @@ public class FirstPersonController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
         #region Movement
         if (playerCanMove)
         {
