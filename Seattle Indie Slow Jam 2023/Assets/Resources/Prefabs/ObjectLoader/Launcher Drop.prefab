@@ -220,6 +220,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4759105224562950192, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4759105224562950192, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddfffb74751f4a048b7dd46eb35e3b02, type: 2}
+    - target: {fileID: -4759105224562950192, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9655b2fc49268da46811887773a53aa7, type: 2}
     - target: {fileID: 919132149155446097, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
       propertyPath: m_Name
       value: RocketLauncher
