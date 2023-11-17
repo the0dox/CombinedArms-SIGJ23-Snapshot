@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     public static bool CameraCanMove{set => instance.PlayerMovement.cameraCanMove = value;}
     private void Awake()
     {
-        if (instance == null) instance = this;
+        instance = this;
     }
     // Start is called before the first frame update
     void Start()

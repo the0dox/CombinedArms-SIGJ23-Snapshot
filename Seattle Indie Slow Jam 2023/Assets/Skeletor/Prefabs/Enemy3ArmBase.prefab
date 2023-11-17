@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 789602053523078833}
   - component: {fileID: 13947210}
   - component: {fileID: 5727089127640941606}
+  - component: {fileID: 6465534514063308606}
   m_Layer: 10
   m_Name: Enemy3ArmBase
   m_TagString: Enemy
@@ -457,6 +458,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bbe597c9447d8428bd828fd161a235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6465534514063308606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789602053523078831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89acf7c4362c0a2449dd42302308c7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 10
+  _order: 0
 --- !u!1 &1338557528260738663
 GameObject:
   m_ObjectHideFlags: 0
