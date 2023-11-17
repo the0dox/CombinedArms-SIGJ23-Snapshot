@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841763993013460196}
-  m_Mesh: {fileID: -4000537424458985481, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
+  m_Mesh: {fileID: -4419293255136670588, guid: c6e73963f7a7c084bb1bd9b2a927dd9a, type: 3}
 --- !u!23 &2418682694264394662
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -595,17 +595,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firerate: 1
   dmg: 30
-  reloadSpeed: 0.2
-  ammoTotal: 10
+  reloadSpeed: 0.3
+  ammoTotal: 3
   ammoPerBullet: 1
   range: 50
   weaponSpread: 0
   numOfBullets: 1
-  isAuto: 0
+  isAuto: 1
   useBullets: 1
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
+  fireSound: {fileID: 8300000, guid: 40109b3d987f6394b9af7484f350f73b, type: 3}
   reloadSound: {fileID: 8300000, guid: e4e6de529bf2d9449b8b5e4928f9c74a, type: 3}
   clickSound: {fileID: 8300000, guid: b16e90f256165114d8d57e8eac568fd6, type: 3}
   bullet: {fileID: 6467927664716101335, guid: 2f3937bb8c9d85945aa128c5bc35e890, type: 3}
