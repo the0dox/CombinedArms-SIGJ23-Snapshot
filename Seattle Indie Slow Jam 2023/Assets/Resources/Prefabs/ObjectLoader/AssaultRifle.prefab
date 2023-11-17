@@ -50,10 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firerate: 10
   dmg: 5
-  reloadSpeed: 2
-  ammoTotal: 100
+  reloadSpeed: 0.5
+  ammoTotal: 30
   ammoPerBullet: 1
-  range: 10
+  range: 30
   weaponSpread: 10
   numOfBullets: 1
   isAuto: 1

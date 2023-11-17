@@ -16,15 +16,15 @@ MonoBehaviour:
   firerateRange: {x: 8, y: 11}
   dmg: 5
   dmgRange: {x: 4, y: 6}
-  reloadSpeed: 2
+  reloadSpeed: 0.5
   reloadSpeedRange: {x: 1, y: 3}
   spreadAngle: 10
   spreadAngleRange: {x: 10, y: 15}
   numOfBullets: 1
   numOfBulletsRange: {x: 1, y: 6}
-  ammoTotal: 100
+  ammoTotal: 30
   ammoPerBullet: 1
-  range: 10
+  range: 30
   gunColor: {r: 1, g: 0, b: 0, a: 1}
   gunPrefab: {fileID: 1862821628627486055, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
   isEnemy: 0

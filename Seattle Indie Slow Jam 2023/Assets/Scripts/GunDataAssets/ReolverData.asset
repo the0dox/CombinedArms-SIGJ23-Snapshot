@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
   m_Name: ReolverData
   m_EditorClassIdentifier: 
-  firerate: 5
+  firerate: 6
   firerateRange: {x: 4, y: 6}
   dmg: 5
   dmgRange: {x: 4, y: 8}
-  reloadSpeed: 5
+  reloadSpeed: 0.5
   reloadSpeedRange: {x: 3.5, y: 7}
   spreadAngle: 0
   spreadAngleRange: {x: 0, y: 0}
   numOfBullets: 1
   numOfBulletsRange: {x: 1, y: 1}
-  ammoTotal: 100
-  ammoPerBullet: 5
-  range: 10
+  ammoTotal: 6
+  ammoPerBullet: 1
+  range: 30
   gunColor: {r: 1, g: 0, b: 0, a: 1}
   gunPrefab: {fileID: 4781947733604480584, guid: 19174f48b283dc94fa3455192e5c3a34, type: 3}
   isEnemy: 0
