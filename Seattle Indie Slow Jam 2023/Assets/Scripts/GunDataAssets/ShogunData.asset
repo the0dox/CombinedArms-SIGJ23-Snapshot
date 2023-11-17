@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
   m_Name: ShogunData
   m_EditorClassIdentifier: 
-  firerate: 0.5
+  firerate: 0.3
   firerateRange: {x: 0.2, y: 0.5}
-  dmg: 10
+  dmg: 7
   dmgRange: {x: 10, y: 15}
-  reloadSpeed: 0.3
+  reloadSpeed: 0.2
   reloadSpeedRange: {x: 0.2, y: 0.4}
   spreadAngle: 30
   spreadAngleRange: {x: 25, y: 45}
   numOfBullets: 6
   numOfBulletsRange: {x: 5, y: 8}
-  ammoTotal: 100
-  ammoPerBullet: 6
+  ammoTotal: 36
+  ammoPerBullet: 1
   range: 10
   gunColor: {r: 1, g: 0, b: 0, a: 1}
   gunPrefab: {fileID: 916525707209322439, guid: fb73e2033cc9db14bbe37f17c1210445, type: 3}
