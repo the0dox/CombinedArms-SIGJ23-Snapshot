@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8175784127284210044}
   - component: {fileID: 478015359875457930}
   - component: {fileID: 2575575484078435663}
+  - component: {fileID: 3566128103476353556}
   m_Layer: 5
   m_Name: IndicatorInstance
   m_TagString: Untagged
@@ -62,6 +63,20 @@ MonoBehaviour:
   _fadeSpeed: 1
   _fading: 1
   _imageComponent: {fileID: 5352693366522880186}
+--- !u!114 &3566128103476353556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784002796993331223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89acf7c4362c0a2449dd42302308c7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 32
+  _order: 0
 --- !u!1 &4278246133495447220
 GameObject:
   m_ObjectHideFlags: 0
