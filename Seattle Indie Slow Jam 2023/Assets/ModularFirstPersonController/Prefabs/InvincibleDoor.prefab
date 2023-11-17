@@ -101,6 +101,7 @@ MonoBehaviour:
   ExplodeForce: 500
   Destructible: 0
   health: 100
+  clip: {fileID: 0}
 --- !u!65 &6465302647645558186
 BoxCollider:
   m_ObjectHideFlags: 0
