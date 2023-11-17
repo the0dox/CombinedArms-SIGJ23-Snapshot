@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _repositionVariance
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _repositionRefreshRate
