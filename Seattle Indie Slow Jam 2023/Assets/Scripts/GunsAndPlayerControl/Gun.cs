@@ -48,7 +48,7 @@ public class Gun : MonoBehaviour
         foreach(AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
 
-            if (a.name.Contains("Reload") && a.events.Length < 1)
+            if (a.name.Contains("Reload") && a.events.Length < 2)
             {
                 AnimationEvent e = new AnimationEvent();
                 e.time = a.length;
@@ -122,6 +122,18 @@ public class Gun : MonoBehaviour
         this.transform.localPosition = startPos;
         this.transform.localRotation = new Quaternion(0, 1, 0, 0);
         isFiring = false;
+    }
+    void HoldReload()
+    {
+        if (PlayerManager.instance.gunsReloading > 1)
+        {
+            animator.SetFloat("reloadSpeed", 0);
+        }
+        PlayerManager.instance.gunsReloading--;
+    }
+    public void ReleaseReload()
+    {
+        if(isReloading) animator.SetFloat("reloadSpeed", reloadSpeed);
     }
     void FireWeapon()
     {
@@ -244,7 +256,7 @@ public class Gun : MonoBehaviour
                 ammoUI.GetComponent<TMP_Text>().text = ammoCount.ToString();
             }
             barrel.PlayOneShot(reloadSound);
-            PlayerManager.instance.gunsReloading--;
+            //PlayerManager.instance.gunsReloading--;
             Debug.Log(this.transform.gameObject.name);
         }
         Debug.Log("TESTING!");
@@ -275,6 +287,7 @@ public class Gun : MonoBehaviour
     {
         if(!PauseMenu.GameIsPaused)
         {
+            if (PlayerManager.instance.gunsReloading < 1) ReleaseReload();
             if (smokeOn)
             {
                 if (smoke.time > 2f)
