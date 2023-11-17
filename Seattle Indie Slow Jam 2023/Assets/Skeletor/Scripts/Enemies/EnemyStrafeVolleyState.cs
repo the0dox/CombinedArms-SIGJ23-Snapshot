@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyStrafeVolleyState : State<EnemyBehavior>
 {
     // the time (in seconds) between attacks
-    private const float ATTACKWINDUP = 0.4f;
+    private const float ATTACKWINDUP = 0.25f;
     // the number attacks total made in a volley
     private const float ATTACKCOUNT = 4f;
     // timer that tracks the time between attacks
@@ -28,7 +28,7 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
             return;
         }
         _myContext.ToggleNavAgent(false);
-        _myContext.AttackCoolDown = true;
+        
         _targetAquired = false;
         //_myContext.transform.LookAt(new Vector3(_myContext.LookTarget.position.x ,_myContext.transform.position.y, _myContext.LookTarget.position.z));
         _myContext.AnimationComponent.SetTrigger("Attack");
@@ -44,6 +44,7 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
             _attackTimer -= Time.deltaTime;
             if(_attackTimer < 0)
             {
+                _myContext.TriggerAttackCoolDown();
                 if(_remainingAttacks > 0 && _myContext.LockedOnTarget)
                 {
                     Attack();
@@ -74,7 +75,7 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
         // stop moving if I hit a wall during my movement
         else if(Physics.Raycast(_myContext.transform.position, strafeVelocity.normalized, 1, LayerMask.GetMask("Terrain")))
         {
-            _myContext.SetState(_myContext.Idle);
+            strafeVelocity = Vector3.zero;
         }
         // else continue moving along my vector
         else
@@ -84,10 +85,7 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
     }
 
     // called when this state is ended
-    protected override void OnStateExit()
-    {
-        _myContext.StartCoroutine(CoolDownDelay());
-    }
+    protected override void OnStateExit(){}
 
     void SetStrafeVector()
     {
@@ -96,13 +94,6 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
         strafeVelocity = Quaternion.Euler(0, angle, 0) * enemyToPlayer;
         strafeVelocity = new Vector3(strafeVelocity.x, 0, strafeVelocity.z);
         strafeVelocity *= _myContext.MyAgent.speed;
-    }
-
-    // tell the enemy that it cannot attack again for a brief period 
-    IEnumerator CoolDownDelay()
-    {
-        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
-        _myContext.AttackCoolDown = false;
     }
 
     // create a single projectile traveling towards the player

@@ -297,7 +297,6 @@ public class FirstPersonController : MonoBehaviour
         if(enableSprint)
         {
             if (Input.GetKeyDown(sprintKey)) sprintKeyPressed = true;
-            if (sprintKeyPressed) Debug.Log("Sprint key pressed!");
             if (isSprinting || isDashing)
             {
                 if (isSprinting)
@@ -333,7 +332,6 @@ public class FirstPersonController : MonoBehaviour
                 sprintCooldown -= 1 * Time.deltaTime;
                 if (sprintCooldown <= 0)
                 {
-                    Debug.Log("Off Cooldown!");
                     isSprintCooldown = false;
                 }
             }
@@ -455,7 +453,6 @@ public class FirstPersonController : MonoBehaviour
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
-                Debug.Log("Dashing! "+sprintRemaining);
             }
             // All movement calculations while walking
             else
@@ -469,7 +466,6 @@ public class FirstPersonController : MonoBehaviour
                     else dashDir = -transform.TransformDirection(targetVelocity).normalized;
                     isDashing = true;
                     sprintKeyPressed = false;
-                    Debug.Log("Sprint started");
                     DashStarted!(this, EventArgs.Empty);
                     return;
                 }
@@ -494,7 +490,6 @@ public class FirstPersonController : MonoBehaviour
                 if (rb.SweepTest(rb.velocity.normalized, out info,0.001f))
                 {
                     rb.AddForce(-rb.velocity - rb.velocity, ForceMode.VelocityChange);
-                    Debug.Log("WEEEP");
                 }
             }
         }
@@ -512,7 +507,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
-            Debug.DrawRay(origin, direction * distance, Color.red);
+            //Debug.DrawRay(origin, direction * distance, Color.red);
             if(isGrounded == false) GamePhysics.worldVelocity = Vector3.zero;
             isGrounded = true;
         }

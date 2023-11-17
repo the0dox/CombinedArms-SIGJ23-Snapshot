@@ -7,9 +7,8 @@ using UnityEngine;
 public class EnemySnipeAttackState : State<EnemyBehavior>
 {
     // temporary variables
-    private const float ATTACKWINDUP = 8f;
-    private const float ATTACKWINDDOWN = 0.25f;
-    private const float ATTACKDAMAGE = 10;
+    private const float ATTACKWINDUP = 6f;
+    private const float ATTACKDAMAGE = 20;
 
     private float _attackTimer;
     private LineRenderer sniperTrail;
@@ -24,7 +23,7 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
             return;
         }
         _myContext.ToggleNavAgent(false);
-        _myContext.AttackCoolDown = true;
+        
         _targetAquired = false;
     }
 
@@ -62,13 +61,6 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
     protected override void OnStateExit()
     {
         sniperTrail.gameObject.SetActive(false);
-        _myContext.StartCoroutine(CoolDownDelay());
-    }
-
-    IEnumerator CoolDownDelay()
-    {
-        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
-        _myContext.AttackCoolDown = false;
     }
 
     // makes a powerful hitscan attack against the player that can only stopped by terrain
@@ -82,6 +74,7 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
             target.TakeDamage(_myContext.VisionTransform.position, ATTACKDAMAGE);
         } 
         _myContext.AnimationComponent.SetTrigger("Attack");
+        _myContext.TriggerAttackCoolDown();
         _myContext.SetState(_myContext.Approach);
         _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }

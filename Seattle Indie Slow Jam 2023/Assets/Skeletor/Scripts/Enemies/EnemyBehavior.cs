@@ -26,9 +26,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public float AttackRadius => _attackRadius;
     public float RepositionVariance => _repositionVariance;
     public float RepositionRefreshRate => _repositionRefreshRate;
-    public float AttackCoolDownDuration => _attackCooldownDuration.RandomValue;
     public Transform VisionTransform => _visionTransform;
-    public bool AttackCoolDown {get => _attackCooldown; set => _attackCooldown = value;}
+    public bool AttackCoolDown => _attackCooldown;
     public bool Grounded => _myGroundCheck.Grounded;
     public State<EnemyBehavior> Idle => _idle;
     public State<EnemyBehavior> Patrol => _patrol;
@@ -40,6 +39,9 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public AudioClip HurtSound => _hurtSound;
     public AudioClip DeathSound => _deathSound;
     public Vector3 OriginalPosition => _originalPosition;
+    public EventHandler Injured;
+    public EventHandler SeenPlayer;
+
 
 
     // the amount of health this enemy starts with
@@ -135,6 +137,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _hurt = new EnemyInjuredState();
         Loadout.EquipWeapon(_startingWeapon);
         _attack = Loadout.ActiveWeapon.AttackState;
+        TriggerAttackCoolDown();
     }
 
     // each frame, update animations and states
@@ -154,6 +157,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
             Vector3 enemyToSouce = transform.position - source;
             bloodParticle.transform.position = _visionTransform.position;
             bloodParticle.transform.rotation = Quaternion.LookRotation(enemyToSouce);
+            Injured?.Invoke(this, EventArgs.Empty);
             SetState(_hurt);
             if(_health <= 0)
             {
@@ -183,6 +187,11 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         }
     }
 
+    void OnDisable()
+    {
+        Injured = null;
+        SeenPlayer = null;
+    }
 
     // called when the enemy has been reduced to zero hit points
     protected virtual void OnDeath()
@@ -218,12 +227,18 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         else if(PlayerManager.instance != null)
         {
             Vector3 enemyToPlayer = PlayerManager.instance.transform.position - _visionTransform.position;
-            if(enemyToPlayer.magnitude < _visionRadius && !Physics.Raycast(_visionTransform.position, enemyToPlayer, enemyToPlayer.magnitude, LayerMask.GetMask("Terrain")))
+            if(enemyToPlayer.magnitude < _visionRadius && !Physics.Raycast(_visionTransform.position, enemyToPlayer, enemyToPlayer.magnitude, LayerMask.GetMask("Terrain", "QueryAttack")))
             {
-                SetLookTarget(PlayerManager.instance.transform);
-                SetState(_approach);
+                SeenPlayer?.Invoke(this, EventArgs.Empty);
+                DetectPlayer();
             }
         }
+    }
+
+    public void DetectPlayer()
+    {
+        SetLookTarget(PlayerManager.instance.transform);
+        SetState(_approach);
     }
 
     // rotates the transform (not the upper body) of the enemy towards its look target
@@ -243,7 +258,6 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     {
         transform.position += _animationHandler.RootPositionDelta;
         transform.rotation *= _animationHandler.RootRotationDelta;
-        Debug.Log("applyroot rotation: " + _animationHandler.RootRotationDelta.ToString());
     }
 
     // sets animation values every frame
@@ -297,11 +311,19 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         _myAudio.PlayOneShot(clip);
     }
 
+    public void TriggerAttackCoolDown()
+    {
+        _attackCooldown = true;
+        this.Invoke(() => _attackCooldown = false, _attackCooldownDuration.RandomValue);
+    }
+
+
+
     #if UNITY_EDITOR
     // displays information of the enemy in the editor
     void OnDrawGizmos()
     {   
-        Gizmos.DrawWireSphere(_visionTransform.position, _lookTarget == null ? _visionRadius : _attackRadius);
+        //Gizmos.DrawWireSphere(_visionTransform.position, _lookTarget == null ? _visionRadius : _attackRadius);
         Handles.Label(_visionTransform.position, ToString());
         if(_myAgent.destination != null)
             Gizmos.DrawSphere(_myAgent.destination, 0.25f);
@@ -314,6 +336,6 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public override string ToString()
     {
         string targetString = _lookTarget != null ? _lookTarget.name : "";
-        return string.Format($"{gameObject.name}\nHealth:{_health}/{_startingHealth}\nState: {_currentState}\nLook Target: {targetString} Locked On: {_lockedOnTarget}");
+        return string.Format($"{gameObject.name}\nHealth:{_health}/{_startingHealth}\nState: {_currentState}\nLook Target: {targetString} Locked On: {_lockedOnTarget}\nCan Attack: {_attackCooldown}");
     }
 }

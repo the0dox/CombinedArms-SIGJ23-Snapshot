@@ -56,9 +56,21 @@ PrefabInstance:
       value: Rifleman
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _startingWeapon
       value: 
       objectReference: {fileID: 2132373863478674537, guid: 85358d0a2b18c274b9f9c1f5867be0ba, type: 3}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Max
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Min
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7488923213343734279, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _count
       value: 20

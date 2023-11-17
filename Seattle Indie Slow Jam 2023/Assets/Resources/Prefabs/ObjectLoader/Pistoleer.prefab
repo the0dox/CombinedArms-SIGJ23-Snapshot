@@ -55,6 +55,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistoleer
       objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078833, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _repositionVariance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _repositionRefreshRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Max
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Min
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7488923213343734279, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _count
       value: 20

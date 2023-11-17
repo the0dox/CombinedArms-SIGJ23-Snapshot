@@ -7,8 +7,7 @@ using UnityEngine;
 public class EnemyAttackState : State<EnemyBehavior>
 {
     // temporary variables
-    private const float ATTACKWINDUP = 1.5f;
-    private const float ATTACKWINDDOWN = 0.25f;
+    private const float ATTACKWINDUP = 1f;
 
     private float _attackTimer;
 
@@ -21,7 +20,7 @@ public class EnemyAttackState : State<EnemyBehavior>
             return;
         }
         _myContext.ToggleNavAgent(false);
-        _myContext.AttackCoolDown = true;
+        
         //_myContext.transform.LookAt(new Vector3(_myContext.LookTarget.position.x ,_myContext.transform.position.y, _myContext.LookTarget.position.z));
         _myContext.AnimationComponent.SetTrigger("Attack");
         _attackTimer = ATTACKWINDUP;
@@ -44,23 +43,15 @@ public class EnemyAttackState : State<EnemyBehavior>
     }
 
     // called when this state is ended
-    protected override void OnStateExit()
-    {
-        _myContext.StartCoroutine(CoolDownDelay());
-    }
-
-    IEnumerator CoolDownDelay()
-    {
-        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
-        _myContext.AttackCoolDown = false;
-    }
+    protected override void OnStateExit(){}
 
     void Attack()
     {
         Vector3 attackVector = (_myContext.LookTarget.transform.position - _myContext.VisionTransform.position).normalized;
         GameObject projectile = ObjectLoader.LoadObject("Projectile");
         projectile.transform.position = _myContext.VisionTransform.position + (attackVector * 2);
-        projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
+        projectile.transform.rotation = Quaternion.LookRotation(attackVector);   
+        _myContext.TriggerAttackCoolDown(); 
         _myContext.SetState(_myContext.Approach);
         _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }

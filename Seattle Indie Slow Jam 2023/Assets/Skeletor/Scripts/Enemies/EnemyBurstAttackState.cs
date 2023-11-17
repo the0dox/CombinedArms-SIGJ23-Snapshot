@@ -7,9 +7,7 @@ using UnityEngine;
 public class EnemyBurstAttackState: State<EnemyBehavior>
 {
     // time before the enemy fires after entering the state
-    private const float ATTACKWINDUP = 2f;
-    // the time before the enemy resumes regular behavior after attacking
-    private const float ATTACKWINDDOWN = 0.25f;
+    private const float ATTACKWINDUP = 1f;
     // the width of the weapon spread in radians
     private const float WEAPONSPREAD = 30;
     // the number of projectiles fired in a single burst
@@ -26,7 +24,7 @@ public class EnemyBurstAttackState: State<EnemyBehavior>
             return;
         }
         _myContext.ToggleNavAgent(false);
-        _myContext.AttackCoolDown = true;
+        
         //_myContext.transform.LookAt(new Vector3(_myContext.LookTarget.position.x ,_myContext.transform.position.y, _myContext.LookTarget.position.z));
         _myContext.AnimationComponent.SetTrigger("Attack");
         _attackTimer = ATTACKWINDUP;
@@ -49,16 +47,7 @@ public class EnemyBurstAttackState: State<EnemyBehavior>
     }
 
     // called when this state is ended
-    protected override void OnStateExit()
-    {
-        _myContext.StartCoroutine(CoolDownDelay());
-    }
-
-    IEnumerator CoolDownDelay()
-    {
-        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
-        _myContext.AttackCoolDown = false;
-    }
+    protected override void OnStateExit(){}
 
     void FireSpread()
     {
@@ -71,6 +60,7 @@ public class EnemyBurstAttackState: State<EnemyBehavior>
             , Mathf.Sin(yaw)* Mathf.Sin(ang), Mathf.Sin(yaw)* Mathf.Cos(yaw));
             Attack(attackVector + spread);
         }
+        _myContext.TriggerAttackCoolDown();
         _myContext.SetState(_myContext.Approach);    
         _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
     }

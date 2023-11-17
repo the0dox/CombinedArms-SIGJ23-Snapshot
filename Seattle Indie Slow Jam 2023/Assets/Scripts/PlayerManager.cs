@@ -23,8 +23,6 @@ public class PlayerManager : MonoBehaviour, IAttackable
     Vector4 gunPlacementRange = new Vector4(-1, 1, -.8f, .8f);
     Vector2 placeOffsetAmount = Vector2.zero;
     Vector2 maxPlaceOffset;
-    float timer = 0f;
-    float timeLimit = 1f;
     Dictionary<GameObject, int> prefabCount;
     Dictionary<GameObject, GameObject> parentMap;
     List<GameObject> gunList;

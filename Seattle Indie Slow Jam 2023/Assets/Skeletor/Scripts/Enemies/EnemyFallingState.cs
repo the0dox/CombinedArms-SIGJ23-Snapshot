@@ -35,12 +35,12 @@ public class EnemyFallingState : State<EnemyBehavior>
     // called when this state is ended
     protected override void OnStateExit()
     {
+        _myContext.AnimationComponent.SetBool("Falling", false);
     }
 
     // called when the enemy hits the ground, deals damage if the enemy was moving fast enough, and exits state
     void HitGround()
     {
-        _myContext.AnimationComponent.SetBool("Falling", false);
         float fallingVelocity = math.abs(_myContext.MyBody.velocity.y);
         if(fallingVelocity > MINIMUMDAMAGINGVELOCITY)
         {

@@ -56,9 +56,21 @@ PrefabInstance:
       value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
+      propertyPath: _attackRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
       propertyPath: _startingWeapon
       value: 
       objectReference: {fileID: 2132373863478674537, guid: afc4488e033e567459fcb413ae8a9986, type: 3}
+    - target: {fileID: 789602053523078834, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
+      propertyPath: _repositionVariance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
+      propertyPath: _attackCooldownDuration.Min
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6465534514063308606, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
       propertyPath: _count
       value: 20

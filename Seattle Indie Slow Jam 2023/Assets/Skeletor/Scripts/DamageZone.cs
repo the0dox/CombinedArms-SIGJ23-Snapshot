@@ -13,7 +13,6 @@ public class DamageZone : MonoBehaviour
     // Called whenever the projectile collides with somethin
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger entered");
         // see if the hit target can be attacked, if so deal damage to it
         if (other.TryGetComponent(out IAttackable target))
         {
