@@ -101,6 +101,7 @@ MonoBehaviour:
   ExplodeForce: 500
   Destructible: 1
   health: 100
+  clip: {fileID: 8300000, guid: e8992467585ccd146a267d5333af9a58, type: 3}
 --- !u!65 &6465302647645558186
 BoxCollider:
   m_ObjectHideFlags: 0

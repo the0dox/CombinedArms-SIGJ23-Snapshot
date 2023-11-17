@@ -14,6 +14,7 @@ public class Door : MonoBehaviour, IAttackable
     public float ExplodeForce = 0;
     public bool Destructible = true;
     public float health = 100;
+    public AudioClip clip;
 
 
     // Start is called before the first frame update
@@ -329,6 +330,7 @@ public class Door : MonoBehaviour, IAttackable
 
             if (health <= 0)
             {
+                AudioSource.PlayClipAtPoint(clip, transform.localPosition);
                 DestroyMesh();
             }
 
