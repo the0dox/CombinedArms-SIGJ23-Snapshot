@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 5578977823743956460, guid: a521a423f23bbad438430529deb0f721, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5578977823743956462, guid: a521a423f23bbad438430529deb0f721, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1738,6 +1742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifleman
       objectReference: {fileID: 0}
+    - target: {fileID: 5995542393656488413, guid: 2321b0170297cad4ba1204eed1e52482, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5995542393656488415, guid: 2321b0170297cad4ba1204eed1e52482, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2488,6 +2496,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgunner
       objectReference: {fileID: 0}
+    - target: {fileID: 2895532604795876504, guid: 2bfbe0191f5b67d44b2bfd4142371fdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2895532604795876506, guid: 2bfbe0191f5b67d44b2bfd4142371fdf, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3161,6 +3173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnifeHead
       objectReference: {fileID: 0}
+    - target: {fileID: 5950594054445613653, guid: ccf14f5ae3b33634c8db21ccd075b951, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5950594054445613655, guid: ccf14f5ae3b33634c8db21ccd075b951, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3214,6 +3230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7570054552027191986, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
+      propertyPath: _maximumVelocityDashThreshold
+      value: 11.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7570054552027191988, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3454,6 +3474,10 @@ PrefabInstance:
     - target: {fileID: 5111236953986913020, guid: e622921a0d8b2ff4aa7c24559b1ade95, type: 3}
       propertyPath: m_Name
       value: Pistoleer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111236953986913020, guid: e622921a0d8b2ff4aa7c24559b1ade95, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5111236953986913022, guid: e622921a0d8b2ff4aa7c24559b1ade95, type: 3}
       propertyPath: m_RootOrder
@@ -3771,6 +3795,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3279396374129245280, guid: f8d4e337d8a22164fa159f7cfc53ec84, type: 3}
+      propertyPath: _dropRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279396374129245280, guid: f8d4e337d8a22164fa159f7cfc53ec84, type: 3}
+      propertyPath: _startingWeapon
+      value: 
+      objectReference: {fileID: 2132373863478674537, guid: af9ee7f51be3b8640959368c3ed771c1, type: 3}
     - target: {fileID: 3279396374129245309, guid: f8d4e337d8a22164fa159f7cfc53ec84, type: 3}
       propertyPath: m_Name
       value: Rocketeer

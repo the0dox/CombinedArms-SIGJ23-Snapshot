@@ -416,7 +416,7 @@ public class FirstPersonController : MonoBehaviour
             // All movement calculations shile sprint is active
             if (enableSprint && !subsituteDashWithSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
             {
-
+                rb.velocity = Vector3.zero;
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
                 // Apply a force that attempts to reach our target velocity
@@ -464,6 +464,7 @@ public class FirstPersonController : MonoBehaviour
                 isDashing = false;
                 if (sprintKeyPressed && !isSprintCooldown && !isDashing)
                 {
+                    GamePhysics.worldVelocity = Vector3.zero;
                     if(targetVelocity.magnitude < .01f) dashDir = transform.TransformDirection(-Vector3.forward).normalized;
                     else dashDir = -transform.TransformDirection(targetVelocity).normalized;
                     isDashing = true;
