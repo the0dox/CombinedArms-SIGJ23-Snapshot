@@ -188,7 +188,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
     {
         int r = Random.Range(0, gunDatas.Length);
         GunData data = gunDatas[r];
-        data.RandomizeProperties();
+        //data.RandomizeProperties();
         PickupGun(data);
         if (gunCount < 4) MusicPlayer.PlayLayer(gunCount);
     }
