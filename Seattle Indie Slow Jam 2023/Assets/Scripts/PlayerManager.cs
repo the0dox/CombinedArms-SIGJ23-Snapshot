@@ -56,6 +56,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         gunList = new List<GameObject>();
         nextPlacement = 0; //Next index in the gun array
         eatSource.pitch = eatLimit * .16f;
+        MusicPlayer.PlayLayer(gunCount);
     }
 
     void EatGun()
@@ -187,8 +188,9 @@ public class PlayerManager : MonoBehaviour, IAttackable
     {
         int r = Random.Range(0, gunDatas.Length);
         GunData data = gunDatas[r];
-        data.RandomizeProperties();
+        //data.RandomizeProperties();
         PickupGun(data);
+        if (gunCount < 4) MusicPlayer.PlayLayer(gunCount);
     }
     // Update is called once per frame
     void Update()

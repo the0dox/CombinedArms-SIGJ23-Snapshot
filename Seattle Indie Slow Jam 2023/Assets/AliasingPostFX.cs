@@ -31,5 +31,6 @@ public class AliasingPostFX : MonoBehaviour
         SharpenMat.SetTexture("_EdgeTex", upScale);
         Graphics.Blit(source,rt,SharpenMat);
         Graphics.Blit(rt, destination);
+        //Graphics.Blit(source, destination, EdgeMat);
     }
 }

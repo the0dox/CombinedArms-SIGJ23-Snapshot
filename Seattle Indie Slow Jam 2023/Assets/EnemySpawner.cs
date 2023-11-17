@@ -14,7 +14,8 @@ public class EnemySpawner : MonoBehaviour
     {
         
     }
-
+    //TODO: ENEMY RANDOMIZED SPAWNS
+    //WAVE SYSTEM
     // Update is called once per frame
     void Update()
     {
