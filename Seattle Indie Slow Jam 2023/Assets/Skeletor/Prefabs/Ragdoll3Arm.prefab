@@ -1344,7 +1344,7 @@ GameObject:
   - component: {fileID: 8125149607745057062}
   - component: {fileID: 2425400799109192858}
   m_Layer: 10
-  m_Name: PlaceholderRagdoll
+  m_Name: Ragdoll3Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
