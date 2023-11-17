@@ -4876,12 +4876,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221c023e413a06c41b5480b95c255420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 9
-  _maximumSpeed: 14
-  _explosionRadius: 5
+  _acceleration: 100
+  _maximumSpeed: 28
+  _explosionRadius: 3.5
   _damage: 30
   _explosionPrefab: {fileID: 6479971688928850867, guid: d12b4578f772f0e48bbf8d8eff335d22, type: 3}
-  _explosionSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
+  _explosionSound: {fileID: 8300000, guid: 2f45c57219855da42bd3ec5fcc37a40c, type: 3}
 --- !u!114 &1220999200198251043
 MonoBehaviour:
   m_ObjectHideFlags: 0
