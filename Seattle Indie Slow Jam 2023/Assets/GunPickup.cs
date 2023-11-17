@@ -5,10 +5,15 @@ using UnityEngine;
 public class GunPickup : MonoBehaviour
 {
     public GunData gun;
+    public bool rotates = false;
 
     private void Update()
     {
-        transform.Rotate(0, -1f, 0);
+        if (rotates == true)
+        {
+         transform.Rotate(0, -1f, 0);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
