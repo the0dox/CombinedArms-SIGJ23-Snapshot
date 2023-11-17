@@ -16,13 +16,13 @@ MonoBehaviour:
   firerateRange: {x: 0.6, y: 1}
   dmg: 30
   dmgRange: {x: 25, y: 35}
-  reloadSpeed: 0.2
+  reloadSpeed: 0.3
   reloadSpeedRange: {x: 0.15, y: 0.3}
   spreadAngle: 0
   spreadAngleRange: {x: 0, y: 0}
   numOfBullets: 1
   numOfBulletsRange: {x: 1, y: 1}
-  ammoTotal: 10
+  ammoTotal: 3
   ammoPerBullet: 1
   range: 50
   gunColor: {r: 1, g: 0, b: 0, a: 1}

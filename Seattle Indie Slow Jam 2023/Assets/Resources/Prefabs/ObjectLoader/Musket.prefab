@@ -5618,10 +5618,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2dda5f6d7ef54429d3f2c5b078fcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firerate: 0.2
-  dmg: 10
+  firerate: 0.3
+  dmg: 60
   reloadSpeed: 0.2
-  ammoTotal: 10
+  ammoTotal: 1
   ammoPerBullet: 1
   range: 100
   weaponSpread: 0
@@ -5630,7 +5630,7 @@ MonoBehaviour:
   useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
+  fireSound: {fileID: 8300000, guid: b6e64558bda100f44b1984ce67921e93, type: 3}
   reloadSound: {fileID: 8300000, guid: e4e6de529bf2d9449b8b5e4928f9c74a, type: 3}
   clickSound: {fileID: 8300000, guid: b16e90f256165114d8d57e8eac568fd6, type: 3}
   bullet: {fileID: 0}

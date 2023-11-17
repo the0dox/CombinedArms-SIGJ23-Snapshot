@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
   m_Name: MusketData
   m_EditorClassIdentifier: 
-  firerate: 0.5
+  firerate: 0.3
   firerateRange: {x: 0.4, y: 0.6}
-  dmg: 10
+  dmg: 60
   dmgRange: {x: 10, y: 20}
   reloadSpeed: 0.2
   reloadSpeedRange: {x: 0.2, y: 0.2}
@@ -22,7 +22,7 @@ MonoBehaviour:
   spreadAngleRange: {x: 0, y: 0}
   numOfBullets: 1
   numOfBulletsRange: {x: 1, y: 1}
-  ammoTotal: 10
+  ammoTotal: 1
   ammoPerBullet: 1
   range: 100
   gunColor: {r: 1, g: 0, b: 0, a: 1}
