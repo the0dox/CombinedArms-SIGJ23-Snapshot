@@ -100,7 +100,7 @@ public class EnemyStrafeVolleyState : State<EnemyBehavior>
     void Attack()
     {
         Vector3 attackVector = (_myContext.LookTarget.transform.position - _myContext.VisionTransform.position).normalized;
-        GameObject projectile = ObjectLoader.LoadObject("Projectile");
+        GameObject projectile = ObjectLoader.LoadObject("ProjectileRifle");
         projectile.transform.position = _myContext.VisionTransform.position + (attackVector * 2);
         projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
         _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);

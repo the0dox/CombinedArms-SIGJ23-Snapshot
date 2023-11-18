@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2dda5f6d7ef54429d3f2c5b078fcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firerate: 10
+  firerate: 5
   dmg: 5
   reloadSpeed: 0.5
   ammoTotal: 30

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
   m_Name: AssualtRifeData
   m_EditorClassIdentifier: 
-  firerate: 10
+  firerate: 5
   firerateRange: {x: 8, y: 11}
   dmg: 5
   dmgRange: {x: 4, y: 6}
