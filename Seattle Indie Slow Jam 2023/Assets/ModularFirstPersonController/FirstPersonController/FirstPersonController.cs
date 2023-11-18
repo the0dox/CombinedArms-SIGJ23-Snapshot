@@ -145,6 +145,8 @@ public class FirstPersonController : MonoBehaviour
         public EventHandler DashEnded;
         // called when dash ends
         public EventHandler JumpStarted;
+        // called when dash ends
+        public EventHandler<float> DashChanged;
         private RaycastHit groundCheckHit;
     #endregion 
 
@@ -316,7 +318,7 @@ public class FirstPersonController : MonoBehaviour
                         isSprinting = false;
                         isDashing = false;
                         isSprintCooldown = true;
-                        DashEnded!(this, EventArgs.Empty);
+                        DashEnded?.Invoke(this, EventArgs.Empty);
                     }
                 }
             }
@@ -342,11 +344,10 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // Handles sprintBar 
-            if(useSprintBar && !unlimitedSprint)
-            {
-                float sprintRemainingPercent = sprintRemaining / sprintDuration;
-                sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
-            }
+            float sprintRemainingPercent = sprintRemaining / sprintDuration;
+            DashChanged?.Invoke(this, sprintRemainingPercent);
+            //sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
+            
         }
 
         #endregion

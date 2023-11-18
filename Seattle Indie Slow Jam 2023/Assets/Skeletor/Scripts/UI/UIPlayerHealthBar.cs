@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 // created by skeletor
 // tracks the hp of the player
-[RequireComponent(typeof(Slider))]
+[RequireComponent(typeof(Image))]
 public class UIPlayerHealthBar : MonoBehaviour
 {
-    private Slider _healthBar;
+    private Image _healthBar;
 
 
     // assign listener on start
     void Start()
     {
-        _healthBar = GetComponent<Slider>();
-        PlayerManager.instance.OnHealthChanged += (object handler, float percentage) => _healthBar.value = percentage;
+        _healthBar = GetComponent<Image>();
+        PlayerManager.instance.OnHealthChanged += (object handler, float percentage) => _healthBar.fillAmount = percentage;
     }
 }
