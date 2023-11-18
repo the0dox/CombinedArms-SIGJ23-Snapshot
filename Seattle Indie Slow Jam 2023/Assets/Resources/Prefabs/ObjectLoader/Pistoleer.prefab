@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: _attackCooldownDuration.Min
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2601370854645645120, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: MinDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7488923213343734279, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _count
       value: 20
