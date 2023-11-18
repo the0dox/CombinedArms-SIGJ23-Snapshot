@@ -7916,6 +7916,8 @@ GameObject:
   - component: {fileID: 7570054550633705515}
   - component: {fileID: 7570054550633705516}
   - component: {fileID: 7570054550633705517}
+  - component: {fileID: 3365443241397297385}
+  - component: {fileID: 4449139319202724579}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -7997,6 +7999,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7570054550633705518}
   m_Enabled: 1
+--- !u!114 &3365443241397297385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570054550633705518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
+  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
+--- !u!114 &4449139319202724579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570054550633705518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
+  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1 &7570054550688859823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8419,6 +8449,9 @@ MonoBehaviour:
   gunDatas:
   - {fileID: 11400000, guid: f1c3b35855f000546813272d5bc7cd6d, type: 2}
   - {fileID: 11400000, guid: f1e1885f1259b6f43945043d49ead530, type: 2}
+  - {fileID: 11400000, guid: acd125f40cf02bc4a8ef31f38a58bd3c, type: 2}
+  - {fileID: 11400000, guid: 04e89c92dffb43e4a963c206eade48e5, type: 2}
+  - {fileID: 11400000, guid: 99f0d5cff3bf0fc4da12f847eb17e14b, type: 2}
   eatSource: {fileID: 6003983686278879924}
   health: 100
   gunCount: 1
@@ -8442,7 +8475,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 53c9bde2f15b05846ac1fb374a90478f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -8738,6 +8771,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3825392405623505326}
   - component: {fileID: 8124170964841144098}
+  - component: {fileID: 3536819354811907176}
+  - component: {fileID: 8692206777624049338}
   m_Layer: 0
   m_Name: ViewModelCamera
   m_TagString: Untagged
@@ -8803,3 +8838,31 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &3536819354811907176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408536344508976748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
+  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
+--- !u!114 &8692206777624049338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408536344508976748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
+  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}

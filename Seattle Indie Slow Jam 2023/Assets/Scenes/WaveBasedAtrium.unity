@@ -6575,25 +6575,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4659840319206911627, guid: 492034e5c00866e4f903aa9f414a02ef, type: 3}
---- !u!1 &840350538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8408536344508976748, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-  m_PrefabInstance: {fileID: 1350235385}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &840350540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840350538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
-  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1 &854308746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1014453125816279074, guid: 495b34ff001f4994eb3c62d8905b86e2, type: 3}
@@ -7359,10 +7340,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6003983686278879924, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 53c9bde2f15b05846ac1fb374a90478f, type: 3}
     - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: slider
       value: 
@@ -7375,22 +7352,6 @@ PrefabInstance:
       propertyPath: dmgDirection
       value: 
       objectReference: {fileID: 408986895}
-    - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: gunDatas.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: gunDatas.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: acd125f40cf02bc4a8ef31f38a58bd3c, type: 2}
-    - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: gunDatas.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 04e89c92dffb43e4a963c206eade48e5, type: 2}
-    - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: gunDatas.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 99f0d5cff3bf0fc4da12f847eb17e14b, type: 2}
     - target: {fileID: 7570054550633705516, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_ClearFlags
       value: 2
@@ -8113,30 +8074,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7629811779324647873, guid: a05866f9293176b4c8fd7a4ec7a8ab3c, type: 3}
---- !u!1 &1596543721 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7570054550633705518, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-  m_PrefabInstance: {fileID: 1350235385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1596543722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7570054550633705515, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
   m_PrefabInstance: {fileID: 1350235385}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1596543724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596543721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
-  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1001 &1607298793
 PrefabInstance:
   m_ObjectHideFlags: 0
