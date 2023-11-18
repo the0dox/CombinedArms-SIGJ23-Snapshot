@@ -145,6 +145,7 @@ public class FirstPersonController : MonoBehaviour
         public EventHandler DashEnded;
         // called when dash ends
         public EventHandler JumpStarted;
+        private RaycastHit groundCheckHit;
     #endregion 
 
     private void Awake()
@@ -351,7 +352,6 @@ public class FirstPersonController : MonoBehaviour
         #endregion
 
         #region Jump
-
         // Gets input and calls jump method
         if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
@@ -389,6 +389,26 @@ public class FirstPersonController : MonoBehaviour
         {
             HeadBob();
         }
+
+        if(IsOnSlope())
+        {
+            rb.AddForce(Vector3.down * 90, ForceMode.Force);
+        }
+    }
+
+    bool IsOnSlope()
+    {
+        if(isGrounded)
+        {
+            Vector3 localGroundCheckHitNormal = rb.transform.InverseTransformDirection(groundCheckHit.normal);
+            float groundSlopeAngle = Vector3.Angle(localGroundCheckHitNormal, transform.up);
+            if(groundSlopeAngle != 0)
+            {
+                Debug.Log("on slope");
+                return true;
+            }
+        }
+        return false;
     }
 
     void FixedUpdate()
@@ -503,11 +523,11 @@ public class FirstPersonController : MonoBehaviour
     {
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
         Vector3 direction = transform.TransformDirection(Vector3.down);
-        float distance = .75f;
+        float distance = 1.1f;
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+        if (Physics.Raycast(origin, direction, out groundCheckHit, distance))
         {
-            //Debug.DrawRay(origin, direction * distance, Color.red);
+            Debug.DrawRay(origin, direction * distance, Color.red);
             if(isGrounded == false) GamePhysics.worldVelocity = Vector3.zero;
             isGrounded = true;
         }
@@ -522,6 +542,10 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (isGrounded)
         {
+            if(IsOnSlope())
+            {
+                transform.position += groundCheckHit.normal * 0.6f;
+            }
             JumpStarted!(this, EventArgs.Empty);
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
