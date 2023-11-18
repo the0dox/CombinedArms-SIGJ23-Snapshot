@@ -8394,13 +8394,13 @@ MonoBehaviour:
   sprintBarHeightPercent: 0.02
   enableJump: 1
   jumpKey: 32
-  jumpPower: 6.01
+  jumpPower: 9
   enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
   crouchHeight: 0.75
   speedReduction: 0.5
-  enableHeadBob: 0
+  enableHeadBob: 1
   joint: {fileID: 7570054550688859822}
   bobSpeed: 10
   bobAmount: {x: 0, y: 0.1, z: 0}
