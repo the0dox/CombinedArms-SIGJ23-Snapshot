@@ -71,9 +71,17 @@ PrefabInstance:
       propertyPath: _attackCooldownDuration.Min
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5392461220437268292, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 8279869955425032009, guid: 098a9d155529743409dcc4d2135f150c, type: 3}
     - target: {fileID: 6465534514063308606, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
       propertyPath: _count
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9199939767619865132, guid: 0e427c71efec03242b77540bd1b43651, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb135a1e16efec44aa9471ca44feab46, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e427c71efec03242b77540bd1b43651, type: 3}

@@ -56,7 +56,7 @@ public class EnemyRocketAttackState : State<EnemyBehavior>
     void Attack()
     {
         Vector3 attackVector = (_myContext.LookTarget.transform.position - _myContext.VisionTransform.position).normalized;
-        MissleBehavior projectile = ObjectLoader.LoadObject("Rocket").GetComponent<MissleBehavior>();
+        MissleBehavior projectile = ObjectLoader.LoadObject("RocketEnemy").GetComponent<MissleBehavior>();
         projectile.transform.position = _myContext.VisionTransform.position + (attackVector * 2);
         projectile.transform.rotation = Quaternion.LookRotation(attackVector);    
         projectile.SetHostile();

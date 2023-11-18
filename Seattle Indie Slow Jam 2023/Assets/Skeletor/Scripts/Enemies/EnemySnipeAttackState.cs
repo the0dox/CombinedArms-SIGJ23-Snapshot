@@ -8,7 +8,7 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
 {
     // temporary variables
     private const float ATTACKWINDUP = 6f;
-    private const float ATTACKDAMAGE = 20;
+    private const float ATTACKDAMAGE = 40;
 
     private float _attackTimer;
     private LineRenderer sniperTrail;
