@@ -47,11 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicLayers:
-  - {fileID: 8300000, guid: dfef0870610e2f04ba18c980a4524f32, type: 3}
-  - {fileID: 8300000, guid: 5b88f9b74443117469d59851c8ce75e3, type: 3}
-  - {fileID: 8300000, guid: 8547c50ad41519f4fbae25ae97a9f796, type: 3}
+  - {fileID: 8300000, guid: 61d8e19f06fec58428b2e750b8aaf069, type: 3}
+  - {fileID: 8300000, guid: 09866a204f098f741b9b729c92f02d8c, type: 3}
+  - {fileID: 8300000, guid: 708a7d3c644aeda4994b1db45c2cafa2, type: 3}
+  - {fileID: 8300000, guid: 336818896a2e06a49a276edbd0940c36, type: 3}
+  - {fileID: 8300000, guid: 0d381db44a3db69439891bcd65affb43, type: 3}
   _fadeInSpeed: 0.2
   _fadeOutSpeed: 0.2
+  _currentLayer: 0
 --- !u!82 &8432113547721360050
 AudioSource:
   m_ObjectHideFlags: 0

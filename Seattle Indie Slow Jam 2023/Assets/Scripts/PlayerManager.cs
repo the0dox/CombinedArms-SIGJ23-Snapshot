@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         gunList = new List<GameObject>();
         nextPlacement = 0; //Next index in the gun array
         eatSource.pitch = eatLimit * .16f;
-        MusicPlayer.PlayLayer(gunCount);
+        OnGunCountChanged();
     }
 
     void EatGun()
@@ -92,6 +92,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             OnHealthChanged(this, currentHealth/health);
         }
+        OnGunCountChanged();
     }
     public void PickupGun(GunData data)
     {
@@ -181,7 +182,15 @@ public class PlayerManager : MonoBehaviour, IAttackable
             }
         }
         gun.GetComponent<Animator>().enabled = true;
+        OnGunCountChanged();
     }
+
+    void OnGunCountChanged()
+    {
+        MusicPlayer.CurrentLayer = gunCount / 3;
+    }
+
+
     void PickupGun()
     {
         int r = Random.Range(0, gunDatas.Length);
