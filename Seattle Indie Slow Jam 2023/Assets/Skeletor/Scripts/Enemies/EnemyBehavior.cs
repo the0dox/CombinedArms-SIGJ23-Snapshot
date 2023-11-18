@@ -41,6 +41,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     public Vector3 OriginalPosition => _originalPosition;
     public EventHandler Injured;
     public EventHandler SeenPlayer;
+    public EventHandler Killed;
 
 
 
@@ -177,7 +178,8 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         try
         {
             ToggleNavAgent(false); 
-            myRagdoll.SpawnRagdoll();     
+            myRagdoll.SpawnRagdoll();  
+            Killed?.Invoke(this, EventArgs.Empty);   
             OnDeath();
         }
         finally
@@ -191,6 +193,7 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
     {
         Injured = null;
         SeenPlayer = null;
+        Killed = null;
     }
 
     // called when the enemy has been reduced to zero hit points
