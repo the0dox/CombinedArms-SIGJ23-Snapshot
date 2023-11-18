@@ -9,6 +9,14 @@ public class EnemySpawner : MonoBehaviour
     public int maxNum = 20;
     float timer = 0f;
     int num = 0;
+    static string[] EnemyNames = 
+        {"KnifeHead",
+        "Pistoleer",
+        "Rifleman",
+        "Rocketeer",
+        "Shotgunner",
+        "Sniper"};
+      
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +32,8 @@ public class EnemySpawner : MonoBehaviour
         {
             for(int i = 0;i < numberperspawn; i++)
             {
-                ObjectLoader.LoadObject("Enemy").transform.position = this.transform.position + new Vector3(
+                int j = Random.Range(0, EnemyNames.Length);
+                ObjectLoader.LoadObject(EnemyNames[j]).transform.position = this.transform.position + new Vector3(
                     Random.Range(-3f,3f),0, Random.Range(-3f, 3f));
                 num++;
             }
