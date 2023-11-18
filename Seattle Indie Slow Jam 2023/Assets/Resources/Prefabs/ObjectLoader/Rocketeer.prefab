@@ -61,11 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 2132373863478674537, guid: af9ee7f51be3b8640959368c3ed771c1, type: 3}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _repositionVariance
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _repositionRefreshRate
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _attackCooldownDuration.Max
