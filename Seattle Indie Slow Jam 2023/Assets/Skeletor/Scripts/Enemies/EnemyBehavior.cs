@@ -320,6 +320,10 @@ public class EnemyBehavior : StateController<EnemyBehavior>, IAttackable
         this.Invoke(() => _attackCooldown = false, _attackCooldownDuration.RandomValue);
     }
 
+    public void ArenaModeSetup()
+    {
+        _dropRate = 1f;
+    }
 
 
     #if UNITY_EDITOR
