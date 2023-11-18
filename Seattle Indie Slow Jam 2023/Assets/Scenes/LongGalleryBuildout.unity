@@ -12687,7 +12687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'F to eat a gun
+  m_text: 'Hold F for a bit to eat a gun
 
     Eating guns heals you'
   m_isRightToLeft: 0
