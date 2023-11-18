@@ -202,10 +202,10 @@ public class PlayerManager : MonoBehaviour, IAttackable
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PickupGun();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    PickupGun();
+        //}
         if (Input.GetKey(KeyCode.F) && gunCount > 1)
         {
             eatTimer += Time.deltaTime;
