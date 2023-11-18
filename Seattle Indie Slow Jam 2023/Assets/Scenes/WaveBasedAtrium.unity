@@ -371,6 +371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3880415391507969723, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7548725722106313336, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -7340,6 +7344,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4449139319202724579, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: slider
       value: 
@@ -7420,7 +7428,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4449139319202724579, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
+    - {fileID: 8692206777624049338, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
 --- !u!1 &1383261024 stripped
 GameObject:
