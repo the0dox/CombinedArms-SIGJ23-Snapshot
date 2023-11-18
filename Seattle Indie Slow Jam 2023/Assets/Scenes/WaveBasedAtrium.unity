@@ -7344,10 +7344,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4449139319202724579, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6118883305532771110, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: slider
       value: 
@@ -7428,9 +7424,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4449139319202724579, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-    - {fileID: 8692206777624049338, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
 --- !u!1 &1383261024 stripped
 GameObject:
