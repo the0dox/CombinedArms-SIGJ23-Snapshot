@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     public int maxNum = 20;
     float timer = 0f;
     int num = 0;
+    int waveNum = 0;
+    bool waveAlive = false;
     static string[] EnemyNames = 
         {"KnifeHead",
         "Pistoleer",
@@ -23,20 +25,34 @@ public class EnemySpawner : MonoBehaviour
         
     }
     //TODO: ENEMY RANDOMIZED SPAWNS
+    public void OnKilled(object caller, System.EventArgs e)
+    {
+        num--;
+        if (num < 1) waveAlive = false;
+    }
+
     //WAVE SYSTEM
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > time && maxNum > num)
+        if(!waveAlive) timer += Time.deltaTime;
+        if (timer > time)
+        {
+            waveAlive = true;
+            time = 0f;
+            numberperspawn = Mathf.Clamp(numberperspawn + waveNum * 1, numberperspawn, maxNum);
+        }
+        if(waveAlive && num < 1)
         {
             for(int i = 0;i < numberperspawn; i++)
             {
                 int j = Random.Range(0, EnemyNames.Length);
-                ObjectLoader.LoadObject(EnemyNames[j]).transform.position = this.transform.position + new Vector3(
+                GameObject g = ObjectLoader.LoadObject(EnemyNames[j]);
+                g.transform.position = this.transform.position + new Vector3(
                     Random.Range(-3f,3f),0, Random.Range(-3f, 3f));
                 num++;
             }
+            waveAlive = true;
             timer = 0f;
         }
     }
