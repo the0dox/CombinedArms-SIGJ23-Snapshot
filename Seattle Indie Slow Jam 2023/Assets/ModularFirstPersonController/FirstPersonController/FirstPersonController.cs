@@ -145,6 +145,9 @@ public class FirstPersonController : MonoBehaviour
         public EventHandler DashEnded;
         // called when dash ends
         public EventHandler JumpStarted;
+        // called when dash ends
+        public EventHandler<float> DashChanged;
+        private RaycastHit groundCheckHit;
     #endregion 
 
     private void Awake()
@@ -297,7 +300,6 @@ public class FirstPersonController : MonoBehaviour
         if(enableSprint)
         {
             if (Input.GetKeyDown(sprintKey)) sprintKeyPressed = true;
-            if (sprintKeyPressed) Debug.Log("Sprint key pressed!");
             if (isSprinting || isDashing)
             {
                 if (isSprinting)
@@ -316,7 +318,7 @@ public class FirstPersonController : MonoBehaviour
                         isSprinting = false;
                         isDashing = false;
                         isSprintCooldown = true;
-                        DashEnded!(this, EventArgs.Empty);
+                        DashEnded?.Invoke(this, EventArgs.Empty);
                     }
                 }
             }
@@ -333,7 +335,6 @@ public class FirstPersonController : MonoBehaviour
                 sprintCooldown -= 1 * Time.deltaTime;
                 if (sprintCooldown <= 0)
                 {
-                    Debug.Log("Off Cooldown!");
                     isSprintCooldown = false;
                 }
             }
@@ -343,17 +344,15 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // Handles sprintBar 
-            if(useSprintBar && !unlimitedSprint)
-            {
-                float sprintRemainingPercent = sprintRemaining / sprintDuration;
-                sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
-            }
+            float sprintRemainingPercent = sprintRemaining / sprintDuration;
+            DashChanged?.Invoke(this, sprintRemainingPercent);
+            //sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
+            
         }
 
         #endregion
 
         #region Jump
-
         // Gets input and calls jump method
         if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
@@ -391,6 +390,26 @@ public class FirstPersonController : MonoBehaviour
         {
             HeadBob();
         }
+
+        if(IsOnSlope())
+        {
+            rb.AddForce(Vector3.down * 90, ForceMode.Force);
+        }
+    }
+
+    bool IsOnSlope()
+    {
+        if(isGrounded)
+        {
+            Vector3 localGroundCheckHitNormal = rb.transform.InverseTransformDirection(groundCheckHit.normal);
+            float groundSlopeAngle = Vector3.Angle(localGroundCheckHitNormal, transform.up);
+            if(groundSlopeAngle != 0)
+            {
+                Debug.Log("on slope");
+                return true;
+            }
+        }
+        return false;
     }
 
     void FixedUpdate()
@@ -416,7 +435,7 @@ public class FirstPersonController : MonoBehaviour
             // All movement calculations shile sprint is active
             if (enableSprint && !subsituteDashWithSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
             {
-
+                rb.velocity = Vector3.zero;
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
                 // Apply a force that attempts to reach our target velocity
@@ -455,7 +474,6 @@ public class FirstPersonController : MonoBehaviour
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
-                Debug.Log("Dashing! "+sprintRemaining);
             }
             // All movement calculations while walking
             else
@@ -464,11 +482,11 @@ public class FirstPersonController : MonoBehaviour
                 isDashing = false;
                 if (sprintKeyPressed && !isSprintCooldown && !isDashing)
                 {
+                    GamePhysics.worldVelocity = Vector3.zero;
                     if(targetVelocity.magnitude < .01f) dashDir = transform.TransformDirection(-Vector3.forward).normalized;
                     else dashDir = -transform.TransformDirection(targetVelocity).normalized;
                     isDashing = true;
                     sprintKeyPressed = false;
-                    Debug.Log("Sprint started");
                     DashStarted!(this, EventArgs.Empty);
                     return;
                 }
@@ -493,7 +511,6 @@ public class FirstPersonController : MonoBehaviour
                 if (rb.SweepTest(rb.velocity.normalized, out info,0.001f))
                 {
                     rb.AddForce(-rb.velocity - rb.velocity, ForceMode.VelocityChange);
-                    Debug.Log("WEEEP");
                 }
             }
         }
@@ -507,9 +524,9 @@ public class FirstPersonController : MonoBehaviour
     {
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
         Vector3 direction = transform.TransformDirection(Vector3.down);
-        float distance = .75f;
+        float distance = 1.1f;
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+        if (Physics.Raycast(origin, direction, out groundCheckHit, distance))
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             if(isGrounded == false) GamePhysics.worldVelocity = Vector3.zero;
@@ -526,6 +543,10 @@ public class FirstPersonController : MonoBehaviour
         // Adds force to the player rigidbody to jump
         if (isGrounded)
         {
+            if(IsOnSlope())
+            {
+                transform.position += groundCheckHit.normal * 0.6f;
+            }
             JumpStarted!(this, EventArgs.Empty);
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;

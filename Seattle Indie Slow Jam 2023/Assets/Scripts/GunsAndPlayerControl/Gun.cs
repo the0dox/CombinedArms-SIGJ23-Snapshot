@@ -155,7 +155,7 @@ public class Gun : MonoBehaviour
             RaycastHit info;
             bool hit = GamePhysics.AttackRayCast(new Ray(Camera.main.transform.position, camDir), dmg, range, out info); 
                 //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
-            if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
+            //if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
             if (!hit)
             {
                 info.point = Camera.main.transform.position + camDir.normalized * range;

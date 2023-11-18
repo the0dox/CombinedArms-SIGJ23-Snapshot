@@ -55,6 +55,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocketeer
       objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _startingWeapon
+      value: 
+      objectReference: {fileID: 2132373863478674537, guid: af9ee7f51be3b8640959368c3ed771c1, type: 3}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _repositionVariance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _repositionRefreshRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Max
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 789602053523078834, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _attackCooldownDuration.Min
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601370854645645120, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: MinDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891963810441573189, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4276094ec19cec9469651f4f2b6504ac, type: 2}
+    - target: {fileID: 7261379467014153054, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 7660698172226579299, guid: 1068c4979e728394da208537c18df494, type: 3}
     - target: {fileID: 7488923213343734279, guid: a54021930a8e2024f9638a6bc5a1b69f, type: 3}
       propertyPath: _count
       value: 20

@@ -83,7 +83,7 @@ MonoBehaviour:
   _rightHandRigTarget: {fileID: 6008128575127640037}
   _mySpawner: {fileID: 1653685850385076377}
   _attackState: 4
-  _soundFX: {fileID: 8300000, guid: 7cc7e5f5c7170dd40977d7b3c448e09a, type: 3}
+  _soundFX: {fileID: 8300000, guid: 40109b3d987f6394b9af7484f350f73b, type: 3}
 --- !u!114 &552175729501385420
 MonoBehaviour:
   m_ObjectHideFlags: 0

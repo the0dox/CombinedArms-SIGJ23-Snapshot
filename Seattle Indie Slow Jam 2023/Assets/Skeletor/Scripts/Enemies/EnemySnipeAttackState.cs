@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // created by skeletor
@@ -7,13 +10,14 @@ using UnityEngine;
 public class EnemySnipeAttackState : State<EnemyBehavior>
 {
     // temporary variables
-    private const float ATTACKWINDUP = 8f;
-    private const float ATTACKWINDDOWN = 0.25f;
-    private const float ATTACKDAMAGE = 10;
+    private const float ATTACKWINDUP = 5f;
+    private const float WARNINGPERIOD = 0.4f;
+    private const float ATTACKDAMAGE = 40;
 
     private float _attackTimer;
     private LineRenderer sniperTrail;
     private bool _targetAquired;
+    private bool _warningTriggered;
 
     // allows class that derive State to 
     protected override void OnStateEnter()
@@ -24,8 +28,9 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
             return;
         }
         _myContext.ToggleNavAgent(false);
-        _myContext.AttackCoolDown = true;
+        _warningTriggered = false;
         _targetAquired = false;
+
     }
 
     // called every frame
@@ -35,6 +40,10 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
         {
             UpdateTrailRenderer();
             _attackTimer -= Time.deltaTime;
+            if(_attackTimer < WARNINGPERIOD && !_warningTriggered)
+            {
+                Warning();
+            }
             if(_attackTimer < 0)
             {
                 Attack();
@@ -53,6 +62,8 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
             {
                 _targetAquired = true;
                 sniperTrail = ObjectLoader.LoadObject("SniperTrailFX").GetComponent<LineRenderer>();
+                sniperTrail.widthMultiplier = 1;
+                sniperTrail.startColor = Color.red;
                 _attackTimer = ATTACKWINDUP;
             }
         }
@@ -62,13 +73,6 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
     protected override void OnStateExit()
     {
         sniperTrail.gameObject.SetActive(false);
-        _myContext.StartCoroutine(CoolDownDelay());
-    }
-
-    IEnumerator CoolDownDelay()
-    {
-        yield return new WaitForSeconds(_myContext.AttackCoolDownDuration);
-        _myContext.AttackCoolDown = false;
     }
 
     // makes a powerful hitscan attack against the player that can only stopped by terrain
@@ -82,8 +86,19 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
             target.TakeDamage(_myContext.VisionTransform.position, ATTACKDAMAGE);
         } 
         _myContext.AnimationComponent.SetTrigger("Attack");
+        GameObject smokeParticles = ObjectLoader.LoadObject("SmokeFX", true);
+        smokeParticles.transform.SetParent(_myContext.Loadout.ActiveWeapon.transform);
+        smokeParticles.transform.localPosition = Vector3.zero;
+        smokeParticles.transform.rotation = Quaternion.identity;
+        _myContext.TriggerAttackCoolDown();
         _myContext.SetState(_myContext.Approach);
         _myContext.PlaySound(_myContext.Loadout.ActiveWeapon.SoundFX);
+    }
+
+    void Warning()
+    {
+        sniperTrail.startColor = Color.yellow;
+        _warningTriggered = true;
     }
 
     // draws the trail renderer between the enemy and its target
@@ -97,6 +112,7 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
         } 
         sniperTrail.SetPosition(0, _myContext.VisionTransform.position);
         sniperTrail.SetPosition(1, hitVector);
+        sniperTrail.widthMultiplier = Mathf.Lerp(sniperTrail.widthMultiplier, 0, Time.deltaTime * (1/ATTACKWINDUP));
     }
 }
 

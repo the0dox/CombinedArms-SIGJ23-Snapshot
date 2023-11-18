@@ -7969,7 +7969,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -8253,11 +8253,11 @@ GameObject:
   - component: {fileID: 7570054552027191990}
   - component: {fileID: 7570054552027191987}
   - component: {fileID: 7570054552027191986}
-  - component: {fileID: 6118883305532771119}
   - component: {fileID: 6118883305532771110}
   - component: {fileID: 6003983686278879924}
   - component: {fileID: 1978441576764226837}
   - component: {fileID: 1358119348271713065}
+  - component: {fileID: 1261519499}
   m_Layer: 9
   m_Name: New First Person Controller
   m_TagString: Player
@@ -8340,7 +8340,7 @@ Rigidbody:
   m_GameObject: {fileID: 7570054552027191992}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -8394,29 +8394,16 @@ MonoBehaviour:
   sprintBarHeightPercent: 0.02
   enableJump: 1
   jumpKey: 32
-  jumpPower: 6.01
+  jumpPower: 9
   enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
   crouchHeight: 0.75
   speedReduction: 0.5
-  enableHeadBob: 0
+  enableHeadBob: 1
   joint: {fileID: 7570054550688859822}
   bobSpeed: 10
   bobAmount: {x: 0, y: 0.1, z: 0}
---- !u!65 &6118883305532771119
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7570054552027191992}
-  m_Material: {fileID: 13400000, guid: 0f89c733b705084408b932d3d3f66f15, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.047744, z: 0.74853086}
-  m_Center: {x: 0, y: -0.023872256, z: 0.03453374}
 --- !u!114 &6118883305532771110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8651,6 +8638,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1261519499
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570054552027191992}
+  m_Material: {fileID: 13400000, guid: 0f89c733b705084408b932d3d3f66f15, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7570054552055444615
 GameObject:
   m_ObjectHideFlags: 0

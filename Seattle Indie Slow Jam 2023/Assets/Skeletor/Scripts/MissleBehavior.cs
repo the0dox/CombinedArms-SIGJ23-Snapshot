@@ -17,6 +17,7 @@ public class MissleBehavior : MonoBehaviour
     [SerializeField] private float _damage;
     [SerializeField] private GameObject _explosionPrefab;
     [SerializeField] private AudioClip _explosionSound;
+    private bool _isFriendly;
 
     // reference to the physics body attached to the object
     private Rigidbody _myBody;
@@ -27,6 +28,11 @@ public class MissleBehavior : MonoBehaviour
         _myBody = GetComponent<Rigidbody>();
     }
 
+    void OnEnable()
+    {
+        _isFriendly = true;
+    }
+
     // apply speed as force every frame, while enforcing maximum speed
     void FixedUpdate()
     {
@@ -34,12 +40,31 @@ public class MissleBehavior : MonoBehaviour
     } 
 
     // when the the rocket collides with something trigger an explosion!
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
+        if(_isFriendly)
+        {
+            if(other.tag.Equals("Player"))
+            {
+                return;
+            }
+        }
+        else
+        {
+            if(other.tag.Equals("Enemy"))
+            {
+                return;
+            }
+        }
         gameObject.SetActive(false);
         GamePhysics.AttackSphereCast(transform.position, _explosionRadius, _damage);
         GameObject explosion = ObjectLoader.LoadObject(_explosionPrefab.name, true);
         explosion.transform.position = transform.position;
         AudioSource.PlayClipAtPoint(_explosionSound, transform.position);
+    }
+
+    public void SetHostile()
+    {
+        _isFriendly = false;
     }
 }
