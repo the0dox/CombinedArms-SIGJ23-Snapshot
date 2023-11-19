@@ -8725,7 +8725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rtRes: 512
-  conVal: 2
+  conVal: 1.5
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1001 &7821234091661889784

@@ -3222,14 +3222,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3536819354811907176, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4288219872473909496, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7570054552027191988, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3274,17 +3266,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7570054552027191990, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7570054552027191992, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_Name
       value: New First Person Controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570054552027191992, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
