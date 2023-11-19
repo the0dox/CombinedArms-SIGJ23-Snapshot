@@ -7819,7 +7819,6 @@ GameObject:
   - component: {fileID: 7570054550633705515}
   - component: {fileID: 7570054550633705516}
   - component: {fileID: 7570054550633705517}
-  - component: {fileID: 3365443241397297385}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -7901,22 +7900,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7570054550633705518}
   m_Enabled: 1
---- !u!114 &3365443241397297385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7570054550633705518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rtRes: 512
-  conVal: 1.5
-  EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
-  SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1 &7570054550688859823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8742,7 +8725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rtRes: 512
-  conVal: 1.5
+  conVal: 2
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1001 &7821234091661889784
