@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fa51b2006f519409a1ea645f5f2ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumSounds: 5
+  _maximumSoundPerType: 3
+  _baseVolume: 0.8
