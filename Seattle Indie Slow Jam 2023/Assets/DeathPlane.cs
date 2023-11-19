@@ -6,6 +6,6 @@ public class DeathPlane : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.TriggerGameOver();
+        if(other.CompareTag("Player"))GameManager.TriggerGameOver();
     }
 }
