@@ -61,7 +61,7 @@ MonoBehaviour:
   useBullets: 0
   fireAni: {fileID: 0}
   reloadAni: {fileID: 0}
-  fireSound: {fileID: 8300000, guid: f23f5cd0222b5cd4d992ca4a03ebba7b, type: 3}
+  fireSound: {fileID: 8300000, guid: c25446ce415869b4b80a4b671d7559ad, type: 3}
   reloadSound: {fileID: 8300000, guid: e4e6de529bf2d9449b8b5e4928f9c74a, type: 3}
   clickSound: {fileID: 8300000, guid: b16e90f256165114d8d57e8eac568fd6, type: 3}
   bullet: {fileID: 625955645343997884, guid: 6cbba23c7ddd74645b279e01c839dec0, type: 3}
