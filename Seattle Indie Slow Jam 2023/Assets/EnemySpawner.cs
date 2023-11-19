@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 int dropMax = Mathf.Clamp(dropNum, 0, weaponDrops.Length);
                 GameObject g = GameObject.Instantiate(weaponDrops[dropMax]);
-                g.transform.position = new Vector3(0, 0, 0);
+                g.transform.position = transform.localPosition;//new Vector3(0, 0, 0);
                 dropNum = dropMax;
                 dropNum++;
             }
