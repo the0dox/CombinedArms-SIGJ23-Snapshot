@@ -317,7 +317,7 @@ MonoBehaviour:
   enemyRangeWave: 2
   dropWaves: 2
   enemyIncreaseWaves: 2
-  endArenaWave: 14
+  endArenaWave: 1
   weaponDrops:
   - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
   - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
@@ -6280,23 +6280,43 @@ PrefabInstance:
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[1].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 094308f9c793cc94995ab3c8998eb5ac, type: 3}
+      objectReference: {fileID: 8300000, guid: 0fbf7e53ecb81c64aaf3020d58be12f5, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[2].Main
       value: 
-      objectReference: {fileID: 8300000, guid: a64f8ee72fd3bef47bdd16edf5a7ade4, type: 3}
+      objectReference: {fileID: 8300000, guid: 11d9f938d26d81b4ba05d8615c1cf981, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[3].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 5ea0c8fd5d4798c4f9b1bd410566514c, type: 3}
+      objectReference: {fileID: 8300000, guid: d329c03dd1ed1414f8581a51cada5fd2, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[4].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
+      objectReference: {fileID: 8300000, guid: 4343b230372dc6648b8d9d756b152482, type: 3}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[5].Main
+      value: 
+      objectReference: {fileID: 8300000, guid: e0a0be7c7a7984e4d8be98b4d5fb9467, type: 3}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[1].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[2].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[3].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[4].Intro
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Intro
       value: 
-      objectReference: {fileID: 8300000, guid: 4968e6c02783f674baca8648627500c5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360055, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_RootOrder
       value: 13

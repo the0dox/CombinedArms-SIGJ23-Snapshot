@@ -14,5 +14,16 @@ public class TitleMainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+    private void Update()
+    {
+        if (LevelComplete.gameFinished)
+        {
+            GameObject C = GameObject.Find("Canvas");
+            GameObject mm = C.transform.Find("MainMenu").gameObject;
+            mm.SetActive(false);
+            GameObject credit = C.transform.Find("CreditsMenu").gameObject;
+            credit.SetActive(true);
+            LevelComplete.gameFinished = false;
+        }
+    }
 }
