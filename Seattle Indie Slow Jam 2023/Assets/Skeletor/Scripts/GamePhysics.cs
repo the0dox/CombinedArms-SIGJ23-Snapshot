@@ -74,7 +74,7 @@ public static class GamePhysics
         return false;
     }
 
-    public static void AttackSphereCast(Vector3 origin, float radius, float damage)
+    public static void AttackSphereCast(Vector3 origin, float radius, float damage, bool _isFriendly = true)
     {
         foreach(Collider collision in Physics.OverlapSphere(origin, radius))
         {
@@ -89,7 +89,8 @@ public static class GamePhysics
             {
                 body.ApplyDamageForce(origin, damage * ratio, true, collision.gameObject.tag.Equals("Player"));
             }
-            if(collision.TryGetComponent(out IAttackable damageTarget))
+            //Only lets enemy projectiles hit player, player made projs won't deal damage now? (hopefully)
+            if(collision.TryGetComponent(out IAttackable damageTarget) && (!_isFriendly || !collision.gameObject.tag.Equals("Player")))
             {
                 damageTarget.TakeDamage(origin, damage * ratio);
             }
