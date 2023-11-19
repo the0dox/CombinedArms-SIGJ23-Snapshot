@@ -211,6 +211,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         //{
         //    PickupGun();
         //}
+        Debug.Log(UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings);
         if (Input.GetKey(KeyCode.Mouse1) && gunCount > 1 && gunsReloading < 1)
         {
             eatTimer += Time.deltaTime;
