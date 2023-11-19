@@ -1238,6 +1238,74 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7629811779324647873, guid: a05866f9293176b4c8fd7a4ec7a8ab3c, type: 3}
+--- !u!1 &197151659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197151662}
+  - component: {fileID: 197151661}
+  - component: {fileID: 197151660}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &197151660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197151659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &197151661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197151659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &197151662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197151659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237253006 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2387779048130104569, guid: 495b34ff001f4994eb3c62d8905b86e2, type: 3}
@@ -6294,9 +6362,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[5].Main
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[1].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[2].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[3].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[4].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Intro
       value: 
-      objectReference: {fileID: 8300000, guid: 4968e6c02783f674baca8648627500c5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360055, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_RootOrder
       value: 13
