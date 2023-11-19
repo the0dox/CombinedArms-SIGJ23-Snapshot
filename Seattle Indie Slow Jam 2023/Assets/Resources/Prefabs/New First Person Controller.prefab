@@ -8344,7 +8344,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04e89c92dffb43e4a963c206eade48e5, type: 2}
   - {fileID: 11400000, guid: 99f0d5cff3bf0fc4da12f847eb17e14b, type: 2}
   eatSource: {fileID: 6003983686278879924}
-  health: 100
+  health: 150
   gunCount: 1
   healthInc: 50
   eatLimit: 1
