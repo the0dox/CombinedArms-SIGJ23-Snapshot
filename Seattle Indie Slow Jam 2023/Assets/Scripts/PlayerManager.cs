@@ -208,7 +208,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         //{
         //    PickupGun();
         //}
-        if (Input.GetKey(KeyCode.F) && gunCount > 1 && gunsReloading < 1)
+        if (Input.GetKey(KeyCode.Mouse1) && gunCount > 1 && gunsReloading < 1)
         {
             eatTimer += Time.deltaTime;
             Debug.Log("Eat in: " + eatTimer);

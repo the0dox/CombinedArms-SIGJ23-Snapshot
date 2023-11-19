@@ -24,7 +24,7 @@ MonoBehaviour:
   numOfBulletsRange: {x: 1, y: 6}
   ammoTotal: 30
   ammoPerBullet: 1
-  range: 30
+  range: 60
   gunColor: {r: 1, g: 0, b: 0, a: 1}
   gunPrefab: {fileID: 1862821628627486055, guid: 7282da6b9abcd6142b5d5d643c84aad5, type: 3}
   isEnemy: 0

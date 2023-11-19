@@ -4,6 +4,7 @@ Shader "Hidden/SharpenContrast"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _EdgeTex ("Texture", 2D) = "white" {}
+        _ConVal("Contrast value",float) = 1.5
     }
     SubShader
     {
@@ -42,7 +43,7 @@ Shader "Hidden/SharpenContrast"
             float4 _MainTex_TexelSize;
             sampler2D _EdgeTex;
             float4 _EdgeTex_TexelSize;
-
+            float _ConVal;
             //Increases the difference between color and color 2 based on conVal
             //Returns a color which further away from color2
             float3 ChangeDiff(float3 color,float3 color2,float conVal) {
@@ -72,7 +73,7 @@ Shader "Hidden/SharpenContrast"
                     float4 eC_Off = tex2D(_EdgeTex, i.uv + offsets[n] * _EdgeTex_TexelSize.xy);
                     if (length(eC_Off - eC) > .6) {
                         //1.2
-                        col.xyz = ChangeDiff(col.xyz, mC_Off.xyz, 1.5); //Incrementally increase the difference for each large diffence
+                        col.xyz = ChangeDiff(col.xyz, mC_Off.xyz, _ConVal); //Incrementally increase the difference for each large diffence
                     } 
                 }
                 
