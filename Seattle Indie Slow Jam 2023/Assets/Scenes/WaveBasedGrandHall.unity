@@ -1071,19 +1071,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99621352d63906c49a0098413bb4f806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2.5
+  time: 5
   numberperspawn: 1
   maxNum: 25
-  enemyRangeWave: 1
+  enemyRangeWave: 2
   dropWaves: 1
   enemyIncreaseWaves: 1
   endArenaWave: 7
   weaponDrops:
   - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
+  - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
+  - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
   - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
   - {fileID: 7611564953711202059, guid: 496b6568e6f898e4d83d6099e56e9821, type: 3}
-  - {fileID: 7611564953711202059, guid: f3aa1ba24f174a6479186865cdcbf312, type: 3}
-  - {fileID: 7611564953711202059, guid: 6abb4fa42f2eea84cbd1ceaf4cacdf94, type: 3}
+  - {fileID: 7611564953711202059, guid: 496b6568e6f898e4d83d6099e56e9821, type: 3}
+  - {fileID: 7611564953711202059, guid: 496b6568e6f898e4d83d6099e56e9821, type: 3}
   endTrigger: {fileID: 976522570}
 --- !u!4 &906819348
 Transform:
