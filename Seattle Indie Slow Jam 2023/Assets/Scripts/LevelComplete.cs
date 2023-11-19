@@ -3,8 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
+ public static bool gameFinished = false;
  public void LoadNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int last = SceneManager.GetActiveScene().buildIndex;
+        int next = last + 1 >= SceneManager.sceneCountInBuildSettings ? 0 : last + 1;
+        SceneManager.LoadScene(next);
+        if (next - last < 0) gameFinished = true;
     }
 }
