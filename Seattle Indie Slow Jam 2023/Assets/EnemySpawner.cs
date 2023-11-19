@@ -43,7 +43,11 @@ public class EnemySpawner : MonoBehaviour
             waveAlive = false;
             waveNum++;
             Debug.Log("Waves: " + waveNum);
-            if (waveNum >= endArenaWave) endTrigger.SetActive(true);
+            if (waveNum >= endArenaWave)
+            {
+                endTrigger.SetActive(true);
+                return;
+            }
             if (waveNum % enemyRangeWave == 0) enemyRange = Mathf.Clamp(enemyRange + 1, 0, EnemyNames.Length);
             if(waveNum % dropWaves == 0)
             {
