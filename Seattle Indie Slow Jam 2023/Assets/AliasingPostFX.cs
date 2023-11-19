@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AliasingPostFX : MonoBehaviour
 {
+    public int rtRes = 512;
+    public float conVal = 1.5f;
     RenderTexture rt;
     RenderTexture upScale;
     [SerializeField]
@@ -17,10 +19,11 @@ public class AliasingPostFX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rt = new RenderTexture(512, 512, 0);
+        rt = new RenderTexture(rtRes, rtRes, 0);
         upScale = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 0);
         EdgeMat = new Material(EdgeDectectionPass);
         SharpenMat = new Material(SharpenContrastPass);
+        SharpenMat.SetFloat("_ConVal", conVal);
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
