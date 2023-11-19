@@ -18,6 +18,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     public int gunCount = 0;
     public float healthInc = 5f;
     public float eatLimit = 2f;
+    [SerializeField]
+    AudioClip munchClip;
     [HideInInspector]
     public int gunsReloading = 0;
     Vector4 gunPlacementRange = new Vector4(-1, 1, -.8f, .8f);
@@ -53,7 +55,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         parentMap = new Dictionary<GameObject, GameObject>();
         gunList = new List<GameObject>();
         nextPlacement = 0; //Next index in the gun array
-        eatSource.pitch = eatLimit * .16f;
+        eatSource.pitch = eatLimit * .64f;
     }
 
     void EatGun()
@@ -91,6 +93,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         {
             OnHealthChanged(this, currentHealth/health);
         }
+        _SFXSource.PlayOneShot(munchClip);
         OnGunCountChanged();
     }
     public void PickupGun(GunData data)

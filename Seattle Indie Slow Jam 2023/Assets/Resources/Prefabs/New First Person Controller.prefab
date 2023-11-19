@@ -7913,6 +7913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rtRes: 512
+  conVal: 1.5
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1 &7570054550688859823
@@ -8345,7 +8347,8 @@ MonoBehaviour:
   health: 100
   gunCount: 1
   healthInc: 50
-  eatLimit: 2
+  eatLimit: 1
+  munchClip: {fileID: 8300000, guid: 13fb83b92f76a0d49ab28c4bdf79997a, type: 3}
   gunsReloading: 0
   _dashFrames: 7
   _dashParticle: {fileID: 4288219874380548480}
@@ -8738,6 +8741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rtRes: 512
+  conVal: 1.5
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1001 &7821234091661889784
