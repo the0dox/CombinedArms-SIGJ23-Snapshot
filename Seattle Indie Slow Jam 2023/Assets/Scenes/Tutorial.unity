@@ -6719,7 +6719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360050, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_Volume
-      value: 0.38
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360055, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_RootOrder
@@ -16732,7 +16732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold F to eat gun for health
+  m_text: Hold right click to eat gun for health
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_sharedMaterial: {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
@@ -16795,7 +16795,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.8069515, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.099214554, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
