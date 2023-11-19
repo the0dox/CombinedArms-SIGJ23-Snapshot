@@ -38548,6 +38548,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3536819354811907176, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
+      propertyPath: conVal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536819354811907176, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
