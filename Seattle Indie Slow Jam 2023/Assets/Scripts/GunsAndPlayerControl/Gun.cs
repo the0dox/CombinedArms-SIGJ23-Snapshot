@@ -157,7 +157,7 @@ public class Gun : MonoBehaviour
             bool hit = GamePhysics.AttackRayCast(new Ray(Camera.main.transform.position, camDir), dmg, range, out info); 
                 //Physics.Raycast(this.transform.GetChild(0).position, dir,out info,range);
             //if (hit && info.collider.tag == "Enemy") Debug.Log("HIT! THIS WOULD DAMAGE AN ENEMY");
-            if (!hit)
+            if (!hit || useBullets)
             {
                 info.point = Camera.main.transform.position + camDir.normalized * range;
                     //this.transform.GetChild(0).position +  dir.normalized * range;
@@ -259,9 +259,8 @@ public class Gun : MonoBehaviour
             }
             barrel.PlayOneShot(reloadSound);
             //PlayerManager.instance.gunsReloading--;
-            Debug.Log(this.transform.gameObject.name);
+            //Debug.Log(this.transform.gameObject.name);
         }
-        Debug.Log("TESTING!");
     }
     public void  ApplyGunData(GunData data)
     {

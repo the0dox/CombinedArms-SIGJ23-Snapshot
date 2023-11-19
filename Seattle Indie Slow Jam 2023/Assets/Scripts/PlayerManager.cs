@@ -187,7 +187,8 @@ public class PlayerManager : MonoBehaviour, IAttackable
     void OnGunCountChanged()
     {
         int baseLayer = 2;
-        Mathf.Clamp(baseLayer + gunCount/3, baseLayer, 5);
+        baseLayer = Mathf.Clamp(baseLayer + (gunCount/3), baseLayer, 5);
+        Debug.Log("setting current layer to " + baseLayer + " because I have " + gunCount + " guns");
         MusicPlayer.CurrentLayer = baseLayer;
     }
 
@@ -198,7 +199,7 @@ public class PlayerManager : MonoBehaviour, IAttackable
         GunData data = gunDatas[r];
         //data.RandomizeProperties();
         PickupGun(data);
-        if (gunCount < 4) MusicPlayer.PlayLayer(gunCount);
+        OnGunCountChanged();
     }
     // Update is called once per frame
     void Update()
