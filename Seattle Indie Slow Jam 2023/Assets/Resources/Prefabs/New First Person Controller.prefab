@@ -7913,6 +7913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rtRes: 512
+  conVal: 1.5
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1 &7570054550688859823
@@ -8283,7 +8285,7 @@ MonoBehaviour:
   invertCamera: 0
   cameraCanMove: 1
   mouseSensitivity: 2
-  maxLookAngle: 50
+  maxLookAngle: 90
   lockCursor: 1
   crosshair: 1
   crosshairImage: {fileID: 21300000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
@@ -8738,6 +8740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54f347068c8b474dbba998a18351d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rtRes: 512
+  conVal: 1.5
   EdgeDectectionPass: {fileID: 4800000, guid: 7d7a2bd9b8db1144880522f2aa838325, type: 3}
   SharpenContrastPass: {fileID: 4800000, guid: a28dc5b875d3bf74a8730c353bec9133, type: 3}
 --- !u!1001 &7821234091661889784
