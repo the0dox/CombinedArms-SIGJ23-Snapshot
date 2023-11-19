@@ -7682,10 +7682,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3536819354811907176, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
-      propertyPath: conVal
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3747497912912119261, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7813,6 +7809,10 @@ PrefabInstance:
     - target: {fileID: 7570054552027191992, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ede6ce13d9027c84aa50e69e6979563c, type: 3}
