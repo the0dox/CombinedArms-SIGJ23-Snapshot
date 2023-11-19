@@ -317,7 +317,7 @@ MonoBehaviour:
   enemyRangeWave: 2
   dropWaves: 2
   enemyIncreaseWaves: 2
-  endArenaWave: 14
+  endArenaWave: 1
   weaponDrops:
   - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
   - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
