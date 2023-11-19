@@ -5,9 +5,9 @@ using UnityEngine;
 public class DebrisFade : MonoBehaviour
 {
     Rigidbody thisrigidbody;
-    private float PieceFadeSpeed = 0.25f;
-    private float PieceDestroyDelay = 5f;
-    private float PieceSleepCheckDelay = 0.5f;
+    private float PieceFadeSpeed = 2.5f;
+    private float PieceDestroyDelay = 0.5f;
+    private float PieceSleepCheckDelay = 0.05f;
 
     // Start is called before the first frame update
     void Start()

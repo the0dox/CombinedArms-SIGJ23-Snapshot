@@ -45,7 +45,7 @@ public class AudioQueue : MonoBehaviour
             int count = _playedSounds[currentSource.clip.name]++;
             if(count < _maximumSoundPerType)
             {
-                Debug.Log("playing " + currentSource.clip.name + " at " + (1 - count/s_instance._maximumSoundPerType) + "volume");
+                //Debug.Log("playing " + currentSource.clip.name + " at " + (1 - count/s_instance._maximumSoundPerType) + "volume");
                 currentSource.PlayOneShot(currentSource.clip, 1 - count/s_instance._maximumSoundPerType * soundModifier);
             }
         }
@@ -53,6 +53,10 @@ public class AudioQueue : MonoBehaviour
 
     public static void PlaySound(AudioSource sound)
     {
+        if(s_instance == null)
+        {
+            Debug.LogError("No Audio Source Present in Scene!");
+        }
         s_instance._sources.Enqueue(sound);
     }
 }

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a6b6dd248ede347a6b3d9ae2cf72f7, type: 3}
   m_Name: ShogunData
   m_EditorClassIdentifier: 
-  firerate: 0.3
+  firerate: 0.4
   firerateRange: {x: 0.2, y: 0.5}
   dmg: 7
   dmgRange: {x: 10, y: 15}
-  reloadSpeed: 0.2
+  reloadSpeed: 0.3
   reloadSpeedRange: {x: 0.2, y: 0.4}
   spreadAngle: 30
   spreadAngleRange: {x: 25, y: 45}
