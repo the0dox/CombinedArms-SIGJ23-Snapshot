@@ -6294,9 +6294,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[5].Main
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[1].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[2].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[3].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
+      propertyPath: _musicLayers.Array.data[4].Intro
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Intro
       value: 
-      objectReference: {fileID: 8300000, guid: 4968e6c02783f674baca8648627500c5, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8432113547721360055, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_RootOrder
       value: 13
