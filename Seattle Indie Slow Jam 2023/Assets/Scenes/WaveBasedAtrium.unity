@@ -317,7 +317,7 @@ MonoBehaviour:
   enemyRangeWave: 2
   dropWaves: 2
   enemyIncreaseWaves: 2
-  endArenaWave: 15
+  endArenaWave: 12
   weaponDrops:
   - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
   - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
@@ -373,7 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 451126598763593018, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_text
-      value: SURVIVE 15 WAVES
+      value: SURVIVE 12 WAVES
       objectReference: {fileID: 0}
     - target: {fileID: 2018813801526659136, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_text
