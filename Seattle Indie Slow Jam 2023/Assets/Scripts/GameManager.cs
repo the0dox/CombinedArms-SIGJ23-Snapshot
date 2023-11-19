@@ -64,11 +64,18 @@ public class GameManager : MonoBehaviour
         // if no game manager has been assigned, then I should assign myself as game manager and presist between scenes
         else
         {
+            #if UNITY_EDITOR
+            Debug.unityLogger.logEnabled = true;
+            #else
+            Debug.unityLogger.logEnabled = false;
+            #endif
             s_instance = this;
             SceneManager.sceneLoaded += OnSceneChanged;
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    
 
     // called when some trigger would have ended the game, handles the end of the game
     public static void TriggerGameOver()
