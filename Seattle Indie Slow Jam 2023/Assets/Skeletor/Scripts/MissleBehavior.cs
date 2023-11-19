@@ -58,7 +58,7 @@ public class MissleBehavior : MonoBehaviour
             }
         }
         gameObject.SetActive(false);
-        GamePhysics.AttackSphereCast(transform.position, _explosionRadius, _damage);
+        GamePhysics.AttackSphereCast(transform.position, _explosionRadius, _damage, _isFriendly);
         GameObject explosion = ObjectLoader.LoadObject(_explosionPrefab.name, true);
         explosion.transform.position = transform.position;
         AudioSource.PlayClipAtPoint(_explosionSound, transform.position);
