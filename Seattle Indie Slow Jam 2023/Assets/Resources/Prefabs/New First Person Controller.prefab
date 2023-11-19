@@ -8347,7 +8347,8 @@ MonoBehaviour:
   health: 150
   gunCount: 1
   healthInc: 50
-  eatLimit: 2
+  eatLimit: 1
+  munchClip: {fileID: 8300000, guid: 13fb83b92f76a0d49ab28c4bdf79997a, type: 3}
   gunsReloading: 0
   _dashFrames: 7
   _dashParticle: {fileID: 4288219874380548480}
