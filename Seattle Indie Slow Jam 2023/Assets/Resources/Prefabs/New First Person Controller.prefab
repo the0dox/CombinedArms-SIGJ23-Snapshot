@@ -8350,7 +8350,7 @@ MonoBehaviour:
   _dashFrames: 7
   _dashParticle: {fileID: 4288219874380548480}
   _dashSFX: {fileID: 8300000, guid: ca3fe14bbb3e26d4aaa3d7f25fc02f84, type: 3}
-  _jumpSFX: {fileID: 8300000, guid: d2f682aba2cd24545aa20be70fb0f7ba, type: 3}
+  _jumpSFX: {fileID: 8300000, guid: 0405fe0b9a239a04bbc1cbcbc5e9412c, type: 3}
   _hurtSFX: {fileID: 8300000, guid: fbd1540fc024fcc4fb0f647de6a2ef36, type: 3}
   _deathSFX: {fileID: 8300000, guid: 2cea2b9b17c459e4c9dfac2729a974bf, type: 3}
   _SFXSource: {fileID: 1358119348271713065}
