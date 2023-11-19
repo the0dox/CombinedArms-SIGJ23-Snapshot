@@ -72,7 +72,11 @@ public class EnemySnipeAttackState : State<EnemyBehavior>
     // called when this state is ended
     protected override void OnStateExit()
     {
-        sniperTrail.gameObject.SetActive(false);
+        if(sniperTrail != null)
+        {
+            sniperTrail.gameObject.SetActive(false);
+        }
+        sniperTrail = null;
     }
 
     // makes a powerful hitscan attack against the player that can only stopped by terrain

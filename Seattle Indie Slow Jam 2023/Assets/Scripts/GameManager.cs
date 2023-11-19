@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -37,11 +38,13 @@ public class GameManager : MonoBehaviour
     // public read only accessor for if game has ended
     public static bool GameHasEnded => s_instance.gameHasEnded;
     public static float VolumeLevel => s_instance._volumeLevel;
+    public static bool PostProcessing => s_instance._postProcessing;
     // reference to the current scene loaded
     private Scene _activeScene;
     // if set to true, this scene will call object loaders. Should only be set to false for menu scenes
     [SerializeField] private bool _loadPrefabs;
     private float _volumeLevel = 1;
+    private bool _postProcessing = true;
     
 
     // called before first frame
@@ -89,12 +92,22 @@ public class GameManager : MonoBehaviour
     {
         gameHasEnded = false;
         _activeScene = scene;
+        SetPostProcessing(_postProcessing);
     }
 
     public static void SetAudioLevel(float level)
     {
         s_instance._volumeLevel = level;
         AudioListener.volume = level;
+    }
+
+    public static void SetPostProcessing(bool value)
+    {
+        s_instance._postProcessing = value;
+        foreach(AliasingPostFX FX in AliasingPostFX.activeFXs)
+        {
+            FX.enabled = value;
+        }
     }
 
 
