@@ -685,19 +685,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD to Move
+  m_text: 'WASD TO MOVE
 
-    Mouse Click To shoot
+    MOUSE1 TO SHOOT
 
-    R to reload
+    R TO RELOAD
 
-    Space to
-    jump
+    SPACE TO JUMP
 
-    Shift to dash'
+    SHIFT
+    TO DASH'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
+  m_sharedMaterial: {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -705,14 +705,14 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 05218f5df1417f8469bc90522cbdca6c, type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
@@ -786,7 +786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13753,12 +13753,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold F for a bit to eat a gun
-
-    Eating guns heals you'
+  m_text: "HOLD F TO SACRIFICE GUN\nTHE SACRIFICE BRINGS \nYOU VITALITY"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
+  m_sharedMaterial: {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13766,14 +13764,14 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 05218f5df1417f8469bc90522cbdca6c, type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
@@ -13847,7 +13845,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13886,7 +13884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 153.28, y: 3.23}
+  m_AnchoredPosition: {x: 154.35, y: 3.96}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &712392147
@@ -32767,12 +32765,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Shoot Door
+  m_text: 'YOU FEEL LIKE
 
-    To open'
+    YOU SHOULD SHOOT
+
+    THIS DOOR'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
+  m_sharedMaterial: {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -32780,14 +32780,14 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: 05218f5df1417f8469bc90522cbdca6c, type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
@@ -32861,7 +32861,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 342206476090843918, guid: cb033fd0a9c7b7d4481b8c5314059fba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
