@@ -25,7 +25,7 @@ public class MusicPlayer : MonoBehaviour
         }
     } 
     // editable list of all tracks this music player can play
-    [SerializeField] private AudioClip[] _musicLayers;
+    [SerializeField] private MusicLayer[] _musicLayers;
     // the time in seconds at which songs fade in
     [SerializeField, Range(0, 1)] private float _fadeInSpeed; 
     // the time in seconds at which songs fade out
@@ -34,7 +34,10 @@ public class MusicPlayer : MonoBehaviour
     private AudioSource[] _audioChannels;
     // reference to index of the active audio source, used swap between sources when cross fading tracks
     private static int s_activeSource;
-    [SerializeField, ReadOnly(true)] private int _currentLayer;
+    // displays the active layer in editor
+    [SerializeField] private int _currentLayer;
+    // if set to true, the music player will play whatever current layer is set to on awake
+    [SerializeField] private bool _playOnAwake;
 
     // assign instance before first frame
     void Awake()
@@ -42,9 +45,16 @@ public class MusicPlayer : MonoBehaviour
         if(s_instance == null)
         {
             s_instance = this;
-            s_activeSource = 0;
-            _currentLayer = -1;
             _audioChannels = GetComponents<AudioSource>();
+            s_activeSource = -1;
+            if(_playOnAwake)
+            {
+                PlayLayer(_currentLayer);
+            }   
+            else
+            {
+                _currentLayer = -1;
+            }
         }
         else
         {
@@ -64,7 +74,7 @@ public class MusicPlayer : MonoBehaviour
     {
         for(int i = 0; i < s_instance._musicLayers.Length; i++)
         {
-            if(s_instance._musicLayers[i].name.Equals(clipName))
+            if(s_instance._musicLayers[i].Main.name.Equals(clipName))
             {
                 PlayLayer(i);
                 return;
@@ -82,40 +92,70 @@ public class MusicPlayer : MonoBehaviour
             Debug.LogWarning($"Music Player was asked to play a layer at invalid index {layer}");
             return;
         }
-        AudioClip clip = s_instance._musicLayers[layer];
-        AudioSource activeChannel = s_instance._audioChannels[s_activeSource];
-        if(activeChannel.clip == clip)
+        MusicLayer newLayer = s_instance._musicLayers[layer];
+        // if no music is playing check to see if layer has an intro
+        if(s_activeSource == -1)
         {
-            Debug.Log($"Music Player was asked to play a Layer that was already active! (Layer {layer})");
+            // if it has an intro play it, else fade layer in as normal
+            if(newLayer.Intro != null)
+            {
+                PlayIntro(newLayer);
+                return;    
+            }
+            else
+            {
+                s_activeSource = 0;
+            }
+        }
+        AudioSource activeChannel = s_instance._audioChannels[s_activeSource];
+        if(activeChannel.clip == newLayer.Main)
+        {
+            Debug.Log($"Music Player was asked to play a Layer that was already active (Layer {layer})");
             return;
         }
         s_instance._currentLayer = layer;
         AudioSource inactiveChannel = s_instance._audioChannels[1 - s_activeSource];
         float time = activeChannel.time;
         s_instance.StartCoroutine(FadeOutPlayer(activeChannel));
-        s_instance.StartCoroutine(FadeInPlayer(inactiveChannel, time, clip));
+        s_instance.StartCoroutine(FadeInPlayer(inactiveChannel, time, newLayer.Main));
         s_activeSource = s_activeSource == 0 ? 1 : 0;
-        Debug.Log($"new source {s_activeSource}");
     }
 
     // fades out all music layers
     public static void Stop()
     {
+        s_activeSource = -1;
         s_instance._currentLayer = -1;
         s_instance.StopAllCoroutines();
         s_instance.StartCoroutine(FadeOutPlayer(s_instance._audioChannels[0]));
         s_instance.StartCoroutine(FadeOutPlayer(s_instance._audioChannels[1]));
+        s_instance.StartCoroutine(FadeOutPlayer(s_instance._audioChannels[2]));
     }
 
     // abruptly ends all music layers
     public static void StopInstant()
     {
+        s_activeSource = -1;
         s_instance._currentLayer = -1;
         s_instance.StopAllCoroutines();
         s_instance._audioChannels[0].Stop();
         s_instance._audioChannels[0].clip = null;
         s_instance._audioChannels[1].Stop();
         s_instance._audioChannels[1].clip = null;
+        s_instance._audioChannels[2].Stop();
+        s_instance._audioChannels[2].clip = null;
+    }
+
+    // plays the intro the corresponding layer, then transitions to the main loop. this process can be interupted
+    public static void PlayIntro(MusicLayer layer)
+    {
+        StopInstant();
+        s_instance.StartCoroutine(FadeInPlayer(s_instance._audioChannels[2], 0, layer.Intro));
+        s_activeSource = 0;
+        AudioSource mainChannel = s_instance._audioChannels[s_activeSource];
+        mainChannel.clip = layer.Main;
+        mainChannel.volume = 1;
+        mainChannel.PlayDelayed(layer.Intro.length);
     }
 
     // plays a specific layer, matching a songLocation for seamless fading
@@ -143,6 +183,11 @@ public class MusicPlayer : MonoBehaviour
         }
         player.Stop();
         player.clip = null;
+    }
+
+    public override string ToString()
+    {
+        return string.Format($"Music Player Audio Source: {s_activeSource} Current Layer {_currentLayer}");
     }
 
     /* used for testing purposes
@@ -197,4 +242,12 @@ public class MusicPlayer : MonoBehaviour
     }
     #endif
     */
+}
+
+// publicily editable music layer
+[System.Serializable]
+public struct MusicLayer
+{
+    public AudioClip Main;
+    public AudioClip Intro;
 }

@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: e7180c2c6eabd8443953c9873cda6693
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: ce88795fb6563574db6fdf04d68e55c4
+  - enabled: 1
     path: Assets/Scenes/LongGalleryBuildout.unity
     guid: f2a969ffa3045184cba1d75cefd2e45b
+  - enabled: 1
+    path: Assets/Scenes/WaveBasedGrandHall.unity
+    guid: 4dd0103dbe418b940ac982998d0436c7
+  - enabled: 1
+    path: Assets/Scenes/WaveBasedAtrium.unity
+    guid: 1df88e3954528aa4595561747e75f084
   m_configObjects: {}
