@@ -36,10 +36,13 @@ public class GameManager : MonoBehaviour
     private static GameManager s_instance;
     // public read only accessor for if game has ended
     public static bool GameHasEnded => s_instance.gameHasEnded;
+    public static float VolumeLevel => s_instance._volumeLevel;
     // reference to the current scene loaded
     private Scene _activeScene;
     // if set to true, this scene will call object loaders. Should only be set to false for menu scenes
     [SerializeField] private bool _loadPrefabs;
+    private float _volumeLevel = 1;
+    
 
     // called before first frame
     public void Awake()
@@ -86,6 +89,12 @@ public class GameManager : MonoBehaviour
     {
         gameHasEnded = false;
         _activeScene = scene;
+    }
+
+    public static void SetAudioLevel(float level)
+    {
+        s_instance._volumeLevel = level;
+        AudioListener.volume = level;
     }
 
 

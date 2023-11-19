@@ -317,7 +317,7 @@ MonoBehaviour:
   enemyRangeWave: 2
   dropWaves: 2
   enemyIncreaseWaves: 2
-  endArenaWave: 15
+  endArenaWave: 12
   weaponDrops:
   - {fileID: 7611564953711202059, guid: f8308f6a1a2a30747a52dea54fafe900, type: 3}
   - {fileID: 7611564953711202059, guid: 8aed60116e4b18a42b2bd74d332efb5e, type: 3}
@@ -373,11 +373,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 451126598763593018, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_text
-      value: SURVIVE 15  WAVES
+      value: SURVIVE 12 WAVES
       objectReference: {fileID: 0}
     - target: {fileID: 2018813801526659136, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_text
-      value: The Atrium
+      value: THE ATRIUM
       objectReference: {fileID: 0}
     - target: {fileID: 2018813801526659136, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -6352,43 +6352,43 @@ PrefabInstance:
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[1].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 0fbf7e53ecb81c64aaf3020d58be12f5, type: 3}
+      objectReference: {fileID: 8300000, guid: adf55c06ff5b0394492a16b972b59a0d, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[2].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 11d9f938d26d81b4ba05d8615c1cf981, type: 3}
+      objectReference: {fileID: 8300000, guid: 1481ef10d6494fc4c94aede242925986, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[3].Main
       value: 
-      objectReference: {fileID: 8300000, guid: d329c03dd1ed1414f8581a51cada5fd2, type: 3}
+      objectReference: {fileID: 8300000, guid: feed6a92eddfba541949c36ab72c663e, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[4].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 4343b230372dc6648b8d9d756b152482, type: 3}
+      objectReference: {fileID: 8300000, guid: 2ba09569c6e94b1479d90ba76eda7e52, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Main
       value: 
-      objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
+      objectReference: {fileID: 8300000, guid: 69c05e68aa3917d40bb57523bdc5845c, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[1].Intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 98108c29fc945a644acb1be644199e63, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[2].Intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: bec01c368e95e8f41a71a58f36089feb, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[3].Intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 706bf3296db4fdb4e84ecaa76f557baf, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[4].Intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 1006ea1abae2fa94d9f73a2e3f5e99fd, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Intro
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 0f4da72c9ed2190448aff1978b2bc06e, type: 3}
     - target: {fileID: 8432113547721360055, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -12564,6 +12564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6708242701269892043}
+  settingsMenuUI: {fileID: 0}
 --- !u!224 &6708242700615697493
 RectTransform:
   m_ObjectHideFlags: 0
