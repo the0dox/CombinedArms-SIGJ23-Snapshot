@@ -30,6 +30,7 @@ public class MissleBehavior : MonoBehaviour
 
     void OnEnable()
     {
+        _myBody.velocity = Vector3.zero;
         _isFriendly = true;
     }
 

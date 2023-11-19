@@ -825,7 +825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: 5}
+  m_AnchoredPosition: {x: 0.34, y: 5}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &31841851 stripped
@@ -22464,6 +22464,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2018813801526659136, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+      propertyPath: m_text
+      value: THE LONG GALLERY
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018813801526659136, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880415391080654373, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7548725722106313338, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
