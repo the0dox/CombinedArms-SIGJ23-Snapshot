@@ -14,6 +14,18 @@ public class AliasingPostFX : MonoBehaviour
     [SerializeField]
     Shader SharpenContrastPass;
     Material SharpenMat;
+    public static List<AliasingPostFX> activeFXs = new List<AliasingPostFX>();
+
+    void Awake()
+    {
+        activeFXs.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        activeFXs.Remove(this);
+    }
+
     //Try out edge dection with sobel kernals on lower res rt
     //To increase the contrast between pixels by creating jagged lines around chracters
     // Start is called before the first frame update
