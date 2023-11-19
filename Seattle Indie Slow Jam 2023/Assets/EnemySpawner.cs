@@ -38,12 +38,12 @@ public class EnemySpawner : MonoBehaviour
     public void OnKilled(object caller, System.EventArgs e)
     {
         num--;
-        if (num < 1)
+        if (num < 1 && waveAlive)
         {
             waveAlive = false;
             waveNum++;
             Debug.Log("Waves: " + waveNum);
-            if (waveNum > endArenaWave) endTrigger.SetActive(true);
+            if (waveNum >= endArenaWave) endTrigger.SetActive(true);
             if (waveNum % enemyRangeWave == 0) enemyRange = Mathf.Clamp(enemyRange + 1, 0, EnemyNames.Length);
             if(waveNum % dropWaves == 0)
             {
