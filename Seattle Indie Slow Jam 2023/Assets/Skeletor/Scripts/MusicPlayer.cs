@@ -82,7 +82,6 @@ public class MusicPlayer : MonoBehaviour
             Debug.LogWarning($"Music Player was asked to play a layer at invalid index {layer}");
             return;
         }
-        s_instance._currentLayer = layer;
         AudioClip clip = s_instance._musicLayers[layer];
         AudioSource activeChannel = s_instance._audioChannels[s_activeSource];
         if(activeChannel.clip == clip)
@@ -90,6 +89,7 @@ public class MusicPlayer : MonoBehaviour
             Debug.Log($"Music Player was asked to play a Layer that was already active! (Layer {layer})");
             return;
         }
+        s_instance._currentLayer = layer;
         AudioSource inactiveChannel = s_instance._audioChannels[1 - s_activeSource];
         float time = activeChannel.time;
         s_instance.StartCoroutine(FadeOutPlayer(activeChannel));

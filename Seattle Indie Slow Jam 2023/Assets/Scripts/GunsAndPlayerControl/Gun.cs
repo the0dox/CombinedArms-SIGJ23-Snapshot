@@ -82,6 +82,7 @@ public class Gun : MonoBehaviour
         animator.SetFloat("reloadSpeed", reloadSpeed);
         ammoCount = ammoTotal;
         startPos = this.transform.localPosition;
+        barrel.clip = fireSound;
         /*
         foreach (AnimationClip a in animator.runtimeAnimatorController.animationClips)
         {
@@ -175,7 +176,8 @@ public class Gun : MonoBehaviour
                 StartCoroutine(HitscanTrail(t, info));
             }
         }
-        barrel.PlayOneShot(fireSound);
+        AudioQueue.PlaySound(barrel);
+        //barrel.PlayOneShot(fireSound);
         //PUT DAMAGE CODE BELOW
         //info.collider.GetComponent<Enemy>().takeDamage();
         
@@ -263,6 +265,7 @@ public class Gun : MonoBehaviour
     }
     public void  ApplyGunData(GunData data)
     {
+        //this.barrel.volume = Mathf.Clamp(1 - 0.05f * index, 0.05f, 1);
         firerate = data.firerate;
         dmg = data.dmg;
         reloadSpeed = data.reloadSpeed;
@@ -311,6 +314,7 @@ public class Gun : MonoBehaviour
                 else
                 {
                     if (!barrel.isPlaying) barrel.PlayOneShot(clickSound);
+                    //AudioQueue.PlaySound(clickSound);
                     animator.SetBool("IsFiring", false);
                     EndFire();
                 }

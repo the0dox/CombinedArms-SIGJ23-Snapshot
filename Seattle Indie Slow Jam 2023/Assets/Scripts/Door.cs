@@ -15,6 +15,7 @@ public class Door : MonoBehaviour, IAttackable
     public bool Destructible = true;
     public float health = 100;
     public AudioClip clip;
+    private bool destroyed = false;
 
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class Door : MonoBehaviour, IAttackable
 
     private void DestroyMesh()
     {
+        destroyed = true;
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
         var parts = new List<PartMesh>();
@@ -328,7 +330,7 @@ public class Door : MonoBehaviour, IAttackable
 
             transform.localPosition = new Vector3(transform.localPosition.x - vibrateoffset, transform.localPosition.y - vibrateoffset, transform.localPosition.z - vibrateoffset);
 
-            if (health <= 0)
+            if (health <= 0 && !destroyed)
             {
                 AudioSource.PlayClipAtPoint(clip, transform.localPosition);
                 DestroyMesh();
