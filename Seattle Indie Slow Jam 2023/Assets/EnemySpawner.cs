@@ -46,7 +46,6 @@ public class EnemySpawner : MonoBehaviour
             if (waveNum >= endArenaWave)
             {
                 endTrigger.SetActive(true);
-                return;
             }
             if (waveNum % enemyRangeWave == 0) enemyRange = Mathf.Clamp(enemyRange + 1, 0, EnemyNames.Length);
             if(waveNum % dropWaves == 0)
@@ -64,7 +63,11 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!waveAlive) timer += Time.deltaTime;
+        if (waveNum >= endArenaWave)
+        {
+            return;
+        }
+        if (!waveAlive) timer += Time.deltaTime;
         if (timer > time)
         {
             waveAlive = true;
