@@ -11,6 +11,7 @@ public class UIFadeOut : MonoBehaviour
     [SerializeField] private bool _fading;
     [SerializeField] private Image _imageComponent;
     private Color _defaultColor;
+    private float _targetAlpha;
     private float _alpha;
 
     void Awake()
@@ -27,18 +28,27 @@ public class UIFadeOut : MonoBehaviour
     {
         if(_fading)
         {
-            _alpha -= Time.deltaTime * _fadeSpeed;
-            _imageComponent.color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, _alpha);
-            if(_alpha < 0)
+            if(_alpha > _targetAlpha)
             {
-                Debug.Log("hiding");
-                gameObject.SetActive(false);
+                _alpha -= Time.deltaTime * _fadeSpeed;
+                _imageComponent.color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, _alpha);
+            }
+            else
+            {
+                _fading = false;
+                if(_targetAlpha == 0)
+                {
+                    Debug.Log("hiding");
+                    gameObject.SetActive(false);
+                }
             }
         }
     }
 
-    public void FadeOut()
+    public void FadeOut(float targetAlpha = 0)
     {
+        _fading = true;
+        _targetAlpha = targetAlpha;
         if(!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);

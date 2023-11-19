@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3880415390547159768, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3880415391507969723, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6364,26 +6368,6 @@ PrefabInstance:
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[5].Main
       value: 
-      objectReference: {fileID: 8300000, guid: e0a0be7c7a7984e4d8be98b4d5fb9467, type: 3}
-    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
-      propertyPath: _musicLayers.Array.data[1].Intro
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
-      propertyPath: _musicLayers.Array.data[2].Intro
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
-      propertyPath: _musicLayers.Array.data[3].Intro
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
-      propertyPath: _musicLayers.Array.data[4].Intro
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
-      propertyPath: _musicLayers.Array.data[5].Main
-      value: 
       objectReference: {fileID: 8300000, guid: 3b7163e0acffe704b917eeb297d56876, type: 3}
     - target: {fileID: 8432113547721360052, guid: 0d14b55973f76524e968c19e0f8dfdb3, type: 3}
       propertyPath: _musicLayers.Array.data[1].Intro
@@ -6559,7 +6543,19 @@ MonoBehaviour:
   restartDelay: 1
   OnGameOver:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1808655760}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls:
@@ -9183,6 +9179,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7629811779324647873, guid: a05866f9293176b4c8fd7a4ec7a8ab3c, type: 3}
+--- !u!1 &1808655760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3880415390547159768, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
+  m_PrefabInstance: {fileID: 71146698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1813899207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2387779047616385265, guid: 495b34ff001f4994eb3c62d8905b86e2, type: 3}

@@ -190,9 +190,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -607,9 +615,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -1590,9 +1606,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -2155,9 +2179,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -3076,6 +3108,24 @@ Transform:
   m_Father: {fileID: 1402218762}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &392684933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+  m_PrefabInstance: {fileID: 2141239445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &392684934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392684933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1 &406132677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,8 +4022,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
   m_PrefabInstance: {fileID: 5492961}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &454780346
-MeshCollider:
+--- !u!65 &454780345
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3982,10 +4032,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
+--- !u!65 &454780346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454780344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!43 &477847203
 Mesh:
   m_ObjectHideFlags: 0
@@ -5635,8 +5697,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
   m_PrefabInstance: {fileID: 1543826276}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &634523232
-MeshCollider:
+--- !u!65 &634523231
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5645,10 +5707,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
+--- !u!65 &634523232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634523230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1 &641841531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,6 +6000,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3880415390547159768, guid: a698cb629649ca54c8846f456ca0c6b1, type: 3}
   m_PrefabInstance: {fileID: 2144491871}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &720907108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+  m_PrefabInstance: {fileID: 21494769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &720907109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720907108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1001 &739269812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6348,6 +6440,24 @@ Transform:
   m_Father: {fileID: 1402218762}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &752817278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+  m_PrefabInstance: {fileID: 883477218}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &752817279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752817278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1 &764543277
 GameObject:
   m_ObjectHideFlags: 0
@@ -7584,9 +7694,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -8453,9 +8571,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -8542,6 +8668,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918162394}
   m_Mesh: {fileID: 1753670689832371730, guid: 6d786eae00c3f9c478b991fc7c03a4e3, type: 3}
+--- !u!1 &937083561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+  m_PrefabInstance: {fileID: 1645454331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &937083562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937083561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1001 &951815243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11045,6 +11189,24 @@ Transform:
   m_Father: {fileID: 1402218762}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181530499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+  m_PrefabInstance: {fileID: 54075221}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1181530500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181530499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1 &1207684360
 GameObject:
   m_ObjectHideFlags: 0
@@ -15228,8 +15390,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
   m_PrefabInstance: {fileID: 174649182}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1449154122
-MeshCollider:
+--- !u!65 &1449154121
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15238,10 +15400,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
+--- !u!65 &1449154122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449154120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!1001 &1468722202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16010,6 +16184,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 18.091484, y: 48.46783, z: 63.556564}
   m_Center: {x: 8.546816, y: 23.733795, z: 31.278605}
+--- !u!65 &1523029999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523029996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.37074, y: 12.712577, z: 37.939125}
+  m_Center: {x: 9.711143, y: 21.097958, z: 44.200623}
 --- !u!43 &1527187542
 Mesh:
   m_ObjectHideFlags: 0
@@ -16241,9 +16428,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -16933,9 +17128,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
@@ -21467,9 +21670,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1237327516241194480, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
       propertyPath: m_Name
       value: Couch (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09c4bcc20fcce6141a09489f6c58640c, type: 3}
